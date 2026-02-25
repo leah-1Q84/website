@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://leah-1q84.github.io/website/sitemap.xml
