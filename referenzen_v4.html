@@ -12,6 +12,7 @@
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="canonical" href="https://leah-1q84.github.io/website/referenzen_v4.html">
+  <link rel="stylesheet" href="styles.css">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Referenzen – saferspaces">
@@ -367,18 +368,91 @@
     .cta-card p  { margin-bottom: 32px; max-width: 560px; margin-left: auto; margin-right: auto; }
   </style>
 </head>
-<body>
+<body class="lang-de">
 
-<!-- NAVIGATION -->
-<nav style="position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(255,255,255,0.85); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); padding:16px 32px; display:flex; align-items:center; justify-content:space-between;">
-  <a href="index.html" style="text-decoration:none; display:flex; align-items:center; gap:12px;">
-    <span style="font-family:'GT Alpina',serif; font-weight:700; font-size:18px; color:var(--purple);">saferspaces</span>
-  </a>
-  <div style="display:flex; align-items:center; gap:16px;">
-    <a href="index.html" style="font-family:'Mabry Pro',sans-serif; font-weight:700; font-size:14px; color:var(--purple); text-decoration:none;">← Zurück zur Startseite</a>
-    <a href="https://cal.com/saferspaces/hello?duration=30" target="_blank" class="btn btn-primary" style="height:40px; padding:0 24px; font-size:14px;">Demo buchen</a>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="nav-logo"><a href="index.html"><img src="images/logo.svg" alt="saferspaces" style="height:40px; width:auto;"></a></div>
+    <div class="nav-menu">
+      <div class="nav-item">
+        <span data-lang-de>Lösung</span><span data-lang-en>Solution</span>
+        <div class="nav-dropdown">
+          <a href="loesung.html"><strong><span data-lang-de>Übersicht</span><span data-lang-en>Overview</span></strong><span><span data-lang-de>Das Gesamtsystem</span><span data-lang-en>The complete system</span></span></a>
+          <a href="melden.html"><strong><span data-lang-de>Melden</span><span data-lang-en>Report</span></strong><span><span data-lang-de>QR-Code, Link oder Integration</span><span data-lang-en>QR code, link or integration</span></span></a>
+          <a href="reagieren.html"><strong><span data-lang-de>Reagieren</span><span data-lang-en>Respond</span></strong><span><span data-lang-de>Echtzeit-Koordination</span><span data-lang-en>Real-time coordination</span></span></a>
+          <a href="verstehen.html"><strong><span data-lang-de>Verstehen</span><span data-lang-en>Understand</span></strong><span><span data-lang-de>Daten &amp; Insights</span><span data-lang-en>Data &amp; insights</span></span></a>
+          <a href="reporting.html"><strong>Reporting</strong><span><span data-lang-de>Anonyme Meldungen ohne Team vor Ort</span><span data-lang-en>Anonymous reports without on-site team</span></span></a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <span data-lang-de>Branchen</span><span data-lang-en>Industries</span>
+        <div class="nav-dropdown">
+          <a href="sport.html"><strong><span data-lang-de>Sport &amp; Stadien</span><span data-lang-en>Sports &amp; Stadiums</span></strong><span>DFB/DFL, Bundesliga, UEFA</span></a>
+          <a href="events.html"><strong><span data-lang-de>Festivals &amp; Events</span><span data-lang-en>Festivals &amp; Events</span></strong><span>OMR, gamescom, Reeperbahn</span></a>
+          <a href="kommunen.html"><strong><span data-lang-de>Kommunen</span><span data-lang-en>Municipalities</span></strong><span><span data-lang-de>Stadtfeste, öffentl. Raum</span><span data-lang-en>City festivals, public space</span></span></a>
+          <a href="bildung.html"><strong><span data-lang-de>Bildung</span><span data-lang-en>Education</span></strong><span><span data-lang-de>Hochschulen, Schulträger</span><span data-lang-en>Universities, schools</span></span></a>
+          <a href="oepnv.html"><strong><span data-lang-de>ÖPNV &amp; Mobilität</span><span data-lang-en>Transit &amp; Mobility</span></strong><span><span data-lang-de>Busse, Bahnen, Haltestellen</span><span data-lang-en>Buses, trains, stops</span></span></a>
+          <a href="freizeit.html"><strong><span data-lang-de>Freizeit &amp; Kultur</span><span data-lang-en>Leisure &amp; Culture</span></strong><span><span data-lang-de>Arenen, Theater, Saunen</span><span data-lang-en>Arenas, theatres, spas</span></span></a>
+          <a href="unternehmen.html"><strong><span data-lang-de>Unternehmen</span><span data-lang-en>Businesses</span></strong><span><span data-lang-de>HR, Compliance, Hinweisgeberschutz</span><span data-lang-en>HR, compliance, whistleblowing</span></span></a>
+        </div>
+      </div>
+      <div class="nav-item"><a href="referenzen_v4.html" style="text-decoration:none; color:inherit;"><span data-lang-de>Referenzen</span><span data-lang-en>References</span></a></div>
+      <div class="nav-item">
+        <span data-lang-de>Mehr</span><span data-lang-en>More</span>
+        <div class="nav-dropdown">
+          <a href="mission.html"><strong>Mission</strong><span><span data-lang-de>Warum Schutzkonzepte</span><span data-lang-en>Why safeguarding</span></span></a>
+          <a href="#"><strong>Team</strong><span><span data-lang-de>Die Menschen hinter saferspaces</span><span data-lang-en>The people behind saferspaces</span></span></a>
+          <a href="#"><strong><span data-lang-de>Voraussetzungen</span><span data-lang-en>Requirements</span></strong><span><span data-lang-de>Was Sie brauchen</span><span data-lang-en>What you need</span></span></a>
+          <a href="#"><strong>Impact</strong><span><span data-lang-de>Wirkung &amp; Zahlen</span><span data-lang-en>Impact &amp; numbers</span></span></a>
+          <a href="#"><strong><span data-lang-de>Netzwerk</span><span data-lang-en>Network</span></strong><span><span data-lang-de>Partner &amp; Kooperationen</span><span data-lang-en>Partners &amp; collaborations</span></span></a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-actions">
+      <div class="lang-switch"><button class="lang-btn active" onclick="setLang('de')">DE</button><button class="lang-btn" onclick="setLang('en')">EN</button></div>
+      <a href="demo.html" class="btn btn-primary btn-sm"><span data-lang-de>Demo buchen</span><span data-lang-en>Book Demo</span></a>
+      <button class="mobile-toggle" onclick="toggleMobile()"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </nav>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="mobile-menu">
+  <div class="mobile-menu-section">
+    <div class="mobile-menu-section-title"><span data-lang-de>Lösung</span><span data-lang-en>Solution</span></div>
+    <a href="loesung.html"><span data-lang-de>Übersicht</span><span data-lang-en>Overview</span></a>
+    <a href="melden.html"><span data-lang-de>Melden</span><span data-lang-en>Report</span></a>
+    <a href="reagieren.html"><span data-lang-de>Reagieren</span><span data-lang-en>Respond</span></a>
+    <a href="verstehen.html"><span data-lang-de>Verstehen</span><span data-lang-en>Understand</span></a>
+    <a href="reporting.html">Reporting</a>
+  </div>
+  <div class="mobile-menu-section">
+    <div class="mobile-menu-section-title"><span data-lang-de>Branchen</span><span data-lang-en>Industries</span></div>
+    <a href="sport.html"><span data-lang-de>Sport &amp; Stadien</span><span data-lang-en>Sports &amp; Stadiums</span></a>
+    <a href="events.html"><span data-lang-de>Festivals &amp; Events</span><span data-lang-en>Festivals &amp; Events</span></a>
+    <a href="kommunen.html"><span data-lang-de>Kommunen</span><span data-lang-en>Municipalities</span></a>
+    <a href="bildung.html"><span data-lang-de>Bildung</span><span data-lang-en>Education</span></a>
+    <a href="oepnv.html"><span data-lang-de>ÖPNV &amp; Mobilität</span><span data-lang-en>Transit &amp; Mobility</span></a>
+    <a href="freizeit.html"><span data-lang-de>Freizeit &amp; Kultur</span><span data-lang-en>Leisure &amp; Culture</span></a>
+    <a href="unternehmen.html"><span data-lang-de>Unternehmen</span><span data-lang-en>Businesses</span></a>
+  </div>
+  <div class="mobile-menu-section">
+    <a href="referenzen_v4.html"><span data-lang-de>Referenzen</span><span data-lang-en>References</span></a>
+    <div class="mobile-menu-section-title"><span data-lang-de>Mehr</span><span data-lang-en>More</span></div>
+    <a href="mission.html">Mission</a>
+    <a href="#">Team</a>
+    <a href="#"><span data-lang-de>Voraussetzungen</span><span data-lang-en>Requirements</span></a>
+    <a href="#">Impact</a>
+    <a href="#"><span data-lang-de>Netzwerk</span><span data-lang-en>Network</span></a>
+  </div>
+  <div class="mobile-menu-cta">
+    <a href="demo.html" class="btn btn-primary btn-lg" style="width:100%; text-align:center;"><span data-lang-de>Demo buchen</span><span data-lang-en>Book Demo</span></a>
+    <div class="mobile-menu-lang">
+      <button class="lang-btn active" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</div>
 
 <div id="referenzen">
 
@@ -939,5 +1013,28 @@
   </div>
 </footer>
 
+<script>
+function setLang(lang) { document.body.classList.remove('lang-de','lang-en'); document.body.classList.add('lang-'+lang); document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.trim()===lang.toUpperCase())); }
+window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20); });
+function toggleMobile() {
+  const m = document.getElementById('mobileMenu');
+  const t = document.querySelector('.mobile-toggle');
+  if (m) {
+    const isActive = m.classList.contains('active');
+    if (isActive) {
+      m.classList.remove('active');
+      document.body.classList.remove('menu-open');
+    } else {
+      m.style.display = 'block';
+      requestAnimationFrame(() => {
+        m.classList.add('active');
+        document.body.classList.add('menu-open');
+      });
+    }
+  }
+  if (t) t.classList.toggle('active');
+}
+</script>
+<script src="animations.js"></script>
 </body>
 </html>
