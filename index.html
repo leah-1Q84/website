@@ -51,6 +51,7 @@
         </div>
       </div>
       <div class="nav-item"><a href="referenzen_v4.html" style="text-decoration:none; color:inherit;"><span data-lang-de>Referenzen</span><span data-lang-en>References</span></a></div>
+      <div class="nav-item"><a href="mission.html" style="text-decoration:none; color:inherit;"><span data-lang-de>Mission</span><span data-lang-en>Mission</span></a></div>
     </div>
     <div class="nav-actions">
       <div class="lang-switch"><button class="lang-btn active" onclick="setLang('de')">DE</button><button class="lang-btn" onclick="setLang('en')">EN</button></div>
@@ -82,6 +83,7 @@
   </div>
   <div class="mobile-menu-section">
     <a href="referenzen_v4.html"><span data-lang-de>Referenzen</span><span data-lang-en>References</span></a>
+    <a href="mission.html"><span data-lang-de>Mission</span><span data-lang-en>Mission</span></a>
   </div>
   <div class="mobile-menu-cta">
     <a href="demo.html" class="btn btn-primary btn-lg" style="width:100%; text-align:center;"><span data-lang-de>Demo buchen</span><span data-lang-en>Book Demo</span></a>
@@ -92,23 +94,68 @@
   </div>
 </div>
 
-<!-- HERO with CSS Pattern -->
+<!-- HERO SPLIT LAYOUT -->
 <div class="hero-wrapper">
-  <div class="hero-section hero-pattern" style="background: var(--lavender-main); text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:520px;">
-    <!-- Geometric decorations -->
-    <div class="hero-geo hero-geo-circle"></div>
-    <div class="hero-geo hero-geo-ring"></div>
-    <div class="hero-geo hero-geo-square"></div>
-    <div class="hero-content" style="max-width:900px; margin:0 auto; text-align:center;">
-      <h1 class="headline1" style="margin-bottom:24px; font-size:clamp(56px, 8vw, 110px);">Saferspaces for safer places.</h1>
-      <p class="copy" style="max-width:680px; margin:0 auto 24px; color:var(--grey-mid);">
-        <span data-lang-de>Digitale Awareness- und Safeguarding-Infrastruktur. Eingesetzt bei der UEFA EURO. In der Bundesliga. In über 100 Venues.</span>
-        <span data-lang-en>Digital awareness and safeguarding infrastructure. Deployed at UEFA EURO. In the Bundesliga. At over 100 venues.</span>
-      </p>
-      <div style="margin-bottom:32px;"><span class="no-app-badge">No App Required.</span></div>
-      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-        <a href="demo.html" class="btn btn-primary btn-lg"><span data-lang-de>Demo buchen</span><span data-lang-en>Book Demo</span></a>
-        <a href="referenzen_v4.html" class="btn btn-secondary btn-lg"><span data-lang-de>Referenzen ansehen</span><span data-lang-en>View References</span></a>
+  <div class="hero-section hero-split-bg">
+    <div class="hero-split">
+      <!-- LEFT: Text content -->
+      <div class="hero-split-text">
+        <h1 class="headline1" style="margin-bottom:24px; font-size:clamp(48px, 7vw, 100px);">
+          <span data-lang-de>Da sein, wo Hilfe gebraucht wird.</span>
+          <span data-lang-en>Be there when help is needed.</span>
+        </h1>
+        <p class="copy" style="max-width:520px; margin-bottom:24px; color:var(--grey-mid);">
+          <span data-lang-de>Digitale Awareness- und Safeguarding-Infrastruktur. Eingesetzt bei der UEFA EURO. In der Bundesliga. In über 100 Venues. Anonym. In Echtzeit. Ohne App.</span>
+          <span data-lang-en>Digital awareness and safeguarding infrastructure. Deployed at UEFA EURO. In the Bundesliga. At over 100 venues. Anonymous. Real-time. No app.</span>
+        </p>
+        <div style="margin-bottom:28px;">
+          <span class="no-app-badge">
+            <span data-lang-de>Kein Download notwendig.</span>
+            <span data-lang-en>No App Required.</span>
+          </span>
+        </div>
+        <div style="display:flex; gap:16px; flex-wrap:wrap;">
+          <a href="demo.html" class="btn btn-primary btn-lg"><span data-lang-de>Demo buchen</span><span data-lang-en>Book Demo</span></a>
+          <a href="referenzen_v4.html" class="btn btn-secondary btn-lg"><span data-lang-de>Referenzen ansehen</span><span data-lang-en>View References</span></a>
+        </div>
+      </div>
+      <!-- RIGHT: Dashboard mockup with live ticker -->
+      <div class="hero-split-visual">
+        <div class="hero-dashboard">
+          <div class="hero-dashboard-header">
+            <div class="hero-dashboard-dot hero-dashboard-dot--red"></div>
+            <div class="hero-dashboard-dot hero-dashboard-dot--yellow"></div>
+            <div class="hero-dashboard-dot hero-dashboard-dot--green"></div>
+            <span class="hero-dashboard-title">saferspaces Dashboard</span>
+          </div>
+          <div class="hero-dashboard-body">
+            <div class="hero-dashboard-label">
+              <span data-lang-de>Gesamte Scans</span>
+              <span data-lang-en>Total Scans</span>
+            </div>
+            <div class="hero-ticker" id="heroTicker">
+              <span class="hero-ticker-number" id="heroTickerNumber">4.127.893</span>
+            </div>
+            <div class="hero-ticker-live">
+              <span class="hero-ticker-live-dot"></span>
+              <span>Live</span>
+            </div>
+            <div class="hero-dashboard-stats">
+              <div class="hero-dashboard-stat">
+                <div class="hero-dashboard-stat-num">100+</div>
+                <div class="hero-dashboard-stat-label">Venues</div>
+              </div>
+              <div class="hero-dashboard-stat">
+                <div class="hero-dashboard-stat-num">30+</div>
+                <div class="hero-dashboard-stat-label"><span data-lang-de>Sprachen</span><span data-lang-en>Languages</span></div>
+              </div>
+              <div class="hero-dashboard-stat">
+                <div class="hero-dashboard-stat-num">2x</div>
+                <div class="hero-dashboard-stat-label">UEFA EURO</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -120,7 +167,7 @@
     <div class="stats-bar" id="statsBar">
       <div class="stats-grid">
         <div class="stat-item"><div class="stat-number" data-target="100" data-suffix="+">0</div><div class="stat-label"><span data-lang-de>Events &amp; Venues</span><span data-lang-en>Events &amp; venues</span></div></div>
-        <div class="stat-item"><div class="stat-number" data-target="1" data-suffix=" Mio.+" data-prefix="">0</div><div class="stat-label"><span data-lang-de>Erreichte Menschen</span><span data-lang-en>People reached</span></div></div>
+        <div class="stat-item"><div class="stat-number" data-target="4" data-suffix=" Mio.+" data-prefix="">0</div><div class="stat-label"><span data-lang-de>Erreichte Menschen</span><span data-lang-en>People reached</span></div></div>
         <div class="stat-item"><div class="stat-number" data-target="2" data-suffix="x">0</div><div class="stat-label"><span data-lang-de>UEFA EURO in Folge</span><span data-lang-en>Consecutive UEFA EUROs</span></div></div>
         <div class="stat-item"><div class="stat-number" data-target="4" data-suffix="+">0</div><div class="stat-label"><span data-lang-de>Jahre Erfahrung</span><span data-lang-en>Years of experience</span></div></div>
       </div>
@@ -159,7 +206,7 @@
   <div class="section-content">
     <div class="statements-grid">
       <div class="statement-card">
-        <h3 class="headline4" style="margin-bottom:16px;">No App Required.</h3>
+        <h3 class="headline4" style="margin-bottom:16px;"><span data-lang-de>Kein Download notwendig.</span><span data-lang-en>No App Required.</span></h3>
         <p class="copy" style="color:var(--grey-mid);"><span data-lang-de>QR-Code scannen, fertig. Läuft im Browser. Kein Download, keine Registrierung, keine Hemmschwelle.</span><span data-lang-en>Scan QR code, done. Runs in the browser. No download, no registration, no barriers.</span></p>
       </div>
       <div class="statement-card">
@@ -305,7 +352,7 @@
     <div class="footer-grid">
       <div><h4><span data-lang-de>Lösung</span><span data-lang-en>Solution</span></h4><a href="loesung.html"><span data-lang-de>Übersicht</span><span data-lang-en>Overview</span></a><a href="melden.html"><span data-lang-de>Melden</span><span data-lang-en>Report</span></a><a href="reagieren.html"><span data-lang-de>Reagieren</span><span data-lang-en>Respond</span></a><a href="verstehen.html"><span data-lang-de>Verstehen</span><span data-lang-en>Understand</span></a><a href="reporting.html">Reporting</a></div>
       <div><h4><span data-lang-de>Branchen</span><span data-lang-en>Industries</span></h4><a href="sport.html"><span data-lang-de>Sport &amp; Stadien</span><span data-lang-en>Sports &amp; Stadiums</span></a><a href="events.html"><span data-lang-de>Festivals &amp; Events</span><span data-lang-en>Festivals &amp; Events</span></a><a href="kommunen.html"><span data-lang-de>Kommunen</span><span data-lang-en>Municipalities</span></a><a href="bildung.html"><span data-lang-de>Bildung</span><span data-lang-en>Education</span></a><a href="oepnv.html"><span data-lang-de>ÖPNV</span><span data-lang-en>Transit</span></a><a href="freizeit.html"><span data-lang-de>Freizeit &amp; Kultur</span><span data-lang-en>Leisure &amp; Culture</span></a><a href="unternehmen.html"><span data-lang-de>Unternehmen</span><span data-lang-en>Businesses</span></a></div>
-      <div><h4><span data-lang-de>Referenzen</span><span data-lang-en>References</span></h4><a href="referenzen_v4.html"><span data-lang-de>Alle Referenzen</span><span data-lang-en>All references</span></a></div>
+      <div><h4><span data-lang-de>Über uns</span><span data-lang-en>About</span></h4><a href="mission.html"><span data-lang-de>Mission</span><span data-lang-en>Mission</span></a><a href="referenzen_v4.html"><span data-lang-de>Referenzen</span><span data-lang-en>References</span></a></div>
       <div><h4><span data-lang-de>Kontakt</span><span data-lang-en>Contact</span></h4><a href="demo.html"><span data-lang-de>Demo buchen</span><span data-lang-en>Book Demo</span></a><a href="mailto:hello@saferspaces.io">hello@saferspaces.io</a></div>
     </div>
     <div class="footer-bottom"><span>&copy; 2025 saferspaces GmbH</span><span>Hamburg, Germany</span><span class="footer-legal"><a href="impressum.html">Impressum</a> &middot; <a href="datenschutz.html">Datenschutz</a></span></div>

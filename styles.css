@@ -633,81 +633,100 @@ em { font-weight: 700; font-style: normal; }
   font-size: 28px; margin-bottom: 16px;
 }
 
-/* ===== HERO CSS PATTERN ===== */
-.hero-pattern {
+/* ===== HERO SPLIT LAYOUT ===== */
+.hero-split-bg {
   position: relative; overflow: hidden;
 }
-.hero-pattern::before {
+.hero-split-bg::before {
   content: '';
-  position: absolute; top: -50%; right: -20%; width: 80%; height: 200%;
+  position: absolute; top: -30%; right: -10%; width: 60%; height: 160%;
   background:
-    radial-gradient(circle 300px at 70% 30%, rgba(42, 20, 130, 0.08) 0%, transparent 70%),
-    radial-gradient(circle 200px at 85% 60%, rgba(214, 239, 238, 0.3) 0%, transparent 60%),
-    radial-gradient(circle 150px at 60% 70%, rgba(42, 20, 130, 0.05) 0%, transparent 50%),
-    radial-gradient(circle 400px at 90% 20%, rgba(210, 214, 239, 0.4) 0%, transparent 60%);
-  z-index: 1;
-  pointer-events: none;
+    radial-gradient(circle 400px at 60% 40%, rgba(42, 20, 130, 0.06) 0%, transparent 70%),
+    radial-gradient(circle 300px at 80% 60%, rgba(214, 239, 238, 0.2) 0%, transparent 60%);
+  z-index: 0; pointer-events: none;
 }
-.hero-pattern::after {
-  content: '';
-  position: absolute; top: 0; right: 0; bottom: 0; width: 50%;
-  background-image:
-    radial-gradient(circle 3px at 20% 15%, rgba(42, 20, 130, 0.15) 100%, transparent 100%),
-    radial-gradient(circle 4px at 45% 35%, rgba(42, 20, 130, 0.1) 100%, transparent 100%),
-    radial-gradient(circle 2px at 70% 20%, rgba(42, 20, 130, 0.12) 100%, transparent 100%),
-    radial-gradient(circle 5px at 30% 55%, rgba(42, 20, 130, 0.08) 100%, transparent 100%),
-    radial-gradient(circle 3px at 80% 45%, rgba(42, 20, 130, 0.1) 100%, transparent 100%),
-    radial-gradient(circle 2px at 55% 70%, rgba(42, 20, 130, 0.12) 100%, transparent 100%),
-    radial-gradient(circle 4px at 15% 80%, rgba(42, 20, 130, 0.07) 100%, transparent 100%),
-    radial-gradient(circle 3px at 65% 85%, rgba(42, 20, 130, 0.1) 100%, transparent 100%),
-    radial-gradient(circle 6px at 85% 75%, rgba(42, 20, 130, 0.06) 100%, transparent 100%),
-    radial-gradient(circle 2px at 40% 10%, rgba(42, 20, 130, 0.14) 100%, transparent 100%),
-    radial-gradient(circle 3px at 90% 90%, rgba(42, 20, 130, 0.08) 100%, transparent 100%),
-    radial-gradient(circle 4px at 50% 50%, rgba(42, 20, 130, 0.06) 100%, transparent 100%);
-  z-index: 1;
-  pointer-events: none;
-  animation: heroDots 20s ease-in-out infinite alternate;
+.hero-split {
+  display: flex; align-items: center; gap: 48px;
+  position: relative; z-index: 2;
+  max-width: 1200px; margin: 0 auto; width: 100%;
 }
-@keyframes heroDots {
-  0% { transform: translate(0, 0); }
-  50% { transform: translate(-10px, 8px); }
-  100% { transform: translate(5px, -5px); }
+.hero-split-text { flex: 1; min-width: 0; text-align: left; }
+.hero-split-visual {
+  flex: 1; min-width: 0;
+  display: flex; align-items: center; justify-content: center;
 }
-/* Decorative geometric shapes */
-.hero-geo {
-  position: absolute; z-index: 1; pointer-events: none;
+
+/* ===== HERO DASHBOARD MOCKUP ===== */
+.hero-dashboard {
+  background: var(--white);
+  border-radius: var(--rounded-medium);
+  box-shadow: 0 20px 60px rgba(42, 20, 130, 0.12), 0 4px 16px rgba(0, 0, 0, 0.06);
+  overflow: hidden; width: 100%; max-width: 420px;
 }
-.hero-geo-circle {
-  width: 200px; height: 200px; border-radius: 50%;
-  border: 2px solid rgba(42, 20, 130, 0.08);
-  top: 10%; right: 8%;
-  animation: geoFloat 15s ease-in-out infinite;
+.hero-dashboard-header {
+  display: flex; align-items: center; gap: 6px;
+  padding: 12px 16px; background: var(--purple-main);
 }
-.hero-geo-ring {
-  width: 120px; height: 120px; border-radius: 50%;
-  border: 3px solid rgba(0, 133, 93, 0.1);
-  bottom: 15%; right: 25%;
-  animation: geoFloat 18s ease-in-out infinite reverse;
+.hero-dashboard-dot { width: 10px; height: 10px; border-radius: 50%; }
+.hero-dashboard-dot--red { background: #ff5f57; }
+.hero-dashboard-dot--yellow { background: #ffbd2e; }
+.hero-dashboard-dot--green { background: #28c840; }
+.hero-dashboard-title {
+  font-family: 'Mabry Pro', sans-serif; font-size: 12px; font-weight: 700;
+  color: var(--lavender-main); margin-left: 8px; opacity: 0.8;
 }
-.hero-geo-square {
-  width: 80px; height: 80px; border-radius: 12px;
-  border: 2px solid rgba(42, 20, 130, 0.06);
-  top: 55%; right: 12%;
-  transform: rotate(15deg);
-  animation: geoRotate 25s linear infinite;
+.hero-dashboard-body { padding: 32px 24px; }
+.hero-dashboard-label {
+  font-family: 'Mabry Pro', sans-serif; font-size: 13px; font-weight: 700;
+  color: var(--grey-mid); text-transform: uppercase; letter-spacing: 0.06em;
+  margin-bottom: 8px;
 }
-@keyframes geoFloat {
-  0%, 100% { transform: translate(0, 0); }
-  33% { transform: translate(-8px, 12px); }
-  66% { transform: translate(6px, -8px); }
+
+/* ===== LIVE TICKER ===== */
+.hero-ticker { margin-bottom: 12px; }
+.hero-ticker-number {
+  font-family: 'GT Alpina Condensed', Georgia, serif;
+  font-size: clamp(40px, 5vw, 56px); font-weight: 700;
+  color: var(--purple-main); line-height: 1; letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
 }
-@keyframes geoRotate {
-  from { transform: rotate(15deg); }
-  to { transform: rotate(375deg); }
+.hero-ticker-live {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Mabry Pro', sans-serif; font-size: 13px; font-weight: 700;
+  color: var(--green-main); text-transform: uppercase; letter-spacing: 0.06em;
+  margin-bottom: 24px;
 }
-@media (max-width: 768px) {
-  .hero-pattern::before, .hero-pattern::after { opacity: 0.5; }
-  .hero-geo { display: none; }
+.hero-ticker-live-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--green-main);
+  animation: livePulse 2s ease-in-out infinite;
+}
+@keyframes livePulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 133, 93, 0.4); }
+  50% { opacity: 0.6; box-shadow: 0 0 0 6px rgba(0, 133, 93, 0); }
+}
+.hero-dashboard-stats {
+  display: flex; gap: 16px;
+  padding-top: 20px; border-top: 1px solid var(--grey-125);
+}
+.hero-dashboard-stat { flex: 1; text-align: center; }
+.hero-dashboard-stat-num {
+  font-family: 'GT Alpina Condensed', Georgia, serif;
+  font-size: 22px; font-weight: 700; color: var(--purple-main); line-height: 1.2;
+}
+.hero-dashboard-stat-label {
+  font-family: 'Mabry Pro', sans-serif; font-size: 11px; font-weight: 700;
+  color: var(--grey-mid); text-transform: uppercase; letter-spacing: 0.04em;
+}
+
+/* ===== HERO SPLIT RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .hero-split { flex-direction: column; gap: 32px; }
+  .hero-split-visual { width: 100%; }
+  .hero-dashboard { max-width: 360px; margin: 0 auto; }
+}
+@media (max-width: 480px) {
+  .hero-dashboard { max-width: 100%; }
 }
 
 /* ===== STATS BAR COUNTUP ===== */

@@ -106,6 +106,34 @@
     observer.observe(statsBar);
   }
 
+  // ===== LIVE SCAN TICKER =====
+  function initLiveTicker() {
+    const tickerEl = document.getElementById('heroTickerNumber');
+    if (!tickerEl) return;
+
+    let currentValue = 4127893;
+
+    function formatNumber(num) {
+      return num.toLocaleString('de-DE');
+    }
+
+    // Set initial display
+    tickerEl.textContent = formatNumber(currentValue);
+
+    if (prefersReducedMotion) return;
+
+    function tick() {
+      const increment = Math.floor(Math.random() * 5) + 1;
+      currentValue += increment;
+      tickerEl.textContent = formatNumber(currentValue);
+
+      const nextDelay = 2000 + Math.floor(Math.random() * 2000);
+      setTimeout(tick, nextDelay);
+    }
+
+    setTimeout(tick, 1500);
+  }
+
   // ===== NAV SCROLL EFFECT =====
   function initNavScroll() {
     const nav = document.getElementById('nav');
@@ -120,6 +148,7 @@
   function init() {
     initScrollReveal();
     initCountUp();
+    initLiveTicker();
     initNavScroll();
   }
 
