@@ -11,6 +11,8 @@
 <meta property="og:description" content="Nicht nur ein Meldetool. Ein ganzes System: Melden, Reagieren, Verstehen.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://leah-1q84.github.io/website/loesung.html">
+<meta name="theme-color" content="#2A1482">
+<link rel="icon" href="favicon.png" type="image/png">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body class="lang-de">
@@ -50,6 +52,38 @@
     </div>
   </div>
 </nav>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="mobile-menu">
+  <div class="mobile-menu-section">
+    <div class="mobile-menu-section-title"><span data-lang-de>Lösung</span><span data-lang-en>Solution</span></div>
+    <a href="loesung.html"><span data-lang-de>Übersicht</span><span data-lang-en>Overview</span></a>
+    <a href="melden.html"><span data-lang-de>Melden</span><span data-lang-en>Report</span></a>
+    <a href="reagieren.html"><span data-lang-de>Reagieren</span><span data-lang-en>Respond</span></a>
+    <a href="verstehen.html"><span data-lang-de>Verstehen</span><span data-lang-en>Understand</span></a>
+    <a href="reporting.html">Reporting</a>
+  </div>
+  <div class="mobile-menu-section">
+    <div class="mobile-menu-section-title"><span data-lang-de>Branchen</span><span data-lang-en>Industries</span></div>
+    <a href="sport.html"><span data-lang-de>Sport &amp; Stadien</span><span data-lang-en>Sports &amp; Stadiums</span></a>
+    <a href="events.html"><span data-lang-de>Festivals &amp; Events</span><span data-lang-en>Festivals &amp; Events</span></a>
+    <a href="kommunen.html"><span data-lang-de>Kommunen</span><span data-lang-en>Municipalities</span></a>
+    <a href="bildung.html"><span data-lang-de>Bildung</span><span data-lang-en>Education</span></a>
+    <a href="oepnv.html"><span data-lang-de>ÖPNV &amp; Mobilität</span><span data-lang-en>Transit &amp; Mobility</span></a>
+    <a href="freizeit.html"><span data-lang-de>Freizeit &amp; Kultur</span><span data-lang-en>Leisure &amp; Culture</span></a>
+    <a href="unternehmen.html"><span data-lang-de>Unternehmen</span><span data-lang-en>Businesses</span></a>
+  </div>
+  <div class="mobile-menu-section">
+    <a href="referenzen_v4.html"><span data-lang-de>Referenzen</span><span data-lang-en>References</span></a>
+  </div>
+  <div class="mobile-menu-cta">
+    <a href="demo.html" class="btn btn-primary btn-lg" style="width:100%; text-align:center;"><span data-lang-de>Demo buchen</span><span data-lang-en>Book Demo</span></a>
+    <div class="mobile-menu-lang">
+      <button class="lang-btn active" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</div>
 
 <!-- HERO -->
 <div class="hero-wrapper"><div class="hero-section" style="background:var(--lavender-main);">
@@ -134,7 +168,25 @@
 <script>
 function setLang(lang) { document.body.classList.remove('lang-de','lang-en'); document.body.classList.add('lang-'+lang); document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.trim()===lang.toUpperCase())); }
 window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20); });
-function toggleMobile() { const m=document.getElementById('mobileMenu'); if(m) m.classList.toggle('active'); }
+function toggleMobile() {
+  const m = document.getElementById('mobileMenu');
+  const t = document.querySelector('.mobile-toggle');
+  if (m) {
+    const isActive = m.classList.contains('active');
+    if (isActive) {
+      m.classList.remove('active');
+      document.body.classList.remove('menu-open');
+    } else {
+      m.style.display = 'block';
+      requestAnimationFrame(() => {
+        m.classList.add('active');
+        document.body.classList.add('menu-open');
+      });
+    }
+  }
+  if (t) t.classList.toggle('active');
+}
 </script>
+<script src="animations.js"></script>
 </body>
 </html>

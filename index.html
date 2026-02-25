@@ -8,7 +8,9 @@
 <meta name="keywords" content="Awareness, Safeguarding, digitale Meldestruktur, Sicherheitskonzept, betroffenenorientiert, Schutzkonzept digital, Awareness-Konzept, Meldestelle, Awareness Event, Awareness Stadion, DFB DFL Safeguarding, Rapid Response, Safeguarding Fußball, Child Protection Sport">
 <meta name="author" content="saferspaces">
 <meta name="robots" content="index, follow">
+<meta name="theme-color" content="#2A1482">
 <link rel="canonical" href="https://leah-1q84.github.io/website/">
+<link rel="icon" href="favicon.png" type="image/png">
 <meta property="og:title" content="saferspaces – Saferspaces for safer places.">
 <meta property="og:description" content="Digitale Awareness- und Safeguarding-Infrastruktur. Eingesetzt bei UEFA EURO, Bundesliga und 100+ Venues. Keine App nötig.">
 <meta property="og:type" content="website">
@@ -57,9 +59,45 @@
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="mobile-menu">
+  <div class="mobile-menu-section">
+    <div class="mobile-menu-section-title"><span data-lang-de>Lösung</span><span data-lang-en>Solution</span></div>
+    <a href="loesung.html"><span data-lang-de>Übersicht</span><span data-lang-en>Overview</span></a>
+    <a href="melden.html"><span data-lang-de>Melden</span><span data-lang-en>Report</span></a>
+    <a href="reagieren.html"><span data-lang-de>Reagieren</span><span data-lang-en>Respond</span></a>
+    <a href="verstehen.html"><span data-lang-de>Verstehen</span><span data-lang-en>Understand</span></a>
+    <a href="reporting.html">Reporting</a>
+  </div>
+  <div class="mobile-menu-section">
+    <div class="mobile-menu-section-title"><span data-lang-de>Branchen</span><span data-lang-en>Industries</span></div>
+    <a href="sport.html"><span data-lang-de>Sport &amp; Stadien</span><span data-lang-en>Sports &amp; Stadiums</span></a>
+    <a href="events.html"><span data-lang-de>Festivals &amp; Events</span><span data-lang-en>Festivals &amp; Events</span></a>
+    <a href="kommunen.html"><span data-lang-de>Kommunen</span><span data-lang-en>Municipalities</span></a>
+    <a href="bildung.html"><span data-lang-de>Bildung</span><span data-lang-en>Education</span></a>
+    <a href="oepnv.html"><span data-lang-de>ÖPNV &amp; Mobilität</span><span data-lang-en>Transit &amp; Mobility</span></a>
+    <a href="freizeit.html"><span data-lang-de>Freizeit &amp; Kultur</span><span data-lang-en>Leisure &amp; Culture</span></a>
+    <a href="unternehmen.html"><span data-lang-de>Unternehmen</span><span data-lang-en>Businesses</span></a>
+  </div>
+  <div class="mobile-menu-section">
+    <a href="referenzen_v4.html"><span data-lang-de>Referenzen</span><span data-lang-en>References</span></a>
+  </div>
+  <div class="mobile-menu-cta">
+    <a href="demo.html" class="btn btn-primary btn-lg" style="width:100%; text-align:center;"><span data-lang-de>Demo buchen</span><span data-lang-en>Book Demo</span></a>
+    <div class="mobile-menu-lang">
+      <button class="lang-btn active" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</div>
+
+<!-- HERO with CSS Pattern -->
 <div class="hero-wrapper">
-  <div class="hero-section" style="background: var(--lavender-main); text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:520px;">
+  <div class="hero-section hero-pattern" style="background: var(--lavender-main); text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:520px;">
+    <!-- Geometric decorations -->
+    <div class="hero-geo hero-geo-circle"></div>
+    <div class="hero-geo hero-geo-ring"></div>
+    <div class="hero-geo hero-geo-square"></div>
     <div class="hero-content" style="max-width:900px; margin:0 auto; text-align:center;">
       <h1 class="headline1" style="margin-bottom:24px; font-size:clamp(56px, 8vw, 110px);">Saferspaces for safer places.</h1>
       <p class="copy" style="max-width:680px; margin:0 auto 24px; color:var(--grey-mid);">
@@ -75,15 +113,15 @@
   </div>
 </div>
 
-<!-- SOCIAL PROOF BAR -->
+<!-- SOCIAL PROOF BAR with CountUp -->
 <div class="section bg-white" style="padding-top:40px; padding-bottom:40px;">
   <div class="section-content">
-    <div class="stats-bar">
+    <div class="stats-bar" id="statsBar">
       <div class="stats-grid">
-        <div class="stat-item"><div class="stat-number">100+</div><div class="stat-label"><span data-lang-de>Events &amp; Venues</span><span data-lang-en>Events &amp; venues</span></div></div>
-        <div class="stat-item"><div class="stat-number">Mio.+</div><div class="stat-label"><span data-lang-de>Erreichte Menschen</span><span data-lang-en>People reached</span></div></div>
-        <div class="stat-item"><div class="stat-number">2x</div><div class="stat-label"><span data-lang-de>UEFA EURO in Folge</span><span data-lang-en>Consecutive UEFA EUROs</span></div></div>
-        <div class="stat-item"><div class="stat-number">4+</div><div class="stat-label"><span data-lang-de>Jahre Erfahrung</span><span data-lang-en>Years of experience</span></div></div>
+        <div class="stat-item"><div class="stat-number" data-target="100" data-suffix="+">0</div><div class="stat-label"><span data-lang-de>Events &amp; Venues</span><span data-lang-en>Events &amp; venues</span></div></div>
+        <div class="stat-item"><div class="stat-number" data-target="1" data-suffix=" Mio.+" data-prefix="">0</div><div class="stat-label"><span data-lang-de>Erreichte Menschen</span><span data-lang-en>People reached</span></div></div>
+        <div class="stat-item"><div class="stat-number" data-target="2" data-suffix="x">0</div><div class="stat-label"><span data-lang-de>UEFA EURO in Folge</span><span data-lang-en>Consecutive UEFA EUROs</span></div></div>
+        <div class="stat-item"><div class="stat-number" data-target="4" data-suffix="+">0</div><div class="stat-label"><span data-lang-de>Jahre Erfahrung</span><span data-lang-en>Years of experience</span></div></div>
       </div>
     </div>
   </div>
@@ -112,7 +150,7 @@
 </div>
 
 <!-- MEHRWERTE ALS STATEMENTS -->
-<div class="section bg-white">
+<div class="section bg-white animate-on-scroll">
   <div class="section-content" style="text-align:center; margin-bottom:48px;">
     <p class="label-text" style="margin-bottom:12px;"><span data-lang-de>Warum saferspaces</span><span data-lang-en>Why saferspaces</span></p>
     <h2 class="headline3"><span data-lang-de>Was uns unterscheidet.</span><span data-lang-en>What sets us apart.</span></h2>
@@ -148,7 +186,7 @@
 </div>
 
 <!-- USE CASES -->
-<div class="section bg-lavender">
+<div class="section bg-lavender animate-on-scroll">
   <div class="section-content" style="text-align:center; margin-bottom:48px;">
     <p class="label-text" style="margin-bottom:12px;"><span data-lang-de>Anwendungsfälle</span><span data-lang-en>Use cases</span></p>
     <h2 class="headline3"><span data-lang-de>Wofür saferspaces eingesetzt wird.</span><span data-lang-en>What saferspaces is used for.</span></h2>
@@ -166,7 +204,7 @@
 </div>
 
 <!-- DAS SYSTEM -->
-<div class="section bg-white">
+<div class="section bg-white animate-on-scroll">
   <div class="section-content" style="text-align:center; margin-bottom:48px;">
     <p class="label-text" style="margin-bottom:12px;"><span data-lang-de>Das System</span><span data-lang-en>The System</span></p>
     <h2 class="headline3"><span data-lang-de>Melden. Reagieren. Verstehen.</span><span data-lang-en>Report. Respond. Understand.</span></h2>
@@ -182,36 +220,48 @@
 </div>
 
 <!-- BRANCHEN-TEASER -->
-<div class="section bg-lavender">
+<div class="section bg-lavender animate-on-scroll">
   <div class="section-content" style="text-align:center; margin-bottom:48px;">
     <p class="label-text" style="margin-bottom:12px;"><span data-lang-de>Branchen</span><span data-lang-en>Industries</span></p>
     <h2 class="headline3"><span data-lang-de>Überall, wo Menschen zusammenkommen.</span><span data-lang-en>Wherever people come together.</span></h2>
   </div>
   <div class="section-content">
     <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-      <a href="sport.html" class="card" style="cursor:pointer; text-decoration:none; color:inherit;"><h3 class="subhead-small" style="margin-bottom:8px;"><span data-lang-de>Sport &amp; Stadien</span><span data-lang-en>Sports &amp; Stadiums</span></h3><p class="copy-small copy-muted"><span data-lang-de>Safeguarding-Infrastruktur für Bundesliga, 2. Liga und internationale Turniere. DFB/DFL-konform.</span><span data-lang-en>Safeguarding infrastructure for Bundesliga, 2nd division and international tournaments. DFB/DFL compliant.</span></p><p class="text-link" style="margin-top:16px;"><span data-lang-de>Mehr erfahren →</span><span data-lang-en>Learn more →</span></p></a>
-      <a href="events.html" class="card" style="cursor:pointer; text-decoration:none; color:inherit;"><h3 class="subhead-small" style="margin-bottom:8px;"><span data-lang-de>Festivals &amp; Events</span><span data-lang-en>Festivals &amp; Events</span></h3><p class="copy-small copy-muted"><span data-lang-de>Von 5.000 bis 500.000 Besucher:innen. In Minuten aufgesetzt. Bewährt bei OMR, gamescom, Reeperbahn Festival.</span><span data-lang-en>From 5,000 to 500,000 visitors. Set up in minutes. Proven at OMR, gamescom, Reeperbahn Festival.</span></p><p class="text-link" style="margin-top:16px;"><span data-lang-de>Mehr erfahren →</span><span data-lang-en>Learn more →</span></p></a>
-      <a href="kommunen.html" class="card" style="cursor:pointer; text-decoration:none; color:inherit;"><h3 class="subhead-small" style="margin-bottom:8px;"><span data-lang-de>Städte &amp; Kommunen</span><span data-lang-en>Cities &amp; Municipalities</span></h3><p class="copy-small copy-muted"><span data-lang-de>Schutzkonzepte für Stadtfeste, Kommunen und öffentliche Einrichtungen.</span><span data-lang-en>Safety concepts for city festivals, municipalities and public institutions.</span></p><p class="text-link" style="margin-top:16px;"><span data-lang-de>Mehr erfahren →</span><span data-lang-en>Learn more →</span></p></a>
-      <a href="bildung.html" class="card" style="cursor:pointer; text-decoration:none; color:inherit;"><h3 class="subhead-small" style="margin-bottom:8px;"><span data-lang-de>Bildung &amp; Institutionen</span><span data-lang-en>Education &amp; Institutions</span></h3><p class="copy-small copy-muted"><span data-lang-de>Niedrigschwellige Meldewege und Schutzkonzepte für Hochschulen und Bildungseinrichtungen.</span><span data-lang-en>Low-threshold reporting channels and safeguarding concepts for universities.</span></p><p class="text-link" style="margin-top:16px;"><span data-lang-de>Mehr erfahren →</span><span data-lang-en>Learn more →</span></p></a>
-      <a href="oepnv.html" class="card" style="cursor:pointer; text-decoration:none; color:inherit;"><h3 class="subhead-small" style="margin-bottom:8px;"><span data-lang-de>ÖPNV &amp; Mobilität</span><span data-lang-en>Transit &amp; Mobility</span></h3><p class="copy-small copy-muted"><span data-lang-de>Awareness-Infrastruktur für Busse, Bahnen und Haltestellen. QR-Codes an jedem Standort.</span><span data-lang-en>Awareness infrastructure for buses, trains and stops. QR codes at every location.</span></p><p class="text-link" style="margin-top:16px;"><span data-lang-de>Mehr erfahren →</span><span data-lang-en>Learn more →</span></p></a>
-      <a href="freizeit.html" class="card" style="cursor:pointer; text-decoration:none; color:inherit;"><h3 class="subhead-small" style="margin-bottom:8px;"><span data-lang-de>Freizeit &amp; Kultur</span><span data-lang-en>Leisure &amp; Culture</span></h3><p class="copy-small copy-muted"><span data-lang-de>Awareness für Arenen, Theater, Saunen, Schwimmbäder und Kulturstätten.</span><span data-lang-en>Awareness for arenas, theatres, spas, swimming pools and cultural venues.</span></p><p class="text-link" style="margin-top:16px;"><span data-lang-de>Mehr erfahren →</span><span data-lang-en>Learn more →</span></p></a>
-      <a href="unternehmen.html" class="card" style="cursor:pointer; text-decoration:none; color:inherit;"><h3 class="subhead-small" style="margin-bottom:8px;"><span data-lang-de>Unternehmen &amp; HR</span><span data-lang-en>Businesses &amp; HR</span></h3><p class="copy-small copy-muted"><span data-lang-de>Hinweisgeberschutz, Compliance-Meldekanal, HR-Meldesystem. Safeguarding für Organisationen.</span><span data-lang-en>Whistleblower protection, compliance reporting, HR reporting. Safeguarding for organisations.</span></p><p class="text-link" style="margin-top:16px;"><span data-lang-de>Mehr erfahren →</span><span data-lang-en>Learn more →</span></p></a>
+      <a href="sport.html" class="branchen-card"><div class="branchen-icon" style="background:var(--lightblue-main);">🏟️</div><h3 class="subhead-small" style="margin-bottom:8px;"><span data-lang-de>Sport &amp; Stadien</span><span data-lang-en>Sports &amp; Stadiums</span></h3><p class="copy-small copy-muted"><span data-lang-de>Safeguarding-Infrastruktur für Bundesliga, 2. Liga und internationale Turniere. DFB/DFL-konform.</span><span data-lang-en>Safeguarding infrastructure for Bundesliga, 2nd division and international tournaments. DFB/DFL compliant.</span></p><p class="text-link" style="margin-top:16px;"><span data-lang-de>Mehr erfahren →</span><span data-lang-en>Learn more →</span></p></a>
+      <a href="events.html" class="branchen-card"><div class="branchen-icon" style="background:var(--lavender-main);">🎪</div><h3 class="subhead-small" style="margin-bottom:8px;"><span data-lang-de>Festivals &amp; Events</span><span data-lang-en>Festivals &amp; Events</span></h3><p class="copy-small copy-muted"><span data-lang-de>Von 5.000 bis 500.000 Besucher:innen. In Minuten aufgesetzt. Bewährt bei OMR, gamescom, Reeperbahn Festival.</span><span data-lang-en>From 5,000 to 500,000 visitors. Set up in minutes. Proven at OMR, gamescom, Reeperbahn Festival.</span></p><p class="text-link" style="margin-top:16px;"><span data-lang-de>Mehr erfahren →</span><span data-lang-en>Learn more →</span></p></a>
+      <a href="kommunen.html" class="branchen-card"><div class="branchen-icon" style="background:var(--lightblue-main);">🏛️</div><h3 class="subhead-small" style="margin-bottom:8px;"><span data-lang-de>Städte &amp; Kommunen</span><span data-lang-en>Cities &amp; Municipalities</span></h3><p class="copy-small copy-muted"><span data-lang-de>Schutzkonzepte für Stadtfeste, Kommunen und öffentliche Einrichtungen.</span><span data-lang-en>Safety concepts for city festivals, municipalities and public institutions.</span></p><p class="text-link" style="margin-top:16px;"><span data-lang-de>Mehr erfahren →</span><span data-lang-en>Learn more →</span></p></a>
+      <a href="bildung.html" class="branchen-card"><div class="branchen-icon" style="background:var(--lavender-main);">🎓</div><h3 class="subhead-small" style="margin-bottom:8px;"><span data-lang-de>Bildung &amp; Institutionen</span><span data-lang-en>Education &amp; Institutions</span></h3><p class="copy-small copy-muted"><span data-lang-de>Niedrigschwellige Meldewege und Schutzkonzepte für Hochschulen und Bildungseinrichtungen.</span><span data-lang-en>Low-threshold reporting channels and safeguarding concepts for universities.</span></p><p class="text-link" style="margin-top:16px;"><span data-lang-de>Mehr erfahren →</span><span data-lang-en>Learn more →</span></p></a>
+      <a href="oepnv.html" class="branchen-card"><div class="branchen-icon" style="background:var(--lightblue-main);">🚌</div><h3 class="subhead-small" style="margin-bottom:8px;"><span data-lang-de>ÖPNV &amp; Mobilität</span><span data-lang-en>Transit &amp; Mobility</span></h3><p class="copy-small copy-muted"><span data-lang-de>Awareness-Infrastruktur für Busse, Bahnen und Haltestellen. QR-Codes an jedem Standort.</span><span data-lang-en>Awareness infrastructure for buses, trains and stops. QR codes at every location.</span></p><p class="text-link" style="margin-top:16px;"><span data-lang-de>Mehr erfahren →</span><span data-lang-en>Learn more →</span></p></a>
+      <a href="freizeit.html" class="branchen-card"><div class="branchen-icon" style="background:var(--lavender-main);">🎭</div><h3 class="subhead-small" style="margin-bottom:8px;"><span data-lang-de>Freizeit &amp; Kultur</span><span data-lang-en>Leisure &amp; Culture</span></h3><p class="copy-small copy-muted"><span data-lang-de>Awareness für Arenen, Theater, Saunen, Schwimmbäder und Kulturstätten.</span><span data-lang-en>Awareness for arenas, theatres, spas, swimming pools and cultural venues.</span></p><p class="text-link" style="margin-top:16px;"><span data-lang-de>Mehr erfahren →</span><span data-lang-en>Learn more →</span></p></a>
+      <a href="unternehmen.html" class="branchen-card"><div class="branchen-icon" style="background:var(--lightblue-main);">🏢</div><h3 class="subhead-small" style="margin-bottom:8px;"><span data-lang-de>Unternehmen &amp; HR</span><span data-lang-en>Businesses &amp; HR</span></h3><p class="copy-small copy-muted"><span data-lang-de>Hinweisgeberschutz, Compliance-Meldekanal, HR-Meldesystem. Safeguarding für Organisationen.</span><span data-lang-en>Whistleblower protection, compliance reporting, HR reporting. Safeguarding for organisations.</span></p><p class="text-link" style="margin-top:16px;"><span data-lang-de>Mehr erfahren →</span><span data-lang-en>Learn more →</span></p></a>
     </div>
   </div>
 </div>
 
-<!-- REFERENZEN-TEASER -->
-<div class="section bg-white">
+<!-- REFERENZEN-TEASER mit Bildern -->
+<div class="section bg-white animate-on-scroll">
   <div class="section-content" style="text-align:center; margin-bottom:48px;">
     <p class="label-text" style="margin-bottom:12px;"><span data-lang-de>Referenzen</span><span data-lang-en>References</span></p>
     <h2 class="headline4"><span data-lang-de>Im Einsatz bei</span><span data-lang-en>Deployed at</span></h2>
   </div>
   <div class="section-content">
-    <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
-      <a href="referenzen_v4.html" class="card" style="cursor:pointer; text-decoration:none; color:inherit;"><p class="label-text" style="margin-bottom:8px;">2024 + 2025</p><h3 class="subhead-small">UEFA EURO</h3><p class="copy-small copy-muted"><span data-lang-de>Safeguarding-Infrastruktur in allen Turnierstadien</span><span data-lang-en>Safeguarding infrastructure across all tournament stadiums</span></p></a>
-      <a href="referenzen_v4.html" class="card" style="cursor:pointer; text-decoration:none; color:inherit;"><p class="label-text" style="margin-bottom:8px;"><span data-lang-de>Seit 2023</span><span data-lang-en>Since 2023</span></p><h3 class="subhead-small">Kieler Woche</h3><p class="copy-small copy-muted"><span data-lang-de>Digitale Meldestruktur für eines der größten Volksfeste Europas</span><span data-lang-en>Digital reporting for one of Europe's largest public festivals</span></p></a>
-      <a href="referenzen_v4.html" class="card" style="cursor:pointer; text-decoration:none; color:inherit;"><p class="label-text" style="margin-bottom:8px;"><span data-lang-de>Dauerhafte Venue</span><span data-lang-en>Permanent venue</span></p><h3 class="subhead-small">Barclays Arena</h3><p class="copy-small copy-muted"><span data-lang-de>Awareness über alle Gewerke und Produktionen</span><span data-lang-en>Awareness across all departments and productions</span></p></a>
-      <a href="referenzen_v4.html" class="card" style="cursor:pointer; text-decoration:none; color:inherit;"><p class="label-text" style="margin-bottom:8px;">Bundesliga</p><h3 class="subhead-small">FC St. Pauli &amp; mehr</h3><p class="copy-small copy-muted"><span data-lang-de>Safeguarding für Profi-Fußballclubs</span><span data-lang-en>Safeguarding for professional football clubs</span></p></a>
+    <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+      <a href="referenzen_v4.html" class="ref-card" style="text-decoration:none; color:inherit;">
+        <div class="ref-card-image"><img src="https://www.saferspaces.io/_next/image?url=%2Fassets%2Fimages%2Fcases%2Feuro2024-2.png&w=750&q=75" alt="UEFA EURO" loading="lazy"></div>
+        <p class="label-text" style="margin-bottom:8px;">2024 + 2025</p><h3 class="subhead-small">UEFA EURO</h3><p class="copy-small copy-muted"><span data-lang-de>Safeguarding-Infrastruktur in allen Turnierstadien</span><span data-lang-en>Safeguarding infrastructure across all tournament stadiums</span></p>
+      </a>
+      <a href="referenzen_v4.html" class="ref-card" style="text-decoration:none; color:inherit;">
+        <div class="ref-card-image"><img src="https://www.saferspaces.io/_next/image?url=%2Fassets%2Fimages%2Fsafer%2Fslideshow-5.png&w=750&q=75" alt="Kieler Woche" loading="lazy"></div>
+        <p class="label-text" style="margin-bottom:8px;"><span data-lang-de>Seit 2023</span><span data-lang-en>Since 2023</span></p><h3 class="subhead-small">Kieler Woche</h3><p class="copy-small copy-muted"><span data-lang-de>Digitale Meldestruktur für eines der größten Volksfeste Europas</span><span data-lang-en>Digital reporting for one of Europe's largest public festivals</span></p>
+      </a>
+      <a href="referenzen_v4.html" class="ref-card" style="text-decoration:none; color:inherit;">
+        <div class="ref-card-image" style="background:var(--purple-main);"><div class="ref-card-image-fallback" style="color:var(--lavender-main);">Barclays Arena</div></div>
+        <p class="label-text" style="margin-bottom:8px;"><span data-lang-de>Dauerhafte Venue</span><span data-lang-en>Permanent venue</span></p><h3 class="subhead-small">Barclays Arena</h3><p class="copy-small copy-muted"><span data-lang-de>Awareness über alle Gewerke und Produktionen</span><span data-lang-en>Awareness across all departments and productions</span></p>
+      </a>
+      <a href="referenzen_v4.html" class="ref-card" style="text-decoration:none; color:inherit;">
+        <div class="ref-card-image" style="background:var(--lightblue-main);"><div class="ref-card-image-fallback">FC St. Pauli</div></div>
+        <p class="label-text" style="margin-bottom:8px;">Bundesliga</p><h3 class="subhead-small">FC St. Pauli &amp; mehr</h3><p class="copy-small copy-muted"><span data-lang-de>Safeguarding für Profi-Fußballclubs</span><span data-lang-en>Safeguarding for professional football clubs</span></p>
+      </a>
     </div>
     <div style="text-align:center; margin-top:40px;"><a href="referenzen_v4.html" class="btn btn-secondary btn-lg"><span data-lang-de>Alle Referenzen ansehen</span><span data-lang-en>View all references</span></a></div>
   </div>
@@ -219,18 +269,22 @@
 
 <!-- TESTIMONIAL -->
 <div class="section" style="background:var(--purple-main); padding:64px 24px;">
-  <div class="section-content" style="max-width:720px; text-align:center;">
+  <div class="section-content testimonial-enhanced" style="max-width:720px; text-align:center;">
     <p class="headline5 headline-white" style="font-style:italic; margin-bottom:24px; line-height:1.5;">
       <span data-lang-de>„Saferspaces ist der digitale Turbo für unser Schutzkonzept. Wir können jetzt mit einem kleinen Team flächendeckend agieren."</span>
       <span data-lang-en>"Saferspaces is the digital turbo for our safeguarding concept. We can now act area-wide with a small team."</span>
     </p>
-    <p class="subhead-small" style="color:var(--lavender-main);">Sven Brux</p>
-    <p class="copy-small" style="color:rgba(255,255,255,0.7);"><span data-lang-de>Veranstaltungsleiter Kieler Woche</span><span data-lang-en>Event Director Kieler Woche</span></p>
+    <div class="testimonial-author" style="justify-content:center;">
+      <div class="testimonial-author-info" style="text-align:center;">
+        <div class="testimonial-name">Sven Brux</div>
+        <div class="testimonial-role"><span data-lang-de>Veranstaltungsleiter Kieler Woche</span><span data-lang-en>Event Director Kieler Woche</span></div>
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- FINAL CTA -->
-<div class="section bg-white">
+<div class="section bg-white animate-on-scroll">
   <div class="section-content">
     <div class="cta-block">
       <h2 class="headline3" style="margin-bottom:16px;">Ready to create safer spaces?</h2>
@@ -257,6 +311,7 @@
   </div>
 </footer>
 
+<script src="animations.js"></script>
 <script>
 function setLang(lang) {
   document.body.classList.remove('lang-de','lang-en');
@@ -271,7 +326,19 @@ window.addEventListener('scroll', () => {
 function toggleMobile() {
   const m = document.getElementById('mobileMenu');
   const t = document.querySelector('.mobile-toggle');
-  if (m) m.classList.toggle('active');
+  if (m) {
+    const isActive = m.classList.contains('active');
+    if (isActive) {
+      m.classList.remove('active');
+      document.body.classList.remove('menu-open');
+    } else {
+      m.style.display = 'block';
+      requestAnimationFrame(() => {
+        m.classList.add('active');
+        document.body.classList.add('menu-open');
+      });
+    }
+  }
   if (t) t.classList.toggle('active');
 }
 </script>
