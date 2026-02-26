@@ -189,7 +189,9 @@ em { font-weight: 700; font-style: normal; }
   min-height: 520px;
   padding: 80px 48px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 .hero-image-bg .hero-content {
   position: relative; z-index: 2;
