@@ -203,7 +203,7 @@ em { font-weight: 700; font-style: normal; }
   letter-spacing: -0.02em;
 }
 .nav-logo a { text-decoration: none; }
-.nav-menu { display: none; align-items: center; gap: 8px; }
+.nav-menu { display: none; align-items: center; gap: 8px; margin-left: auto; }
 @media (min-width: 1280px) { .nav-menu { display: flex; } }
 .nav-item {
   position: relative; padding: 8px 16px; font-size: 16px; font-weight: 700;
@@ -211,6 +211,7 @@ em { font-weight: 700; font-style: normal; }
   transition: all 0.2s;
 }
 .nav-item:hover { color: var(--purple-main); }
+a.nav-item-link { text-decoration: none; color: inherit; }
 .nav-dropdown {
   position: absolute; top: calc(100% + 8px); left: -8px; min-width: 280px;
   background: var(--white); border: 2px solid var(--purple-main);
@@ -833,3 +834,189 @@ em { font-weight: 700; font-style: normal; }
 }
 /* Body scroll lock */
 body.menu-open { overflow: hidden; }
+
+/* ===== PRICING WIZARD ===== */
+.pricing-wizard { max-width: 640px; margin: 0 auto; }
+
+/* Progress Bar */
+.pw-progress { position: relative; margin-bottom: 48px; padding: 0 8px; }
+.pw-progress-track {
+  position: absolute; top: 50%; left: 24px; right: 24px;
+  height: 3px; background: var(--grey-main); border-radius: 2px;
+  transform: translateY(-50%); z-index: 0;
+}
+.pw-progress-fill {
+  height: 100%; background: var(--purple-main); border-radius: 2px;
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1); width: 0%;
+}
+.pw-progress-steps {
+  display: flex; justify-content: space-between;
+  position: relative; z-index: 1;
+}
+.pw-progress-step {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--white); border: 2px solid var(--grey-main);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Mabry Pro', sans-serif; font-weight: 700; font-size: 14px;
+  color: var(--grey-mid); transition: all 0.3s ease;
+}
+.pw-progress-step.active {
+  background: var(--purple-main); border-color: var(--purple-main); color: var(--white);
+}
+.pw-progress-step.completed {
+  background: var(--green-main); border-color: var(--green-main); color: var(--white);
+}
+
+/* Steps */
+.pw-step { display: none; animation: fadeInUp 0.4s ease-out; }
+.pw-step.active { display: block; }
+.pw-step-title { text-align: center; margin-bottom: 8px; }
+.pw-step-desc { text-align: center; margin-bottom: 32px; }
+
+/* Option Cards Grid (Step 1) */
+.pw-options-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+}
+
+/* Option Card */
+.pw-option-card {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  gap: 4px; padding: 24px 16px; background: var(--white);
+  border: 2px solid var(--grey-main); border-radius: var(--rounded-small);
+  cursor: pointer; transition: all 0.2s ease;
+  font-family: 'Mabry Pro', sans-serif; font-size: 14px;
+}
+.pw-option-card:hover { border-color: var(--purple-main); background: var(--lavender-main); }
+.pw-option-card.selected {
+  border-color: var(--purple-main); background: var(--lavender-main);
+  box-shadow: 0 0 0 1px var(--purple-main);
+}
+.pw-option-card strong { font-size: 16px; color: var(--purple-main); }
+.pw-option-icon { font-size: 32px; margin-bottom: 4px; color: var(--purple-main); }
+.pw-option-sub { font-size: 13px; color: var(--grey-mid); }
+
+/* Wide option cards (Steps 2, 4, 5) */
+.pw-options-row { display: flex; flex-direction: column; gap: 12px; }
+.pw-option-wide {
+  flex-direction: row; align-items: center; text-align: left;
+  padding: 20px 24px; gap: 12px;
+}
+.pw-option-wide .pw-option-icon { font-size: 28px; margin-bottom: 0; }
+
+/* Slider (Step 3) */
+.pw-slider-container { padding: 16px 0; }
+.pw-slider-value {
+  text-align: center; font-family: 'GT Alpina Condensed', Georgia, serif;
+  font-size: clamp(48px, 6vw, 64px); font-weight: 700;
+  color: var(--purple-main); margin-bottom: 24px; line-height: 1;
+}
+.pw-slider {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 6px; border-radius: 3px;
+  background: var(--grey-main); outline: none;
+}
+.pw-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--purple-main); cursor: pointer;
+  border: 3px solid var(--white);
+  box-shadow: 0 2px 8px rgba(42, 20, 130, 0.3);
+  transition: transform 0.2s;
+}
+.pw-slider::-webkit-slider-thumb:hover { transform: scale(1.15); }
+.pw-slider::-moz-range-thumb {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--purple-main); cursor: pointer;
+  border: 3px solid var(--white);
+  box-shadow: 0 2px 8px rgba(42, 20, 130, 0.3);
+}
+.pw-slider-labels {
+  display: flex; justify-content: space-between;
+  margin-top: 8px; font-size: 13px; color: var(--grey-mid); font-weight: 700;
+}
+
+/* Result Card (Step 6) */
+.pw-result-card {
+  background: var(--purple-main); border-radius: var(--rounded-medium);
+  padding: 40px 32px; text-align: center; margin-bottom: 24px;
+}
+.pw-result-label {
+  font-size: 14px; font-weight: 700; color: var(--lavender-main);
+  text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;
+}
+.pw-result-price {
+  display: flex; align-items: baseline; justify-content: center; gap: 8px;
+}
+.pw-result-amount {
+  font-family: 'GT Alpina Condensed', Georgia, serif;
+  font-size: clamp(48px, 7vw, 72px); font-weight: 700;
+  color: var(--white); line-height: 1;
+}
+.pw-result-currency {
+  font-family: 'GT Alpina Condensed', Georgia, serif;
+  font-size: clamp(28px, 3.5vw, 40px); font-weight: 700;
+  color: var(--white); line-height: 1;
+}
+.pw-result-perunit {
+  font-size: 15px; color: var(--lavender-main); margin-top: 8px; font-weight: 700;
+}
+
+/* Summary Table */
+.pw-result-summary {
+  border: 1px solid var(--grey-main); border-radius: var(--rounded-small);
+  overflow: hidden; margin-bottom: 24px;
+}
+.pw-summary-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 20px; font-size: 15px;
+  border-bottom: 1px solid var(--grey-125);
+}
+.pw-summary-row:last-child { border-bottom: none; }
+.pw-summary-row span:first-child { color: var(--grey-mid); font-weight: 700; }
+.pw-summary-row span:last-child { font-weight: 700; color: var(--black); }
+.pw-summary-row--highlight { background: var(--lavender-main); }
+
+/* Contract Toggle */
+.pw-contract-toggle { margin-bottom: 32px; }
+.pw-toggle-group { display: flex; gap: 8px; }
+.pw-toggle-btn {
+  flex: 1; padding: 16px 12px;
+  border: 2px solid var(--grey-main); border-radius: var(--rounded-small);
+  background: var(--white); cursor: pointer; text-align: center;
+  transition: all 0.2s ease; font-family: 'Mabry Pro', sans-serif;
+}
+.pw-toggle-btn:hover { border-color: var(--purple-main); }
+.pw-toggle-btn.active { border-color: var(--purple-main); background: var(--lavender-main); }
+.pw-toggle-btn strong { display: block; font-size: 16px; color: var(--purple-main); }
+.pw-toggle-sub { font-size: 12px; color: var(--grey-mid); font-weight: 700; }
+.pw-toggle-sub .pw-discount {
+  color: var(--green-main); font-weight: 700;
+  background: var(--lightblue-main); padding: 2px 8px;
+  border-radius: var(--rounded-full); font-size: 11px;
+}
+
+/* Wizard Navigation */
+.pw-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 40px; gap: 16px;
+}
+.pw-btn-next { margin-left: auto; }
+.pw-btn-next:disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+
+/* Redirect badge */
+.pw-redirect-badge {
+  display: inline-block; padding: 4px 12px; border-radius: var(--rounded-full);
+  background: var(--green-main); color: var(--white);
+  font-size: 11px; font-weight: 700; margin-top: 4px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .pw-options-grid { grid-template-columns: repeat(2, 1fr); }
+  .pw-option-card { padding: 16px 12px; }
+}
+@media (max-width: 480px) {
+  .pw-toggle-group { flex-direction: column; }
+  .pw-result-card { padding: 32px 20px; }
+  .pw-options-grid { grid-template-columns: 1fr; }
+}
