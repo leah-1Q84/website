@@ -36,12 +36,14 @@
     { threshold: Infinity, rate: 0.001 }
   ];
 
-  // Setup fees: by venue type and nonprofit status
+  // Setup fees: by venue type
+  // Club and Venue (stadion) have fixed setup fees
+  // Event (stadtfest) and Andere show "ab 690 €"
   var SETUP_FEES = {
-    stadion:   { commercial: 3180, nonprofit: 3180 },  // stadion has no nonprofit option
-    stadtfest: { commercial: 1200, nonprofit: 150 },
-    andere:    { commercial: 1200, nonprofit: 150 },
-    club:      { commercial: 150,  nonprofit: 150 }    // club always 150
+    club:      190,
+    stadion:   3200,
+    stadtfest: 690,   // minimum, displayed as "ab 690 €"
+    andere:    690    // minimum, displayed as "ab 690 €"
   };
 
   // Default usage modes per venue type
@@ -79,8 +81,11 @@
 
   function getSetupFee() {
     var type = state.venueType || 'andere';
-    var fees = SETUP_FEES[type] || SETUP_FEES.andere;
-    return state.nonprofit ? fees.nonprofit : fees.commercial;
+    return SETUP_FEES[type] || SETUP_FEES.andere;
+  }
+
+  function isSetupFeeFixed() {
+    return state.venueType === 'club' || state.venueType === 'stadion';
   }
 
   function calculatePrice() {
@@ -327,9 +332,9 @@
     // Summary table
     var typeLabels = {
       club: 'Club',
-      stadion: 'Stadion',
-      stadtfest: 'Stadtfest',
-      andere: 'Andere'
+      stadion: 'Venue',
+      stadtfest: 'Event',
+      andere: isDE ? 'Andere' : 'Other'
     };
     document.getElementById('pwSummaryType').textContent = typeLabels[state.venueType] || '\u2013';
     document.getElementById('pwSummaryCapacity').textContent = formatNumber(state.capacity);
@@ -344,7 +349,11 @@
       document.getElementById('pwSummaryDuration').textContent = isDE ? 'Einmalig' : 'One-time';
     }
 
-    document.getElementById('pwSummarySetup').textContent = formatCurrency(result.setupFee) + ' \u20AC';
+    if (isSetupFeeFixed()) {
+      document.getElementById('pwSummarySetup').textContent = formatCurrency(result.setupFee) + ' \u20AC';
+    } else {
+      document.getElementById('pwSummarySetup').textContent = (isDE ? 'ab ' : 'from ') + formatCurrency(result.setupFee) + ' \u20AC';
+    }
 
     // Show/hide contract toggle for dauerhaft only
     var contractSection = document.getElementById('pwContractSection');
