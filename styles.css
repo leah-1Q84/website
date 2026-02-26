@@ -207,11 +207,12 @@ em { font-weight: 700; font-style: normal; }
 @media (min-width: 1280px) { .nav-menu { display: flex; } }
 .nav-item {
   position: relative; padding: 8px 16px; font-size: 16px; font-weight: 700;
-  color: var(--black); cursor: pointer; border-radius: var(--rounded-small);
+  color: var(--grey-mid); cursor: pointer; border-radius: var(--rounded-small);
   transition: all 0.2s;
 }
-.nav-item:hover { color: var(--purple-main); }
+.nav-item:hover, .nav-item.active { color: var(--purple-main); }
 a.nav-item-link { text-decoration: none; color: inherit; }
+a.nav-item-link:hover, a.nav-item-link.active { color: var(--purple-main); }
 .nav-dropdown {
   position: absolute; top: calc(100% + 8px); left: -8px; min-width: 280px;
   background: var(--white); border: 2px solid var(--purple-main);
@@ -227,7 +228,7 @@ a.nav-item-link { text-decoration: none; color: inherit; }
 .nav-dropdown a:hover { background: var(--lavender-main); }
 .nav-dropdown a strong { font-weight: 700; color: var(--purple-main); display: block; }
 .nav-dropdown a span { font-size: 14px; color: var(--grey-mid); }
-.nav-actions { display: flex; align-items: center; gap: 16px; }
+.nav-actions { display: flex; align-items: center; gap: 16px; margin-left: 32px; }
 .lang-switch {
   display: none; gap: 4px; font-size: 14px; font-weight: 700;
 }
