@@ -298,7 +298,7 @@
     if (state.usage === 'dauerhaft') {
       descEl.innerHTML = '<span data-lang-de>Wie hoch ist die durchschnittliche Auslastung?</span><span data-lang-en>What is the average capacity?</span>';
     } else {
-      descEl.innerHTML = '<span data-lang-de>Wie viele Besuchende erwarten Sie?</span><span data-lang-en>How many visitors do you expect?</span>';
+      descEl.innerHTML = '<span data-lang-de>Wie viele Besuchende erwartet ihr?</span><span data-lang-en>How many visitors do you expect?</span>';
     }
     applyLang();
   }
