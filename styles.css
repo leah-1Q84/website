@@ -215,18 +215,16 @@ em { font-weight: 700; font-style: normal; }
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(24px, 4vw, 56px);
-  flex-wrap: wrap;
+  gap: clamp(20px, 3vw, 40px);
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 .logo-bar img {
-  height: clamp(28px, 4vw, 48px);
+  height: clamp(16px, 2vw, 24px);
   width: auto;
   object-fit: contain;
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
-}
-.logo-bar img:hover {
-  opacity: 1;
+  opacity: 0.35;
+  flex-shrink: 0;
 }
 
 /* ===== NAVIGATION ===== */
@@ -431,6 +429,72 @@ a.nav-item-link:hover, a.nav-item-link.active { color: var(--purple-main); }
 }
 @media (max-width: 900px) { .statements-grid { grid-template-columns: 1fr; } }
 
+/* ===== BENEFIT CARDS (Bold Dark) ===== */
+.benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.benefit-card {
+  background: var(--white);
+  border-radius: var(--rounded-medium);
+  padding: 32px 28px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.benefit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+}
+.benefit-icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: var(--lavender-main);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.benefit-icon .material-symbols-rounded {
+  font-size: 28px;
+  color: var(--purple-main);
+}
+@media (max-width: 900px) {
+  .benefit-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .benefit-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== VALUE CARDS (Kunden-Mehrwert) ===== */
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.value-card {
+  background: var(--white);
+  border-radius: var(--rounded-medium);
+  border: 1px solid var(--grey-125);
+  overflow: hidden;
+  display: flex;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.value-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(42, 20, 130, 0.08);
+  border-color: var(--purple-main);
+}
+.value-card-accent {
+  width: 6px;
+  flex-shrink: 0;
+  background: var(--purple-main);
+}
+.value-card-content {
+  padding: 36px 32px;
+}
+@media (max-width: 768px) {
+  .value-grid { grid-template-columns: 1fr; }
+  .value-card-content { padding: 28px 24px; }
+}
+
 /* ===== NO-APP BADGE ===== */
 .no-app-badge {
   display: inline-block; background: var(--green-main); color: var(--white);
@@ -591,29 +655,39 @@ a.nav-item-link:hover, a.nav-item-link.active { color: var(--purple-main); }
 /* Staggered child animations */
 .animate-on-scroll.animate-visible .card:nth-child(1),
 .animate-on-scroll.animate-visible .statement-card:nth-child(1),
+.animate-on-scroll.animate-visible .benefit-card:nth-child(1),
+.animate-on-scroll.animate-visible .value-card:nth-child(1),
 .animate-on-scroll.animate-visible .usecase-card:nth-child(1),
 .animate-on-scroll.animate-visible .ref-card:nth-child(1),
 .animate-on-scroll.animate-visible .branchen-card:nth-child(1) { transition-delay: 0ms; }
 .animate-on-scroll.animate-visible .card:nth-child(2),
 .animate-on-scroll.animate-visible .statement-card:nth-child(2),
+.animate-on-scroll.animate-visible .benefit-card:nth-child(2),
+.animate-on-scroll.animate-visible .value-card:nth-child(2),
 .animate-on-scroll.animate-visible .usecase-card:nth-child(2),
 .animate-on-scroll.animate-visible .ref-card:nth-child(2),
 .animate-on-scroll.animate-visible .branchen-card:nth-child(2) { transition-delay: 80ms; }
 .animate-on-scroll.animate-visible .card:nth-child(3),
 .animate-on-scroll.animate-visible .statement-card:nth-child(3),
+.animate-on-scroll.animate-visible .benefit-card:nth-child(3),
+.animate-on-scroll.animate-visible .value-card:nth-child(3),
 .animate-on-scroll.animate-visible .usecase-card:nth-child(3),
 .animate-on-scroll.animate-visible .ref-card:nth-child(3),
 .animate-on-scroll.animate-visible .branchen-card:nth-child(3) { transition-delay: 160ms; }
 .animate-on-scroll.animate-visible .card:nth-child(4),
 .animate-on-scroll.animate-visible .statement-card:nth-child(4),
+.animate-on-scroll.animate-visible .benefit-card:nth-child(4),
+.animate-on-scroll.animate-visible .value-card:nth-child(4),
 .animate-on-scroll.animate-visible .usecase-card:nth-child(4),
 .animate-on-scroll.animate-visible .ref-card:nth-child(4),
 .animate-on-scroll.animate-visible .branchen-card:nth-child(4) { transition-delay: 240ms; }
 .animate-on-scroll.animate-visible .card:nth-child(5),
 .animate-on-scroll.animate-visible .statement-card:nth-child(5),
+.animate-on-scroll.animate-visible .benefit-card:nth-child(5),
 .animate-on-scroll.animate-visible .usecase-card:nth-child(5) { transition-delay: 320ms; }
 .animate-on-scroll.animate-visible .card:nth-child(6),
 .animate-on-scroll.animate-visible .statement-card:nth-child(6),
+.animate-on-scroll.animate-visible .benefit-card:nth-child(6),
 .animate-on-scroll.animate-visible .usecase-card:nth-child(6) { transition-delay: 400ms; }
 .animate-on-scroll.animate-visible .pillar:nth-child(1) { transition-delay: 0ms; }
 .animate-on-scroll.animate-visible .pillar:nth-child(2) { transition-delay: 150ms; }
@@ -622,6 +696,8 @@ a.nav-item-link:hover, a.nav-item-link.active { color: var(--purple-main); }
 /* Staggered children need their own transition */
 .animate-on-scroll .card,
 .animate-on-scroll .statement-card,
+.animate-on-scroll .benefit-card,
+.animate-on-scroll .value-card,
 .animate-on-scroll .usecase-card,
 .animate-on-scroll .ref-card,
 .animate-on-scroll .branchen-card,
@@ -632,6 +708,8 @@ a.nav-item-link:hover, a.nav-item-link.active { color: var(--purple-main); }
 }
 .animate-on-scroll.animate-visible .card,
 .animate-on-scroll.animate-visible .statement-card,
+.animate-on-scroll.animate-visible .benefit-card,
+.animate-on-scroll.animate-visible .value-card,
 .animate-on-scroll.animate-visible .usecase-card,
 .animate-on-scroll.animate-visible .ref-card,
 .animate-on-scroll.animate-visible .branchen-card,
@@ -645,6 +723,8 @@ a.nav-item-link:hover, a.nav-item-link.active { color: var(--purple-main); }
   .animate-on-scroll { opacity: 1; transform: none; transition: none; }
   .animate-on-scroll .card,
   .animate-on-scroll .statement-card,
+  .animate-on-scroll .benefit-card,
+  .animate-on-scroll .value-card,
   .animate-on-scroll .usecase-card,
   .animate-on-scroll .ref-card,
   .animate-on-scroll .branchen-card,
