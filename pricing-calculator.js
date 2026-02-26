@@ -349,10 +349,34 @@
       document.getElementById('pwSummaryDuration').textContent = isDE ? 'Einmalig' : 'One-time';
     }
 
+    // License fee line
+    var licenseLabel = document.getElementById('pwSummaryLicenseLabel');
+    if (state.usage === 'dauerhaft') {
+      licenseLabel.innerHTML = '<span data-lang-de>Jahreslizenz</span><span data-lang-en>Annual license</span>';
+    } else {
+      licenseLabel.innerHTML = '<span data-lang-de>Lizenz (einmalig)</span><span data-lang-en>License (one-time)</span>';
+    }
+    document.getElementById('pwSummaryLicense').textContent = formatCurrency(result.annual) + ' \u20AC';
+
+    // Setup fee line
     if (isSetupFeeFixed()) {
       document.getElementById('pwSummarySetup').textContent = formatCurrency(result.setupFee) + ' \u20AC';
     } else {
       document.getElementById('pwSummarySetup').textContent = (isDE ? 'ab ' : 'from ') + formatCurrency(result.setupFee) + ' \u20AC';
+    }
+
+    // Total line (license + setup)
+    var total = result.annual + result.setupFee;
+    var totalLabel = document.getElementById('pwSummaryTotalLabel');
+    if (state.usage === 'dauerhaft') {
+      totalLabel.innerHTML = '<strong><span data-lang-de>Gesamt im 1. Jahr</span><span data-lang-en>Total in 1st year</span></strong>';
+    } else {
+      totalLabel.innerHTML = '<strong><span data-lang-de>Gesamtkosten</span><span data-lang-en>Total cost</span></strong>';
+    }
+    if (isSetupFeeFixed()) {
+      document.getElementById('pwSummaryTotal').textContent = formatCurrency(total) + ' \u20AC';
+    } else {
+      document.getElementById('pwSummaryTotal').textContent = (isDE ? 'ab ' : 'from ') + formatCurrency(total) + ' \u20AC';
     }
 
     // Show/hide contract toggle for dauerhaft only
