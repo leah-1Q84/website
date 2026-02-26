@@ -1,6 +1,7 @@
 /**
  * saferspaces Pricing Calculator Wizard
  * Multi-step wizard for calculating custom pricing based on venue type, usage, capacity, etc.
+ * Pricing logic mirrors https://www.saferspaces.io/pricing
  */
 (function() {
   'use strict';
@@ -19,73 +20,82 @@
 
   // ===== PRICING ENGINE =====
 
-  // Permanent usage: tiered per-person monthly pricing + base fee
+  // Permanent usage: progressive tiered per-person pricing (like tax brackets)
   var PERMANENT_TIERS = [
-    { from: 0,     to: 5000,   rate: 0.07 },
-    { from: 5000,  to: 10000,  rate: 0.03 },
-    { from: 10000, to: 30000,  rate: 0.01 },
-    { from: 30000, to: 300000, rate: 0.01 }
+    { threshold: 5000,     rate: 0.07 },
+    { threshold: 10000,    rate: 0.03 },
+    { threshold: Infinity, rate: 0.01 }
   ];
-  var PERMANENT_BASE_FEE = 10; // EUR/month
 
-  // One-time events: tiered pricing, no base fee
+  // One-time events: progressive tiered pricing
   var EVENT_TIERS = [
-    { from: 0,      to: 10000,   rate: 0.07 },
-    { from: 10000,  to: 30000,   rate: 0.03 },
-    { from: 30000,  to: 300000,  rate: 0.01 },
-    { from: 300000, to: 1000000, rate: 0.01 },
-    { from: 1000000, to: Infinity, rate: 0.00 }
+    { threshold: 10000,    rate: 0.07 },
+    { threshold: 30000,    rate: 0.03 },
+    { threshold: 300000,   rate: 0.01 },
+    { threshold: 1000000,  rate: 0.005 },
+    { threshold: Infinity, rate: 0.001 }
   ];
 
-  // Setup fees by capacity
-  var SETUP_TIERS = [
-    { maxCap: 500,    fee: 190 },
-    { maxCap: 5000,   fee: 690 },
-    { maxCap: 30000,  fee: 2630 },
-    { maxCap: Infinity, fee: 3200 }
-  ];
+  // Setup fees: by venue type and nonprofit status
+  var SETUP_FEES = {
+    stadion:   { commercial: 3180, nonprofit: 3180 },  // stadion has no nonprofit option
+    stadtfest: { commercial: 1200, nonprofit: 150 },
+    andere:    { commercial: 1200, nonprofit: 150 },
+    club:      { commercial: 150,  nonprofit: 150 }    // club always 150
+  };
+
+  // Default usage modes per venue type
+  var DEFAULT_USAGE = {
+    club: 'dauerhaft',
+    stadion: 'dauerhaft',
+    stadtfest: 'einmalig'
+    // 'andere' -> user selects
+  };
+
+  // Default capacities per venue type
+  var DEFAULT_CAPACITIES = {
+    club: 500,
+    stadion: 15000,
+    stadtfest: 250000,
+    andere: 5000
+  };
 
   // Modifiers
-  var CI_MARKUP = 1.4;           // +40%
-  var NONPROFIT_DISCOUNT = 0.8;  // -20%
+  var CI_MARKUP = 1.4;  // +40% on base price
   var CONTRACT_DISCOUNTS = { 1: 0, 2: 0.10, 3: 0.15 };
 
   function calcTieredPrice(capacity, tiers) {
     var price = 0;
-    var remaining = capacity;
+    var lowerBound = 0;
     for (var i = 0; i < tiers.length; i++) {
-      if (remaining <= 0) break;
-      var tierSize = tiers[i].to - tiers[i].from;
-      var unitsInTier = Math.min(remaining, tierSize);
+      var unitsInTier = Math.min(capacity, tiers[i].threshold) - lowerBound;
+      if (unitsInTier <= 0) break;
       price += unitsInTier * tiers[i].rate;
-      remaining -= unitsInTier;
+      lowerBound = tiers[i].threshold;
+      if (capacity <= tiers[i].threshold) break;
     }
     return price;
   }
 
-  function calcSetupFee(capacity) {
-    for (var i = 0; i < SETUP_TIERS.length; i++) {
-      if (capacity <= SETUP_TIERS[i].maxCap) return SETUP_TIERS[i].fee;
-    }
-    return SETUP_TIERS[SETUP_TIERS.length - 1].fee;
+  function getSetupFee() {
+    var type = state.venueType || 'andere';
+    var fees = SETUP_FEES[type] || SETUP_FEES.andere;
+    return state.nonprofit ? fees.nonprofit : fees.commercial;
   }
 
   function calculatePrice() {
     var basePrice;
 
     if (state.usage === 'dauerhaft') {
-      var monthlyPrice = PERMANENT_BASE_FEE + calcTieredPrice(state.capacity, PERMANENT_TIERS);
+      // Monthly price from tiers, then annualize
+      var monthlyPrice = calcTieredPrice(state.capacity, PERMANENT_TIERS);
       basePrice = monthlyPrice * 12;
     } else {
+      // One-time event price
       basePrice = calcTieredPrice(state.capacity, EVENT_TIERS);
     }
 
-    // Non-profit discount
-    if (state.nonprofit) {
-      basePrice *= NONPROFIT_DISCOUNT;
-    }
-
-    // Custom CI markup
+    // Custom CI markup (+40% on base price)
     if (state.customCI) {
       basePrice *= CI_MARKUP;
     }
@@ -97,16 +107,15 @@
       basePrice *= (1 - discount);
     }
 
-    var setupFee = calcSetupFee(state.capacity);
-    if (state.customCI) {
-      setupFee *= CI_MARKUP;
-    }
+    // Setup fee: based on venue type + nonprofit (NOT affected by CI)
+    var setupFee = getSetupFee();
 
+    // Per-person calculation
     var perPersonPerMonth;
     if (state.usage === 'dauerhaft') {
-      perPersonPerMonth = basePrice / 12 / state.capacity;
+      perPersonPerMonth = state.capacity > 0 ? basePrice / state.capacity / 12 : 0;
     } else {
-      perPersonPerMonth = basePrice / state.capacity;
+      perPersonPerMonth = state.capacity > 0 ? basePrice / state.capacity : 0;
     }
 
     return {
@@ -124,10 +133,8 @@
   var SLIDER_MAX_LOG = Math.log(SLIDER_MAX_CAP);
 
   function sliderToCapacity(position) {
-    // position: 0-100
     var logVal = SLIDER_MIN_LOG + (position / 100) * (SLIDER_MAX_LOG - SLIDER_MIN_LOG);
     var rawCap = Math.exp(logVal);
-    // Round to nice steps
     if (rawCap < 500) return Math.round(rawCap / 50) * 50;
     if (rawCap < 5000) return Math.round(rawCap / 100) * 100;
     if (rawCap < 50000) return Math.round(rawCap / 500) * 500;
@@ -141,6 +148,27 @@
     return ((Math.log(capacity) - SLIDER_MIN_LOG) / (SLIDER_MAX_LOG - SLIDER_MIN_LOG)) * 100;
   }
 
+  // ===== STEP SKIPPING LOGIC =====
+  // Step 2 (usage) is only needed for "andere"
+  // Step 4 (nonprofit) is hidden for "stadion" (always commercial) and "club" (always nonprofit)
+  function shouldSkipStep(step) {
+    if (step === 2 && state.venueType !== 'andere') return true;
+    if (step === 4 && (state.venueType === 'stadion' || state.venueType === 'club')) return true;
+    return false;
+  }
+
+  function getNextStep(current) {
+    var next = current + 1;
+    while (next <= state.totalSteps && shouldSkipStep(next)) next++;
+    return next <= state.totalSteps ? next : state.totalSteps;
+  }
+
+  function getPrevStep(current) {
+    var prev = current - 1;
+    while (prev >= 1 && shouldSkipStep(prev)) prev--;
+    return prev >= 1 ? prev : 1;
+  }
+
   // ===== FORMATTING =====
   function formatCurrency(num) {
     return num.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -151,7 +179,10 @@
   }
 
   function formatPricePerPerson(num) {
-    return num.toLocaleString('de-DE', { minimumFractionDigits: 4, maximumFractionDigits: 4 });
+    if (num < 0.01) {
+      return num.toLocaleString('de-DE', { minimumFractionDigits: 4, maximumFractionDigits: 4 });
+    }
+    return num.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
 
   // ===== WIZARD NAVIGATION =====
@@ -177,19 +208,51 @@
     state.currentStep = step;
   }
 
+  function getVisibleStepCount() {
+    var count = 0;
+    for (var s = 1; s <= state.totalSteps; s++) {
+      if (!shouldSkipStep(s)) count++;
+    }
+    return count;
+  }
+
+  function getVisibleStepIndex(step) {
+    var idx = 0;
+    for (var s = 1; s <= step; s++) {
+      if (!shouldSkipStep(s)) idx++;
+    }
+    return idx;
+  }
+
   function updateProgress(step) {
-    // Fill bar
-    var pct = ((step - 1) / (state.totalSteps - 1)) * 100;
+    var totalVisible = getVisibleStepCount();
+    var currentIdx = getVisibleStepIndex(step);
+    var pct = totalVisible > 1 ? ((currentIdx - 1) / (totalVisible - 1)) * 100 : 0;
     var fill = document.getElementById('pwProgressFill');
     if (fill) fill.style.width = pct + '%';
 
-    // Step indicators
-    var steps = document.querySelectorAll('.pw-progress-step');
-    for (var i = 0; i < steps.length; i++) {
-      var s = parseInt(steps[i].getAttribute('data-step'));
-      steps[i].classList.remove('active', 'completed');
-      if (s === step) steps[i].classList.add('active');
-      else if (s < step) steps[i].classList.add('completed');
+    // Step indicators - update based on visible steps
+    var stepEls = document.querySelectorAll('.pw-progress-step');
+    var visIdx = 0;
+    for (var s = 1; s <= state.totalSteps; s++) {
+      if (shouldSkipStep(s)) continue;
+      visIdx++;
+      if (visIdx <= stepEls.length) {
+        stepEls[visIdx - 1].classList.remove('active', 'completed');
+        if (s === step) stepEls[visIdx - 1].classList.add('active');
+        else if (s < step) stepEls[visIdx - 1].classList.add('completed');
+      }
+    }
+    // Hide extra step indicators
+    for (var i = visIdx; i < stepEls.length; i++) {
+      stepEls[i].classList.remove('active', 'completed');
+      stepEls[i].style.display = 'none';
+    }
+    // Show used indicators
+    for (var j = 0; j < visIdx && j < stepEls.length; j++) {
+      stepEls[j].style.display = '';
+      stepEls[j].setAttribute('data-step', j + 1);
+      stepEls[j].textContent = j + 1;
     }
   }
 
@@ -218,12 +281,20 @@
     var descEl = document.getElementById('pwCapacityDesc');
     if (!descEl) return;
 
+    // Set default capacity for venue type
+    var defaultCap = DEFAULT_CAPACITIES[state.venueType] || 5000;
+    state.capacity = defaultCap;
+    var slider = document.getElementById('pwCapacitySlider');
+    if (slider) {
+      slider.value = capacityToSlider(defaultCap);
+    }
+    updateSliderDisplay();
+
     if (state.usage === 'dauerhaft') {
       descEl.innerHTML = '<span data-lang-de>Wie hoch ist die durchschnittliche Auslastung?</span><span data-lang-en>What is the average capacity?</span>';
     } else {
       descEl.innerHTML = '<span data-lang-de>Wie viele Besuchende erwarten Sie?</span><span data-lang-en>How many visitors do you expect?</span>';
     }
-    // Re-apply language
     applyLang();
   }
 
@@ -246,8 +317,8 @@
     // Per-unit
     var perUnitEl = document.getElementById('pwResultPerUnit');
     if (state.usage === 'dauerhaft') {
-      perUnitEl.innerHTML = '<span data-lang-de>Preis pro Monat: ' + formatPricePerPerson(result.perPersonPerMonth) + ' \u20AC / Person</span>' +
-        '<span data-lang-en>Price per month: ' + formatPricePerPerson(result.perPersonPerMonth) + ' \u20AC / person</span>';
+      perUnitEl.innerHTML = '<span data-lang-de>Preis pro Person / Monat: ' + formatPricePerPerson(result.perPersonPerMonth) + ' \u20AC</span>' +
+        '<span data-lang-en>Price per person / month: ' + formatPricePerPerson(result.perPersonPerMonth) + ' \u20AC</span>';
     } else {
       perUnitEl.innerHTML = '<span data-lang-de>' + formatPricePerPerson(result.perPersonPerMonth) + ' \u20AC pro Person</span>' +
         '<span data-lang-en>' + formatPricePerPerson(result.perPersonPerMonth) + ' \u20AC per person</span>';
@@ -260,7 +331,7 @@
       stadtfest: 'Stadtfest',
       andere: 'Andere'
     };
-    document.getElementById('pwSummaryType').textContent = typeLabels[state.venueType] || '–';
+    document.getElementById('pwSummaryType').textContent = typeLabels[state.venueType] || '\u2013';
     document.getElementById('pwSummaryCapacity').textContent = formatNumber(state.capacity);
     document.getElementById('pwSummaryDesign').textContent = state.customCI
       ? (isDE ? 'Eigene CI' : 'Custom CI')
@@ -285,8 +356,6 @@
   }
 
   function applyLang() {
-    // CSS rules handle lang visibility automatically via body class
-    // This just forces re-evaluation for dynamically inserted content
     var lang = document.body.classList.contains('lang-en') ? 'en' : 'de';
     document.querySelectorAll('#pricingWizard [data-lang-de], #pricingWizard [data-lang-en]').forEach(function(el) {
       if (el.hasAttribute('data-lang-de')) {
@@ -310,7 +379,6 @@
     var slider = document.getElementById('pwCapacitySlider');
     if (slider) {
       slider.addEventListener('input', handleSlider);
-      // Set initial value
       state.capacity = sliderToCapacity(parseInt(slider.value));
       updateSliderDisplay();
     }
@@ -323,10 +391,10 @@
 
     // Navigation
     document.getElementById('pwBtnNext').addEventListener('click', function() {
-      goToStep(state.currentStep + 1);
+      goToStep(getNextStep(state.currentStep));
     });
     document.getElementById('pwBtnBack').addEventListener('click', function() {
-      goToStep(state.currentStep - 1);
+      goToStep(getPrevStep(state.currentStep));
     });
 
     // Initial state
@@ -354,10 +422,32 @@
     // Update state
     var value = this.getAttribute('data-value');
     switch (stepNum) {
-      case 1: state.venueType = value; break;
-      case 2: state.usage = value; break;
-      case 4: state.nonprofit = (value === 'nonprofit'); break;
-      case 5: state.customCI = (value === 'ci'); break;
+      case 1:
+        state.venueType = value;
+        // Auto-set usage for known types
+        if (DEFAULT_USAGE[value]) {
+          state.usage = DEFAULT_USAGE[value];
+        } else {
+          state.usage = null; // reset for "andere"
+        }
+        // Auto-set nonprofit based on venue type
+        if (value === 'club') {
+          state.nonprofit = true;   // Club is always nonprofit
+        } else if (value === 'stadion') {
+          state.nonprofit = false;  // Stadion is always commercial
+        } else {
+          state.nonprofit = null;   // User selects in Step 4
+        }
+        break;
+      case 2:
+        state.usage = value === 'dauerhaft' ? 'dauerhaft' : 'einmalig';
+        break;
+      case 4:
+        state.nonprofit = (value === 'nonprofit');
+        break;
+      case 5:
+        state.customCI = (value === 'ci');
+        break;
     }
 
     // Enable next button
@@ -366,7 +456,12 @@
 
   function updateSliderDisplay() {
     var isDE = !document.body.classList.contains('lang-en');
-    var label = isDE ? 'ca. ' + formatNumber(state.capacity) + ' Besuchende' : 'approx. ' + formatNumber(state.capacity) + ' visitors';
+    var label;
+    if (state.usage === 'dauerhaft') {
+      label = isDE ? 'ca. ' + formatNumber(state.capacity) + ' Kapazität' : 'approx. ' + formatNumber(state.capacity) + ' capacity';
+    } else {
+      label = isDE ? 'ca. ' + formatNumber(state.capacity) + ' Besuchende' : 'approx. ' + formatNumber(state.capacity) + ' visitors';
+    }
     document.getElementById('pwSliderValue').textContent = label;
   }
 
