@@ -29,18 +29,18 @@
   <div class="nav-inner">
     <div class="nav-logo"><a href="index.html"><img src="images/logo.svg" alt="saferspaces" style="height:40px; width:auto;"></a></div>
     <div class="nav-menu">
-      <div class="nav-item">
-        <span data-lang-de>Lösung</span><span data-lang-en>Solution</span>
+      <div class="nav-item" onclick="window.location.href='index.html'">
+        <a href="index.html" style="text-decoration:none; color:inherit;"><span data-lang-de>Lösung</span><span data-lang-en>Solution</span></a>
         <div class="nav-dropdown">
-          <a href="loesung.html"><strong><span data-lang-de>Übersicht</span><span data-lang-en>Overview</span></strong><span><span data-lang-de>Das Gesamtsystem</span><span data-lang-en>The complete system</span></span></a>
+          <a href="index.html"><strong><span data-lang-de>Übersicht</span><span data-lang-en>Overview</span></strong><span><span data-lang-de>Das Gesamtsystem</span><span data-lang-en>The complete system</span></span></a>
           <a href="melden.html"><strong><span data-lang-de>Melden</span><span data-lang-en>Report</span></strong><span>Rapid Response</span></a>
           <a href="reagieren.html"><strong><span data-lang-de>Reagieren</span><span data-lang-en>Respond</span></strong><span>Rapid Response</span></a>
           <a href="verstehen.html"><strong><span data-lang-de>Verstehen</span><span data-lang-en>Understand</span></strong><span>Analyse Dashboard</span></a>
           <a href="reporting.html"><strong>Rapid Report</strong><span><span data-lang-de>Meldungen ohne Team vor Ort</span><span data-lang-en>Reports without on-site team</span></span></a>
         </div>
       </div>
-      <div class="nav-item">
-        <span data-lang-de>Branchen</span><span data-lang-en>Industries</span>
+      <div class="nav-item" onclick="window.location.href='branchen.html'">
+        <a href="branchen.html" style="text-decoration:none; color:inherit;"><span data-lang-de>Branchen</span><span data-lang-en>Industries</span></a>
         <div class="nav-dropdown">
           <a href="sport.html"><strong><span data-lang-de>Sport &amp; Stadien</span><span data-lang-en>Sports &amp; Stadiums</span></strong><span>DFB/DFL, Bundesliga, UEFA</span></a>
           <a href="events.html"><strong><span data-lang-de>Festivals &amp; Events</span><span data-lang-en>Festivals &amp; Events</span></strong><span>OMR, gamescom, Reeperbahn</span></a>
@@ -52,8 +52,8 @@
           <a href="voraussetzungen.html"><strong><span data-lang-de>Voraussetzungen</span><span data-lang-en>Requirements</span></strong><span><span data-lang-de>Was ihr braucht</span><span data-lang-en>What you need</span></span></a>
         </div>
       </div>
-      <div class="nav-item">
-        <span data-lang-de>Referenzen</span><span data-lang-en>References</span>
+      <div class="nav-item" onclick="window.location.href='referenzen_v4.html'">
+        <a href="referenzen_v4.html" style="text-decoration:none; color:inherit;"><span data-lang-de>Referenzen</span><span data-lang-en>References</span></a>
         <div class="nav-dropdown">
           <a href="referenzen_v4.html"><strong><span data-lang-de>Alle Referenzen</span><span data-lang-en>All References</span></strong><span><span data-lang-de>Übersicht &amp; Kundenstimmen</span><span data-lang-en>Overview &amp; testimonials</span></span></a>
           <a href="case-studies.html"><strong>Case Studies</strong><span><span data-lang-de>Detaillierte Einsatzberichte</span><span data-lang-en>Detailed deployment reports</span></span></a>
@@ -85,7 +85,7 @@
 <div id="mobileMenu" class="mobile-menu">
   <div class="mobile-menu-section">
     <div class="mobile-menu-section-title"><span data-lang-de>Lösung</span><span data-lang-en>Solution</span></div>
-    <a href="loesung.html"><span data-lang-de>Übersicht</span><span data-lang-en>Overview</span></a>
+    <a href="index.html"><span data-lang-de>Übersicht</span><span data-lang-en>Overview</span></a>
     <a href="melden.html"><span data-lang-de>Melden</span><span data-lang-en>Report</span></a>
     <a href="reagieren.html"><span data-lang-de>Reagieren</span><span data-lang-en>Respond</span></a>
     <a href="verstehen.html"><span data-lang-de>Verstehen</span><span data-lang-en>Understand</span></a>
@@ -156,7 +156,7 @@
 </div>
 
 <!-- MEHRWERTE -->
-<div class="section animate-on-scroll" style="background:var(--purple-main);">
+<div class="section bg-purple animate-on-scroll">
   <div class="section-content" style="text-align:center; margin-bottom:48px;">
     <p class="label-text" style="margin-bottom:12px; color:var(--lavender-main);"><span data-lang-de>Vorteile</span><span data-lang-en>Benefits</span></p>
     <h2 class="headline3 headline-white" style="margin-bottom:20px;"><span data-lang-de>Warum Saferspaces?</span><span data-lang-en>Why Saferspaces?</span></h2>
@@ -197,6 +197,120 @@
         <h3 class="subhead" style="margin-bottom:6px;"><span data-lang-de>Daten statt Bauchgefühl</span><span data-lang-en>Data over gut feeling</span></h3>
         <p class="copy-small" style="color:var(--grey-mid); margin:0;"><span data-lang-de>Heatmaps, Statistiken, Compliance-Reports.</span><span data-lang-en>Heatmaps, statistics, compliance reports.</span></p>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- HIGHLIGHTS -->
+<style>
+  .highlight-section { padding: 80px 0; }
+  .highlight-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+    align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 24px;
+  }
+  .highlight-grid.reverse { direction: rtl; }
+  .highlight-grid.reverse > * { direction: ltr; }
+  .highlight-image img {
+    width: 100%; border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  }
+  .highlight-content { max-width: 520px; }
+  .highlight-label {
+    font-size: 14px; font-weight: 700; color: var(--grey-mid);
+    letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px;
+  }
+  .highlight-title {
+    font-family: 'GT Alpina', serif; font-weight: 700;
+    font-size: clamp(28px, 3vw, 40px); line-height: 1.1;
+    color: var(--purple-main); margin-bottom: 16px;
+  }
+  .highlight-desc {
+    font-size: 18px; line-height: 1.6; color: var(--grey-mid); margin-bottom: 0;
+  }
+  @media (max-width: 768px) {
+    .highlight-grid, .highlight-grid.reverse { grid-template-columns: 1fr; direction: ltr; }
+    .highlight-section { padding: 48px 0; }
+  }
+</style>
+
+<div class="highlight-section animate-on-scroll" style="background:var(--white);">
+  <div class="section-content" style="text-align:center; margin-bottom:48px;">
+    <p class="label-text" style="margin-bottom:12px;">Highlights</p>
+    <h2 class="headline3"><span data-lang-de>Das steckt im System.</span><span data-lang-en>What's inside the system.</span></h2>
+  </div>
+  <div class="highlight-grid">
+    <div class="highlight-image">
+      <img src="images/highlight-rapid-response.png" alt="Rapid Response" loading="lazy">
+    </div>
+    <div class="highlight-content">
+      <p class="highlight-label">Rapid Response</p>
+      <h3 class="highlight-title"><span data-lang-de>Einfach. Direkt. Wirksam.</span><span data-lang-en>Simple. Direct. Effective.</span></h3>
+      <p class="highlight-desc"><span data-lang-de>Unser Rapid-Response-System sorgt dafür, dass Hilfe schnell, zielgerichtet und ohne Umwege genau dort ankommt, wo sie gebraucht wird.</span><span data-lang-en>Our Rapid Response system ensures that help arrives quickly, targeted and directly where it is needed.</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="highlight-section animate-on-scroll" style="background:var(--lavender-main);">
+  <div class="highlight-grid reverse">
+    <div class="highlight-image">
+      <img src="images/highlight-heatmap.png" alt="Heatmap" loading="lazy">
+    </div>
+    <div class="highlight-content">
+      <p class="highlight-label">Heatmap</p>
+      <h3 class="highlight-title"><span data-lang-de>Erkennen, wo am meisten Hilfe benötigt wird.</span><span data-lang-en>Identify where help is needed most.</span></h3>
+      <p class="highlight-desc"><span data-lang-de>Die Heatmap zeigt auf einen Blick, wo Unterstützung besonders häufig benötigt wird – und macht Muster sichtbar, die sonst verborgen bleiben.</span><span data-lang-en>The heatmap shows at a glance where support is most frequently needed – revealing patterns that would otherwise remain hidden.</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="highlight-section animate-on-scroll" style="background:var(--white);">
+  <div class="highlight-grid">
+    <div class="highlight-image">
+      <img src="images/highlight-data-analysis.png" alt="Datenauswertung" loading="lazy">
+    </div>
+    <div class="highlight-content">
+      <p class="highlight-label"><span data-lang-de>Datenauswertung</span><span data-lang-en>Data Analysis</span></p>
+      <h3 class="highlight-title"><span data-lang-de>Klare Übersicht aller relevanten Daten.</span><span data-lang-en>Clear overview of all relevant data.</span></h3>
+      <p class="highlight-desc"><span data-lang-de>Das Analyse-Dashboard macht die Systemwirksamkeit sichtbar und liefert Daten für eine nachhaltige Verbesserung der Sicherheitslage.</span><span data-lang-en>The analytics dashboard makes system effectiveness visible and delivers data for sustainable improvement of the security situation.</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="highlight-section animate-on-scroll" style="background:var(--lavender-main);">
+  <div class="highlight-grid reverse">
+    <div class="highlight-image">
+      <img src="images/highlight-rapid-report.png" alt="Rapid Report" loading="lazy">
+    </div>
+    <div class="highlight-content">
+      <p class="highlight-label">Rapid Report</p>
+      <h3 class="highlight-title"><span data-lang-de>Vertraulich melden. Jeder Zeit.</span><span data-lang-en>Report confidentially. Any time.</span></h3>
+      <p class="highlight-desc"><span data-lang-de>Anonyme Meldungen jederzeit, von überall – auch ohne Awareness-Team vor Ort. Für Campus, Kliniken, NLZ und überall, wo Vorfälle gehört werden müssen.</span><span data-lang-en>Anonymous reports anytime, from anywhere – even without an on-site team. For campuses, clinics, academies and wherever incidents need to be heard.</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="highlight-section animate-on-scroll" style="background:var(--white);">
+  <div class="highlight-grid">
+    <div class="highlight-image">
+      <img src="images/highlight-geofencing.png" alt="Geofencing" loading="lazy">
+    </div>
+    <div class="highlight-content">
+      <p class="highlight-label">Geofencing</p>
+      <h3 class="highlight-title"><span data-lang-de>Bestimme, wo Rapid Response aktiv ist.</span><span data-lang-en>Define where Rapid Response is active.</span></h3>
+      <p class="highlight-desc"><span data-lang-de>Das Geofencing ermöglicht eine gezielte Nutzung innerhalb klar definierter Bereiche. So wird sichergestellt, dass Meldungen nur dort erfolgen, wo entsprechende Strukturen und Zuständigkeiten vorhanden sind.</span><span data-lang-en>Geofencing enables targeted use within clearly defined areas, ensuring reports are only made where corresponding structures and responsibilities exist.</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="highlight-section animate-on-scroll" style="background:var(--lavender-main);">
+  <div class="highlight-grid reverse">
+    <div class="highlight-image">
+      <img src="images/highlight-whitelabel.png" alt="White Label" loading="lazy">
+    </div>
+    <div class="highlight-content">
+      <p class="highlight-label">White Label</p>
+      <h3 class="highlight-title"><span data-lang-de>Nahtlos in eure Systeme integrierbar.</span><span data-lang-en>Seamlessly integrated into your systems.</span></h3>
+      <p class="highlight-desc"><span data-lang-de>Saferspaces lässt sich nahtlos als Whitelabel-Lösung integrieren – so können Organisationen alle Funktionen unter ihrem eigenen Branding anbieten.</span><span data-lang-en>Saferspaces can be seamlessly integrated as a white-label solution – allowing organisations to offer all features under their own branding.</span></p>
     </div>
   </div>
 </div>
@@ -358,7 +472,7 @@
   <div class="footer-inner">
     <div class="footer-top"><img src="images/logo.svg" alt="saferspaces" class="footer-logo" style="height:40px; width:auto;"><div class="lang-switch" style="display:flex;"><button class="lang-btn active" onclick="setLang('de')" style="color:var(--lavender-main);">DE</button><button class="lang-btn" onclick="setLang('en')" style="color:var(--lavender-main);">EN</button></div></div>
     <div class="footer-grid">
-      <div><h4><span data-lang-de>Lösung</span><span data-lang-en>Solution</span></h4><a href="loesung.html"><span data-lang-de>Übersicht</span><span data-lang-en>Overview</span></a><a href="melden.html"><span data-lang-de>Melden</span><span data-lang-en>Report</span></a><a href="reagieren.html"><span data-lang-de>Reagieren</span><span data-lang-en>Respond</span></a><a href="verstehen.html"><span data-lang-de>Verstehen</span><span data-lang-en>Understand</span></a><a href="reporting.html">Rapid Report</a></div>
+      <div><h4><span data-lang-de>Lösung</span><span data-lang-en>Solution</span></h4><a href="index.html"><span data-lang-de>Übersicht</span><span data-lang-en>Overview</span></a><a href="melden.html"><span data-lang-de>Melden</span><span data-lang-en>Report</span></a><a href="reagieren.html"><span data-lang-de>Reagieren</span><span data-lang-en>Respond</span></a><a href="verstehen.html"><span data-lang-de>Verstehen</span><span data-lang-en>Understand</span></a><a href="reporting.html">Rapid Report</a></div>
       <div><h4><span data-lang-de>Branchen</span><span data-lang-en>Industries</span></h4><a href="sport.html"><span data-lang-de>Sport &amp; Stadien</span><span data-lang-en>Sports &amp; Stadiums</span></a><a href="events.html"><span data-lang-de>Festivals &amp; Events</span><span data-lang-en>Festivals &amp; Events</span></a><a href="kommunen.html"><span data-lang-de>Kommunen</span><span data-lang-en>Municipalities</span></a><a href="bildung.html"><span data-lang-de>Bildung</span><span data-lang-en>Education</span></a><a href="oepnv.html"><span data-lang-de>ÖPNV</span><span data-lang-en>Transit</span></a><a href="freizeit.html"><span data-lang-de>Freizeit &amp; Kultur</span><span data-lang-en>Leisure &amp; Culture</span></a><a href="unternehmen.html"><span data-lang-de>Unternehmen</span><span data-lang-en>Businesses</span></a></div>
       <div><h4><span data-lang-de>Über uns</span><span data-lang-en>About</span></h4><a href="mission.html"><span data-lang-de>Mission</span><span data-lang-en>Mission</span></a><a href="referenzen_v4.html"><span data-lang-de>Referenzen</span><span data-lang-en>References</span></a><a href="preise.html"><span data-lang-de>Preise</span><span data-lang-en>Pricing</span></a></div>
       <div><h4><span data-lang-de>Kontakt</span><span data-lang-en>Contact</span></h4><a href="demo.html"><span data-lang-de>Demo buchen</span><span data-lang-en>Book Demo</span></a><a href="mailto:hello@saferspaces.io">hello@saferspaces.io</a></div>
