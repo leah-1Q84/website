@@ -284,6 +284,7 @@
 
   function configureSlider() {
     var descEl = document.getElementById('pwCapacityDesc');
+    var titleEl = document.getElementById('pwCapacityTitle');
     if (!descEl) return;
 
     // Set default capacity for venue type
@@ -295,9 +296,14 @@
     }
     updateSliderDisplay();
 
-    if (state.usage === 'dauerhaft') {
+    if (state.venueType === 'club') {
+      if (titleEl) titleEl.innerHTML = '<span data-lang-de>Kapazität</span><span data-lang-en>Capacity</span>';
+      descEl.innerHTML = '<span data-lang-de>Wie viele Menschen passen maximal in eure Location?</span><span data-lang-en>What is the maximum capacity of your location?</span>';
+    } else if (state.usage === 'dauerhaft') {
+      if (titleEl) titleEl.innerHTML = '<span data-lang-de>Auslastung</span><span data-lang-en>Capacity</span>';
       descEl.innerHTML = '<span data-lang-de>Wie hoch ist die durchschnittliche Auslastung?</span><span data-lang-en>What is the average capacity?</span>';
     } else {
+      if (titleEl) titleEl.innerHTML = '<span data-lang-de>Erwartete Besuchendenzahl</span><span data-lang-en>Expected Visitors</span>';
       descEl.innerHTML = '<span data-lang-de>Wie viele Besuchende erwartet ihr?</span><span data-lang-en>How many visitors do you expect?</span>';
     }
     applyLang();
@@ -490,16 +496,17 @@
 
     // Enable next button
     document.getElementById('pwBtnNext').disabled = false;
+
+    // Auto-advance to next step after short delay (skip for slider step)
+    setTimeout(function() {
+      goToStep(getNextStep(state.currentStep));
+    }, 250);
   }
 
   function updateSliderDisplay() {
     var isDE = !document.body.classList.contains('lang-en');
     var label;
-    if (state.usage === 'dauerhaft') {
-      label = isDE ? 'ca. ' + formatNumber(state.capacity) + ' Kapazität' : 'approx. ' + formatNumber(state.capacity) + ' capacity';
-    } else {
-      label = isDE ? 'ca. ' + formatNumber(state.capacity) + ' Besuchende' : 'approx. ' + formatNumber(state.capacity) + ' visitors';
-    }
+    label = 'ca. ' + formatNumber(state.capacity);
     document.getElementById('pwSliderValue').textContent = label;
   }
 
