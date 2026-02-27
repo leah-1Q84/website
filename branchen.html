@@ -176,6 +176,113 @@
   </div>
 </div>
 
+<!-- KUNDENSTIMMEN -->
+<style>
+  .testimonials-section { background: var(--white); padding: 56px 32px; }
+  @media (min-width: 1280px) { .testimonials-section { padding: 80px 56px; } }
+  .testimonials-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+  .testimonials-inner h2 { margin-bottom: 48px; }
+  .testimonials-carousel { position: relative; min-height: 280px; }
+  .testimonial-card {
+    position: absolute; top: 0; left: 0; right: 0;
+    opacity: 0; transition: opacity 0.6s ease;
+    display: flex; flex-direction: column; align-items: center; gap: 24px;
+    pointer-events: none;
+  }
+  .testimonial-card.active { opacity: 1; pointer-events: auto; }
+  .t-quote {
+    font-family: 'GT Alpina', serif; font-weight: 700;
+    font-size: 20px; line-height: 1.4em; color: var(--black); font-style: italic;
+    text-align: center; max-width: 680px;
+  }
+  @media (min-width: 1280px) { .t-quote { font-size: 24px; } }
+  .t-author { display: flex; align-items: center; gap: 12px; }
+  .t-avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--white); flex-shrink: 0; object-fit: cover; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  .t-info { display: flex; flex-direction: column; gap: 2px; text-align: left; }
+  .t-name { font-size: 15px; font-weight: 700; color: var(--purple-main); }
+  .t-role { font-size: 13px; color: var(--grey-mid); }
+  .t-cat-tag {
+    display: inline-flex; align-items: center; height: 22px; padding: 0 10px;
+    border-radius: 999px; background: rgba(42,20,130,0.08); color: var(--purple-main);
+    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .t-dots { display: flex; gap: 8px; justify-content: center; margin-top: 32px; }
+  .t-dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--purple-main); opacity: 0.2;
+    cursor: pointer; transition: opacity 0.3s;
+  }
+  .t-dot.active { opacity: 1; }
+</style>
+<section class="testimonials-section animate-on-scroll" id="kundenstimmen">
+  <div class="testimonials-inner">
+    <h2 class="headline3"><span data-lang-de>Kundenstimmen</span><span data-lang-en>Testimonials</span></h2>
+    <div class="testimonials-carousel">
+      <div class="testimonial-card active" data-t-cat="kommunen">
+        <span class="t-cat-tag">Kommunen</span>
+        <p class="t-quote"><span data-lang-de>„Die Kooperation von saferspaces und der Landeshauptstadt Kiel ermöglicht ein sichereres Feiern und den demokratischen Zusammenhalt auf der Kieler Woche."</span><span data-lang-en>"The cooperation between saferspaces and the city of Kiel enables safer celebrations and democratic cohesion at Kieler Woche."</span></p>
+        <div class="t-author">
+          <img class="t-avatar" src="images/quotes/vanessa.png" alt="Vanessa-Zoe Vitulskis" />
+          <div class="t-info">
+            <span class="t-name">Vanessa-Zoe Vitulskis</span>
+            <span class="t-role">Referatsleiterin Stadtordnungsdienst, Kieler Woche</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card" data-t-cat="sport">
+        <span class="t-cat-tag">Sport</span>
+        <p class="t-quote"><span data-lang-de>„Durch die Nutzung werden wir unnötige Zeitverluste bei der Standortbestimmung des Notfalls durch Funkstörungen, nicht verständliche Durchsagen usw. verhindern und somit den Hilfestandard im Stadion erhöhen."</span><span data-lang-en>"By using the system, we will prevent unnecessary time losses in locating emergencies due to radio interference, incomprehensible announcements etc. and thus raise the standard of help in the stadium."</span></p>
+        <div class="t-author">
+          <img class="t-avatar" src="images/quotes/sven.png" alt="Sven Brux" />
+          <div class="t-info">
+            <span class="t-name">Sven Brux</span>
+            <span class="t-role">Leitung Spielorganisation &amp; Fanangelegenheiten, FC St. Pauli</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card" data-t-cat="nachtleben">
+        <span class="t-cat-tag">Nachtleben</span>
+        <p class="t-quote"><span data-lang-de>„Wir haben den Eindruck, dass unser Publikum, durch die Ansprache und Nutzen der App, direkt mehr aufeinander acht gibt."</span><span data-lang-en>"We have the impression that our audience, through the communication and use of the app, directly looks out for each other more."</span></p>
+        <div class="t-author">
+          <img class="t-avatar" src="images/quotes/fenja.png" alt="Fenja Möller" />
+          <div class="t-info">
+            <span class="t-name">Fenja Möller</span>
+            <span class="t-role">Bookerin, Molotow Musikclub</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card" data-t-cat="events">
+        <span class="t-cat-tag">Festivals &amp; Events</span>
+        <p class="t-quote"><span data-lang-de>„Die Personen, die die Codes nutzen, um Hilfe zu bekommen, waren überrascht, wie schnell und zuverlässig dann auch Hilfe vor Ort war."</span><span data-lang-en>"The people who used the codes to get help were surprised at how quickly and reliably help arrived on site."</span></p>
+        <div class="t-author">
+          <img class="t-avatar" src="images/quotes/sandra.png" alt="Sandra Lechtenböhmer" />
+          <div class="t-info">
+            <span class="t-name">Sandra Lechtenböhmer</span>
+            <span class="t-role">Leiterin Awareness, Millerntor Gallery</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card" data-t-cat="events">
+        <span class="t-cat-tag">Festivals &amp; Events</span>
+        <p class="t-quote"><span data-lang-de>„Für uns ist die Zusammenarbeit sehr wertvoll. Saferspaces bietet unseren Besucher*innen einen sicheren und niedrigschwelligen Kommunikationsweg von jedem Standort."</span><span data-lang-en>"The collaboration is very valuable to us. Saferspaces offers our visitors a safe and low-threshold communication channel from any location."</span></p>
+        <div class="t-author">
+          <img class="t-avatar" src="images/quotes/felicitas.png" alt="Felicitas Niere" />
+          <div class="t-info">
+            <span class="t-name">Felicitas Niere</span>
+            <span class="t-role">Leading Customer Support &amp; Stakeholder Relations, OMR</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="t-dots">
+      <div class="t-dot active" data-slide="0"></div>
+      <div class="t-dot" data-slide="1"></div>
+      <div class="t-dot" data-slide="2"></div>
+      <div class="t-dot" data-slide="3"></div>
+      <div class="t-dot" data-slide="4"></div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <div class="section bg-white animate-on-scroll">
   <div class="section-content">
@@ -234,6 +341,23 @@ function toggleMobile() {
   }
   if (t) t.classList.toggle('active');
 }
+
+// Testimonials Carousel
+const tSlides = document.querySelectorAll('.testimonial-card[data-t-cat]');
+const tDots = document.querySelectorAll('.t-dot');
+let currentSlide = 0;
+let tInterval;
+function showSlide(n) {
+  tSlides.forEach(s => s.classList.remove('active'));
+  tDots.forEach(d => d.classList.remove('active'));
+  currentSlide = n % tSlides.length;
+  tSlides[currentSlide].classList.add('active');
+  tDots[currentSlide].classList.add('active');
+}
+function startCarousel() { tInterval = setInterval(() => showSlide(currentSlide + 1), 7000); }
+function resetCarousel() { clearInterval(tInterval); startCarousel(); }
+tDots.forEach(d => d.addEventListener('click', () => { showSlide(parseInt(d.dataset.slide)); resetCarousel(); }));
+startCarousel();
 </script>
 </body>
 </html>
