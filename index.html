@@ -211,8 +211,9 @@
   .highlight-grid.reverse { direction: rtl; }
   .highlight-grid.reverse > * { direction: ltr; }
   .highlight-image img {
-    width: 100%; border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    max-width: 100%; max-height: 480px;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+    border-radius: 12px;
   }
   .highlight-content { max-width: 520px; }
   .highlight-label {
@@ -233,10 +234,10 @@
   }
 </style>
 
-<div class="highlight-section animate-on-scroll" style="background:var(--white);">
+<div class="highlight-section animate-on-scroll">
   <div class="section-content" style="text-align:center; margin-bottom:48px;">
     <p class="label-text" style="margin-bottom:12px;">Highlights</p>
-    <h2 class="headline3"><span data-lang-de>Das steckt im System.</span><span data-lang-en>What's inside the system.</span></h2>
+    <h2 class="headline3"><span data-lang-de>Das System</span><span data-lang-en>The System</span></h2>
   </div>
   <div class="highlight-grid">
     <div class="highlight-image">
@@ -250,7 +251,7 @@
   </div>
 </div>
 
-<div class="highlight-section animate-on-scroll" style="background:var(--lavender-main);">
+<div class="highlight-section animate-on-scroll">
   <div class="highlight-grid reverse">
     <div class="highlight-image">
       <img src="images/highlight-heatmap.png" alt="Heatmap" loading="lazy">
@@ -263,7 +264,7 @@
   </div>
 </div>
 
-<div class="highlight-section animate-on-scroll" style="background:var(--white);">
+<div class="highlight-section animate-on-scroll">
   <div class="highlight-grid">
     <div class="highlight-image">
       <img src="images/highlight-data-analysis.png" alt="Datenauswertung" loading="lazy">
@@ -276,7 +277,7 @@
   </div>
 </div>
 
-<div class="highlight-section animate-on-scroll" style="background:var(--lavender-main);">
+<div class="highlight-section animate-on-scroll">
   <div class="highlight-grid reverse">
     <div class="highlight-image">
       <img src="images/highlight-rapid-report.png" alt="Rapid Report" loading="lazy">
@@ -289,7 +290,7 @@
   </div>
 </div>
 
-<div class="highlight-section animate-on-scroll" style="background:var(--white);">
+<div class="highlight-section animate-on-scroll">
   <div class="highlight-grid">
     <div class="highlight-image">
       <img src="images/highlight-geofencing.png" alt="Geofencing" loading="lazy">
@@ -302,7 +303,7 @@
   </div>
 </div>
 
-<div class="highlight-section animate-on-scroll" style="background:var(--lavender-main);">
+<div class="highlight-section animate-on-scroll">
   <div class="highlight-grid reverse">
     <div class="highlight-image">
       <img src="images/highlight-whitelabel.png" alt="White Label" loading="lazy">
