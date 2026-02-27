@@ -55,9 +55,7 @@
       <div class="nav-item" onclick="window.location.href='referenzen_v4.html'">
         <a href="referenzen_v4.html" style="text-decoration:none; color:inherit;"><span data-lang-de>Referenzen</span><span data-lang-en>References</span></a>
         <div class="nav-dropdown">
-          <a href="referenzen_v4.html"><strong><span data-lang-de>Alle Referenzen</span><span data-lang-en>All References</span></strong><span><span data-lang-de>Übersicht &amp; Kundenstimmen</span><span data-lang-en>Overview &amp; testimonials</span></span></a>
           <a href="case-studies.html"><strong>Case Studies</strong><span><span data-lang-de>Detaillierte Einsatzberichte</span><span data-lang-en>Detailed deployment reports</span></span></a>
-          <a href="karte.html"><strong><span data-lang-de>Karte</span><span data-lang-en>Map</span></strong><span><span data-lang-de>saferspaces im Einsatz</span><span data-lang-en>saferspaces in action</span></span></a>
         </div>
       </div>
       <a href="preise.html" class="nav-item nav-item-link"><span data-lang-de>Preise</span><span data-lang-en>Pricing</span></a>
@@ -105,7 +103,6 @@
     <div class="mobile-menu-section-title"><span data-lang-de>Referenzen</span><span data-lang-en>References</span></div>
     <a href="referenzen_v4.html"><span data-lang-de>Alle Referenzen</span><span data-lang-en>All References</span></a>
     <a href="case-studies.html">Case Studies</a>
-    <a href="karte.html"><span data-lang-de>Karte</span><span data-lang-en>Map</span></a>
     <div class="mobile-menu-section-title"><span data-lang-de>Mehr</span><span data-lang-en>More</span></div>
     <a href="#">Team</a>
     <a href="#">Journey</a>
@@ -125,7 +122,7 @@
 
 <!-- HERO IMAGE -->
 <div class="hero-wrapper">
-  <div class="hero-section hero-image-bg" style="background-image:url('images/Frame 1595.png');">
+  <div class="hero-section hero-image-bg" style="background-image:url('images/Frame 1595.png'); border-radius:0;">
     <div class="hero-content" style="max-width:640px;">
       <h1 class="headline1 headline-white" style="margin-bottom:24px; font-size:clamp(48px, 7vw, 96px); line-height:1.05;">
         <span data-lang-de>Sicherheit in euren <em>Händen</em></span>
@@ -279,6 +276,108 @@
       <div class="t-dot" data-slide="2"></div>
       <div class="t-dot" data-slide="3"></div>
       <div class="t-dot" data-slide="4"></div>
+    </div>
+  </div>
+</section>
+
+<!-- UND ALS NÄCHSTES? -->
+<style>
+  .potenzial-section { background: var(--lavender-main); padding: 56px 32px; }
+  @media (min-width: 1280px) { .potenzial-section { padding: 80px 56px; } }
+  .potenzial-inner { max-width: 2680px; margin: 0 auto; }
+  .potenzial-inner .label-text { display: block; margin-bottom: 16px; }
+  .potenzial-inner h2 { margin-bottom: 16px; }
+  .potenzial-inner > p { margin-bottom: 48px; max-width: 640px; }
+  .potenzial-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+    margin-bottom: 40px;
+  }
+  @media (min-width: 768px) { .potenzial-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1280px) { .potenzial-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; } }
+  .potenzial-card {
+    background: var(--white);
+    border: 2px dashed rgb(194, 198, 229);
+    border-radius: var(--rounded-small);
+    padding: 24px 20px;
+    display: flex; flex-direction: column; gap: 10px;
+    transition: border-color 300ms, box-shadow 300ms;
+    text-decoration: none; color: inherit; cursor: pointer;
+  }
+  @media (min-width: 1280px) { .potenzial-card { border-radius: var(--rounded-medium); padding: 28px 24px; } }
+  .potenzial-card:hover {
+    border-color: var(--purple-main);
+    box-shadow: 0 0 30px 0 rgba(0,0,0,0.05);
+  }
+  .potenzial-icon { font-size: 28px; line-height: 1; }
+  .potenzial-name {
+    font-family: 'GT Alpina', serif; font-weight: 700;
+    font-size: 20px; color: var(--purple-main); line-height: 1.1em;
+  }
+  .potenzial-desc { font-size: 13px; line-height: 1.5em; color: var(--grey-mid); }
+  .potenzial-badge {
+    display: inline-flex; align-items: center; height: 22px; padding: 0 10px;
+    border-radius: var(--rounded-full); background: var(--lavender-main);
+    color: var(--purple-main); font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.05em; width: fit-content;
+  }
+</style>
+<section class="potenzial-section animate-on-scroll">
+  <div class="potenzial-inner">
+    <p class="label-text" style="margin-bottom:12px;"><span data-lang-de>und als nächstes?</span><span data-lang-en>What's next?</span></p>
+    <h2 class="headline3"><span data-lang-de>und als nächstes?</span><span data-lang-en>What's next?</span></h2>
+    <p class="copy"><span data-lang-de>Viele Gespräche laufen bereits – hier sind die Branchen, in denen wir die nächsten, wichtigen Schritte gehen möchten. Seid Pioniere und die ersten in einer der folgenden Branchen.</span><span data-lang-en>Many conversations are already underway – here are the industries where we want to take the next important steps. Be pioneers and the first in one of the following industries.</span></p>
+    <div class="potenzial-grid">
+      <a href="oepnv.html" class="potenzial-card">
+        <span class="potenzial-icon"><span class="material-symbols-rounded">directions_bus</span></span>
+        <span class="potenzial-name">Nahverkehr</span>
+        <span class="potenzial-desc"><span data-lang-de>Busse, Bahnen, Haltestellen – Sicherheit im öffentlichen Raum, rund um die Uhr.</span><span data-lang-en>Buses, trains, stops – safety in public spaces, around the clock.</span></span>
+        <span class="potenzial-badge"><span data-lang-de>Gespräche laufen</span><span data-lang-en>In discussion</span></span>
+      </a>
+      <a href="freizeit.html" class="potenzial-card">
+        <span class="potenzial-icon"><span class="material-symbols-rounded">local_hospital</span></span>
+        <span class="potenzial-name"><span data-lang-de>Gesundheit</span><span data-lang-en>Healthcare</span></span>
+        <span class="potenzial-desc"><span data-lang-de>Kliniken, Pflegeeinrichtungen, Praxen – Schutz für Patient:innen und Personal.</span><span data-lang-en>Clinics, care facilities, practices – protection for patients and staff.</span></span>
+        <span class="potenzial-badge"><span data-lang-de>Potenzial</span><span data-lang-en>Potential</span></span>
+      </a>
+      <a href="freizeit.html" class="potenzial-card">
+        <span class="potenzial-icon"><span class="material-symbols-rounded">shopping_bag</span></span>
+        <span class="potenzial-name">Retail</span>
+        <span class="potenzial-desc"><span data-lang-de>Einkaufszentren, Märkte, Outlets – Sicherheitsgefühl als Wettbewerbsvorteil.</span><span data-lang-en>Shopping centres, markets, outlets – sense of security as a competitive advantage.</span></span>
+        <span class="potenzial-badge"><span data-lang-de>Potenzial</span><span data-lang-en>Potential</span></span>
+      </a>
+      <a href="events.html" class="potenzial-card">
+        <span class="potenzial-icon"><span class="material-symbols-rounded">theater_comedy</span></span>
+        <span class="potenzial-name"><span data-lang-de>Kultur</span><span data-lang-en>Culture</span></span>
+        <span class="potenzial-desc"><span data-lang-de>Theater, Museen, Konzerthäuser – sichere Räume für diverse Publika.</span><span data-lang-en>Theatres, museums, concert halls – safe spaces for diverse audiences.</span></span>
+        <span class="potenzial-badge"><span data-lang-de>Gespräche laufen</span><span data-lang-en>In discussion</span></span>
+      </a>
+      <a href="oepnv.html" class="potenzial-card">
+        <span class="potenzial-icon"><span class="material-symbols-rounded">flight</span></span>
+        <span class="potenzial-name"><span data-lang-de>Mobilität</span><span data-lang-en>Mobility</span></span>
+        <span class="potenzial-desc"><span data-lang-de>Flughäfen, Bahnhöfe, Infrastruktur – Sicherheit an Knotenpunkten.</span><span data-lang-en>Airports, train stations, infrastructure – safety at hubs.</span></span>
+        <span class="potenzial-badge"><span data-lang-de>Potenzial</span><span data-lang-en>Potential</span></span>
+      </a>
+      <a href="unternehmen.html" class="potenzial-card">
+        <span class="potenzial-icon"><span class="material-symbols-rounded">business</span></span>
+        <span class="potenzial-name"><span data-lang-de>Unternehmen</span><span data-lang-en>Businesses</span></span>
+        <span class="potenzial-desc"><span data-lang-de>HR &amp; Compliance – interner Meldeweg für Mitarbeitende, DSGVO-konform. Holstein Kiel nutzt saferspaces bereits in der Geschäftsstelle.</span><span data-lang-en>HR &amp; Compliance – internal reporting channel for employees, GDPR-compliant.</span></span>
+        <span class="potenzial-badge"><span data-lang-de>Bereits im Einsatz</span><span data-lang-en>Already in use</span></span>
+      </a>
+      <a href="sport.html" class="potenzial-card">
+        <span class="potenzial-icon"><span class="material-symbols-rounded">sports_soccer</span></span>
+        <span class="potenzial-name"><span data-lang-de>Mehr Sportvereine</span><span data-lang-en>More sports clubs</span></span>
+        <span class="potenzial-desc"><span data-lang-de>Breiten- und Amateursport, weitere Proficlubs – DFB/DFL-konforme Lösung.</span><span data-lang-en>Grassroots and amateur sports, more professional clubs – DFB/DFL-compliant solution.</span></span>
+        <span class="potenzial-badge"><span data-lang-de>Im Aufbau</span><span data-lang-en>In development</span></span>
+      </a>
+      <a href="kommunen.html" class="potenzial-card">
+        <span class="potenzial-icon"><span class="material-symbols-rounded">location_city</span></span>
+        <span class="potenzial-name"><span data-lang-de>Mehr Städte</span><span data-lang-en>More cities</span></span>
+        <span class="potenzial-desc"><span data-lang-de>Kommunale Awareness-Konzepte nach dem Vorbild Krefeld und Hannover.</span><span data-lang-en>Municipal awareness concepts following the Krefeld and Hannover model.</span></span>
+        <span class="potenzial-badge"><span data-lang-de>Im Aufbau</span><span data-lang-en>In development</span></span>
+      </a>
+    </div>
+    <div style="text-align:center;">
+      <a href="demo.html" class="btn btn-secondary"><span data-lang-de>Erste:r in deiner Branche sein? Meld dich.</span><span data-lang-en>Be the first in your industry? Get in touch.</span></a>
     </div>
   </div>
 </section>
