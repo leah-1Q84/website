@@ -1,0 +1,82 @@
+Nr,Name,Kategorie,Kontext,Stadt,Adresse,Link
+1,Stadion Wankdorf,Stadion,BSC Young Boys,Bern,Papiermühlestrasse 71 3014 Bern Schweiz,https://www.stadedesuisse.ch
+2,Stadion Letzigrund,Stadion,FC Zürich / GC,Zürich,Badenerstrasse 500 8048 Zürich Schweiz,https://www.letzigrund.ch
+3,Swissporarena,Stadion,FC Luzern,Luzern,Horwerstrasse 87 6005 Luzern Schweiz,https://www.swissporarena.ch
+4,Stockhorn Arena,Stadion,FC Thun,Thun,Weststrasse 17 3600 Thun Schweiz,https://www.stockhornarena.ch
+5,Stade de Tourbillon,Stadion,FC Sion,Sion,Rue des Échutes 2 1950 Sion Schweiz,https://www.fc-sion.ch
+6,Stade de Genève,Stadion,Servette FC,Genf,Route des Batailleux 29 1218 Le Grand-Saconnex Schweiz,https://www.stadedegeneve.ch
+7,St. Jakob-Park,Stadion,FC Basel,Basel,St. Jakobs-Strasse 395 4052 Basel Schweiz,https://www.st-jakob-park.ch
+8,kybunpark,Stadion,FC St. Gallen,St. Gallen,Zürcher Strasse 464 9015 St. Gallen Schweiz,https://www.kybunpark.ch
+9,Signal Iduna Park,Stadion,BVB Dortmund,Dortmund,Strobelallee 50 44139 Dortmund,https://www.signal-iduna-park.de
+10,Allianz Arena,Stadion,FC Bayern München,München,Werner-Heisenberg-Allee 25 80939 München,https://allianz-arena.com
+11,Merkur Spiel-Arena,Stadion,Fortuna Düsseldorf,Düsseldorf,Arena-Strasse 1 40474 Düsseldorf,https://www.merkur-spiel-arena.de
+12,Volksparkstadion,Stadion,HSV Hamburg,Hamburg,Sylvesterallee 7 22525 Hamburg,https://www.volksparkstadion.de
+13,Red Bull Arena,Stadion,RB Leipzig,Leipzig,Am Sportforum 3 04105 Leipzig,https://www.redbullarena.com
+14,Olympiastadion,Stadion,Hertha BSC,Berlin,Olympischer Platz 3 14053 Berlin,https://www.olympiastadion.berlin
+15,MHPArena,Stadion,VfB Stuttgart,Stuttgart,Mercedesstrasse 87 70372 Stuttgart,https://www.mhp-arena.de
+16,Veltins-Arena,Stadion,Schalke 04,Gelsenkirchen,Rudi-Assauer-Platz 1 45891 Gelsenkirchen,https://www.veltins-arena.de
+17,Deutsche Bank Park,Stadion,Eintracht Frankfurt,Frankfurt,Mörfelder Landstrasse 362 60528 Frankfurt,https://www.deutschebank-park.de
+18,RheinEnergieSTADION,Stadion,1. FC Köln,Köln,Aachener Strasse 999 50933 Köln,https://www.rheinenergiestadion.de
+19,Holstein-Stadion,Stadion,Holstein Kiel,Kiel,Westring 501 24118 Kiel,https://www.holstein-kiel.de
+20,Millerntor-Stadion,Stadion,FC St. Pauli,Hamburg,Harald-Stender-Platz 1 20359 Hamburg,https://www.fcstpauli.com
+21,Barclays Arena,Arena,Veranstaltungsarena,Hamburg,Sylvesterallee 10 22525 Hamburg,https://www.barclays-arena.de
+22,Gigaset Arena,Stadion,1. FC Bocholt,Bocholt,Blücherstrasse 46399 Bocholt,https://www.fcbocholt.de
+23,AVNET Arena,Stadion,1. FC Magdeburg,Magdeburg,Heinz-Krügel-Platz 1 39114 Magdeburg,https://www.fc-magdeburg.de
+24,Tollwood Festival,Festival,Kunde,München,Olympiapark Süd 80809 München,https://www.tollwood.de
+25,Kieler Woche,Festival,Kunde,Kiel,Rathausplatz 24103 Kiel,https://www.kieler-woche.de
+26,gamescom,Messe,Kunde,Köln,Messeplatz 1 50679 Köln,https://www.gamescom.de
+27,OMR Festival,Messe,Kunde,Hamburg,Messeplatz 1 20357 Hamburg,https://omr.com
+28,Millerntor Gallery,Festival,Kunde,Hamburg,Harald-Stender-Platz 1 20359 Hamburg,https://www.millerntorgallery.org
+29,Reeperbahn Festival,Festival,2022 + 2023,Hamburg,Reeperbahn 20359 Hamburg,https://www.reeperbahnfestival.com
+30,Stadtgefühle Zukunftsfestival,Festival,ehem. genutzt,PRÜFEN,PRÜFEN,PRÜFEN
+31,Wutzrock,Festival,ehem. genutzt,Fleckeby,24357 Fleckeby Schleswig-Holstein,https://www.wutzrock.de
+32,R.SH Kindertag,Event,ehem. genutzt,Neumünster,Holstenhallen Justus-von-Liebig-Str. 2-4 24537 Neumünster,https://www.rsh.de
+33,Fährmannsfest,Stadtfest,Event,Hannover,Fährstrasse 30451 Hannover-Linden,https://www.faehrmannsfest.de
+34,Maschseefest,Stadtfest,Event,Hannover,Arthur-Menge-Ufer 30169 Hannover,https://www.maschseefest.de
+35,Schützenfest Hannover,Volksfest,Event,Hannover,Am Schützenplatz 30169 Hannover,https://www.schuetzenfest-hannover.de
+36,Fête de la Musique,Musikfest,Event,Hannover,Innenstadt 30159 Hannover,https://www.fete-hannover.de
+37,Japantag,Stadtfest,Event,Düsseldorf,Rheinuferpromenade 40213 Düsseldorf,https://www.japantag-duesseldorf-nrw.de
+38,Holstenköste,Stadtfest,Event,Neumünster,Grossflecken 24534 Neumünster,https://www.holstenkoeste.de
+39,Kulturfest Essen,Stadtfest,Event,Essen,Innenstadt Essen,PRÜFEN
+40,CSD Hannover,Pride,Event,Hannover,Opernplatz 30159 Hannover,https://www.csd-hannover.de
+41,Blütenball,Event,Event,Mainz,Innenstadt 55116 Mainz,PRÜFEN
+42,Fanzone Hamburg,EM 2024 Fanzone,EM 2024,Hamburg,Heiligengeistfeld 20359 Hamburg,https://www.hamburg.de
+43,Fanzone Berlin,EM 2024 Fanzone,EM 2024,Berlin,Strasse des 17. Juni 10557 Berlin,https://www.berlin.de
+44,Fanzone Frankfurt,EM 2024 Fanzone,EM 2024,Frankfurt,Mainufer 60311 Frankfurt,https://www.frankfurt.de
+45,Fanzone München,EM 2024 Fanzone,EM 2024,München,Olympiapark 80809 München,https://www.muenchen.de
+46,Kampnagel,Venue,Kulturzentrum,Hamburg,Jarrestrasse 20 22303 Hamburg,https://www.kampnagel.de
+47,Haus 73,Venue,Kulturzentrum,Hamburg,Schulterblatt 73 20357 Hamburg,https://www.haus73.de
+48,Molotow,Club,Club,Hamburg,Nobistor 14 22767 Hamburg,https://www.molotowclub.com
+49,Frappant,Club,Club/Bar,Hamburg,Zeiseweg 9 22765 Hamburg,PRÜFEN
+50,Tanzhaus West,Club,Club,Frankfurt,Gutleutstrasse 294 60327 Frankfurt,https://www.tanzhaus-west.de
+51,Tokonoma,Club,Club/Bar,Frankfurt,Schleidenstrasse 22 60318 Frankfurt,PRÜFEN
+52,Geheimclub,Club,Club,Magdeburg,Sternstrasse 29 39104 Magdeburg,PRÜFEN
+53,Schlachthof Wiesbaden,Venue,Kulturzentrum,Wiesbaden,Murnaustrasse 1 65189 Wiesbaden,https://www.schlachthof-wiesbaden.de
+54,Viertel,Club,Clubs/Stadtviertel,Bremen,Ostertorsteinweg 28203 Bremen,PRÜFEN
+55,Kulturfabrik (KuFa),Club,Club,Krefeld,Diepenstrasse 83 47805 Krefeld,https://www.kulturfabrik-krefeld.de
+56,Feinkost Lampe,Bar,Bar/Venue,Hannover,Grupenstrasse 2 30159 Hannover,https://www.feinkostlampe.de
+57,halle02,Club,Club,Heidelberg,Zollhofgarten 2 69115 Heidelberg,https://www.halle02.de
+58,Amadeus,Club,Club,Oldenburg,Mottenstrasse 21 26122 Oldenburg,https://www.amadeus-ol.de
+59,Frau Gunstmann,Bar,Bar,Oldenburg,Wallstrasse 6 26122 Oldenburg,https://www.fraugunstmann.de
+60,umBAUbar,Club,Club/Bar,Oldenburg,Stau 25-27 26122 Oldenburg,https://umbaubar.net
+61,Gleispark,Venue,Venue/Kultur,Oldenburg,Oldenburg,https://gleispark-oldenburg.de
+62,Landtag NRW,Institution,Institution,Düsseldorf,Platz des Landtags 1 40221 Düsseldorf,https://www.landtag.nrw.de
+63,Stadt Krefeld,Kommune,Kommune,Krefeld,Von-der-Leyen-Platz 1 47798 Krefeld,https://www.krefeld.de
+64,Hochschule Niederrhein,Hochschule,Bildung,Krefeld,Reinarzstrasse 49 47805 Krefeld,https://www.hs-niederrhein.de
+65,AStA Uni Lübeck,Hochschule,Bildung,Lübeck,Ratzeburger Allee 160 23562 Lübeck,https://www.asta-luebeck.de
+66,Hochschule Flensburg,Hochschule,Bildung,Flensburg,Kanzleistrasse 91-93 24943 Flensburg,https://www.hs-flensburg.de
+67,Starterkitchen,Bildung,Bildung/Startup,Kiel,Kuhnkestrasse 6 24118 Kiel,https://www.starterkitchen.de
+68,ASB Schleswig-Holstein,Organisation,Organisation,Kiel,Kieler Strasse 20 24143 Kiel,https://www.asb-sh.de
+69,Explorer Konferenz,Konferenz,Konferenz,Kiel,Kiel,https://www.explorerkonferenz.de
+70,Rune Sauna,Freizeit,Freizeit,Kiel,Düsternbrooker Weg 46 24105 Kiel,https://www.runesauna.de
+71,COAL (Campus Open Air),Festival,Festival/Uni,Lübeck,Ratzeburger Allee 160 23562 Lübeck,https://coaluebeck.de
+72,Antira,Kollektiv,Kollektiv,Hamburg,Hamburg,PRÜFEN
+73,Artig Works,Kollektiv,Kollektiv,Osnabrück,Osnabrück,PRÜFEN
+74,Milky Chance (Konzert),Konzert,Konzert,Kassel,Orangerie Herkulesweg 20 34121 Kassel,https://www.milkychance.net
+75,The Changency,Nachhaltigkeitsagentur,Milky Chance,Kappeln,Kappeln Schleswig-Holstein,PRÜFEN
+76,Jugendhaus Bargteheide,Jugendhaus,Jugendhaus,Bargteheide,22941 Bargteheide,PRÜFEN
+77,Mojo Club (Jeremias Tour),Club,Jeremias Club Tour 2025,Hamburg,Reeperbahn 1 20359 Hamburg,https://www.mojo.de
+78,Kupfersaal (Jeremias Tour),Venue,Jeremias Club Tour 2025,Leipzig,Kupfergasse 2 04109 Leipzig,https://www.kupfersaal.de
+79,Musikzentrum (Jeremias Tour),Venue,Jeremias Club Tour 2025,Hannover,Emil-Meyer-Strasse 26 30165 Hannover,https://www.musikzentrum-hannover.de
+80,ZOOM (Jeremias Tour),Club,Jeremias Club Tour 2025,Frankfurt,Brönnerstrasse 5-9 60313 Frankfurt,https://zoomfrankfurt.com
+81,Soli-Party Leipzig,Event,Event,Leipzig,Leipzig,PRÜFEN
