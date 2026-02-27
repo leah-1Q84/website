@@ -14,6 +14,8 @@
   <link rel="canonical" href="https://leah-1q84.github.io/website/referenzen_v4.html">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <!-- Open Graph -->
   <meta property="og:title" content="Referenzen – saferspaces">
@@ -169,16 +171,26 @@
     .filter-tab.active { background: var(--purple); color: var(--white); border-color: var(--purple); }
 
     /* 5. CARDS */
-    .cases-section { background: var(--white); padding: 32px 32px 80px; }
-    @media (min-width: 1280px) { .cases-section { padding: 40px 56px 80px; } }
+    .cases-section { background: var(--white); padding: 32px 0 80px; }
+    @media (min-width: 1280px) { .cases-section { padding: 40px 0 80px; } }
     .cases-inner { max-width: 2680px; margin: 0 auto; }
-    .cases-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
-    @media (min-width: 768px) { .cases-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 1280px) { .cases-grid { grid-template-columns: repeat(3, 1fr); } }
+    .cases-grid {
+      display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory;
+      padding: 0 32px 24px; -webkit-overflow-scrolling: touch; scroll-behavior: smooth;
+    }
+    @media (min-width: 1280px) { .cases-grid { padding: 0 56px 24px; } }
+    .cases-grid::-webkit-scrollbar { height: 6px; }
+    .cases-grid::-webkit-scrollbar-track { background: var(--lavender); border-radius: 3px; }
+    .cases-grid::-webkit-scrollbar-thumb { background: var(--purple); border-radius: 3px; opacity: 0.3; }
 
-    .card-wrap { display: flex; }
-    .card-wrap.featured { grid-column: 1 / -1; }
+    .card-wrap { display: flex; flex: 0 0 320px; scroll-snap-align: start; }
+    @media (min-width: 768px) { .card-wrap { flex: 0 0 380px; } }
+    @media (min-width: 1280px) { .card-wrap { flex: 0 0 420px; } }
+    .card-wrap.featured { flex: 0 0 90%; }
+    @media (min-width: 768px) { .card-wrap.featured { flex: 0 0 680px; } }
+    @media (min-width: 1280px) { .card-wrap.featured { flex: 0 0 800px; } }
     .card-wrap.hidden { display: none; }
+    .card-wrap.dimmed { opacity: 0.35; order: 99 !important; }
 
     .case-card {
       background: var(--white); border-radius: var(--radius-sm);
@@ -275,6 +287,7 @@
       padding: 24px 20px;
       display: flex; flex-direction: column; gap: 10px;
       transition: border-color 300ms, box-shadow 300ms;
+      text-decoration: none; color: inherit; cursor: pointer;
     }
     @media (min-width: 1280px) { .potenzial-card { border-radius: var(--radius-md); padding: 28px 24px; } }
     .potenzial-card:hover {
@@ -327,35 +340,42 @@
     }
     .presse-link:hover { text-decoration: underline; }
 
-    /* 8. TESTIMONIALS */
-    .testimonials-section { background: var(--lavender); padding: 56px 32px; }
+    /* 8. TESTIMONIALS / KUNDENSTIMMEN */
+    .testimonials-section { background: var(--white); padding: 56px 32px; }
     @media (min-width: 1280px) { .testimonials-section { padding: 80px 56px; } }
-    .testimonials-inner { max-width: 2680px; margin: 0 auto; }
-    .testimonials-inner h2 { text-align: center; margin-bottom: 48px; }
-    .testimonials-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
-    @media (min-width: 768px) { .testimonials-grid { grid-template-columns: repeat(2, 1fr); } }
+    .testimonials-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+    .testimonials-inner h2 { margin-bottom: 48px; }
+    .testimonials-carousel { position: relative; min-height: 280px; }
 
     .testimonial-card {
-      background: var(--white); border-radius: var(--radius-sm);
-      padding: 32px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 20px;
+      position: absolute; top: 0; left: 0; right: 0;
+      opacity: 0; transition: opacity 0.6s ease;
+      display: flex; flex-direction: column; align-items: center; gap: 24px;
+      pointer-events: none;
     }
-    @media (min-width: 1280px) { .testimonial-card { border-radius: var(--radius-md); padding: 40px; } }
+    .testimonial-card.active { opacity: 1; pointer-events: auto; }
     .t-quote {
       font-family: 'GT Alpina', serif; font-weight: 700;
-      font-size: 20px; line-height: 1.35em; color: var(--black); font-style: italic;
+      font-size: 20px; line-height: 1.4em; color: var(--black); font-style: italic;
+      text-align: center; max-width: 680px;
     }
     @media (min-width: 1280px) { .t-quote { font-size: 24px; } }
-    .t-author { display: flex; flex-direction: column; gap: 4px; padding-top: 16px; border-top: 1px solid var(--grey-main); }
+    .t-author { display: flex; align-items: center; gap: 12px; }
+    .t-avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--white); flex-shrink: 0; object-fit: cover; box-shadow: var(--shadow); }
+    .t-info { display: flex; flex-direction: column; gap: 2px; text-align: left; }
     .t-name { font-size: 15px; font-weight: 700; color: var(--purple); }
     .t-role { font-size: 13px; color: var(--grey-mid); }
-    .t-placeholder {
-      background: var(--lavender); border: 2px dashed var(--lavender-dark);
-      border-radius: var(--radius-sm); padding: 40px 32px;
-      display: flex; align-items: center; justify-content: center;
-      min-height: 200px; color: var(--grey-mid); font-size: 14px; font-weight: 700;
-      text-align: center; line-height: 1.6em;
+    .t-cat-tag {
+      display: inline-flex; align-items: center; height: 22px; padding: 0 10px;
+      border-radius: var(--radius-full); background: rgba(42,20,130,0.08); color: var(--purple);
+      font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
     }
-    @media (min-width: 1280px) { .t-placeholder { border-radius: var(--radius-md); } }
+    .t-dots { display: flex; gap: 8px; justify-content: center; margin-top: 32px; }
+    .t-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--purple); opacity: 0.2;
+      cursor: pointer; transition: opacity 0.3s;
+    }
+    .t-dot.active { opacity: 1; }
 
     /* 9. CTA */
     .cta-section { background: var(--white); padding: 56px 32px; }
@@ -367,6 +387,56 @@
     @media (min-width: 1280px) { .cta-card { border-radius: var(--radius-lg); padding: 80px 56px; } }
     .cta-card h2 { margin-bottom: 16px; }
     .cta-card p  { margin-bottom: 32px; max-width: 560px; margin-left: auto; margin-right: auto; }
+
+    /* ===== MAP STYLES ===== */
+    .map-container { width: 100%; height: 70vh; min-height: 420px; max-height: 640px; background: rgb(20,10,60); position: relative; }
+    #map { width: 100%; height: 100%; }
+
+    .ss-dot { border-radius: 50%; border: 2px solid rgba(255,255,255,0.9); box-shadow: 0 0 12px rgba(0,0,0,0.4); transition: transform 0.15s ease; }
+    .ss-dot:hover { transform: scale(1.4); box-shadow: 0 0 20px rgba(255,255,255,0.3); z-index: 1000 !important; }
+    .ss-dot-lg { width: 14px; height: 14px; }
+    .ss-dot-md { width: 11px; height: 11px; }
+    .ss-dot-sm { width: 9px; height: 9px; }
+
+    .leaflet-popup-content-wrapper { border-radius: 14px !important; font-family: 'Mabry Pro', sans-serif !important; box-shadow: 0 8px 32px rgba(0,0,0,0.3) !important; padding: 0 !important; background: var(--white) !important; }
+    .leaflet-popup-content { margin: 0 !important; min-width: 200px; }
+    .leaflet-popup-tip { box-shadow: 0 8px 32px rgba(0,0,0,0.3) !important; }
+    .ss-popup { padding: 18px 20px; }
+    .ss-popup-header { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+    .ss-popup-icon { font-size: 16px; line-height: 1; color: var(--purple); opacity: 0.45; }
+    .ss-popup-cat { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(42,20,130,0.5); }
+    .ss-popup-name { font-family: 'GT Alpina', serif; font-weight: 700; font-size: 22px; line-height: 1.1em; color: var(--purple); margin-bottom: 4px; }
+    .ss-popup-context { font-size: 14px; color: rgb(69,69,69); margin-bottom: 2px; }
+    .ss-popup-city { font-size: 13px; color: var(--grey-mid); margin-bottom: 10px; }
+    .ss-popup-link { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; font-weight: 700; color: var(--purple); text-decoration: none; }
+    .ss-popup-link:hover { text-decoration: underline; }
+
+    .leaflet-control-zoom a { background: rgb(30,14,95) !important; color: white !important; border-color: rgba(255,255,255,0.15) !important; }
+    .leaflet-control-zoom a:hover { background: rgb(42,20,130) !important; }
+    .leaflet-control-attribution { background: rgba(20,10,60,0.7) !important; color: rgba(255,255,255,0.4) !important; font-size: 10px !important; }
+    .leaflet-control-attribution a { color: rgba(255,255,255,0.5) !important; }
+
+    .map-center-btn { position: absolute; top: 12px; right: 12px; z-index: 600; display: flex; align-items: center; gap: 6px; padding: 6px 14px; background: var(--white); border: none; border-radius: var(--radius-full); font-family: 'Mabry Pro', sans-serif; font-size: 12px; font-weight: 700; color: var(--purple); cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.25); transition: all 0.2s ease; }
+    .map-center-btn:hover { background: var(--lavender); }
+    .map-center-btn .material-symbols-rounded { font-size: 16px; }
+
+    .map-filters { background: var(--lavender); padding: 20px 32px; }
+    @media (min-width: 1280px) { .map-filters { padding: 20px 56px; } }
+    .map-filters-inner { max-width: 2680px; margin: 0 auto; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .map-chip { display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 14px; border-radius: var(--radius-full); border: 1.5px solid rgba(42,20,130,0.2); background: transparent; font-family: 'Mabry Pro', sans-serif; font-size: 13px; font-weight: 700; color: rgba(42,20,130,0.55); cursor: pointer; transition: all 0.2s ease; white-space: nowrap; }
+    .map-chip:hover { border-color: rgba(42,20,130,0.4); color: var(--purple); }
+    .map-chip.active { background: rgba(42,20,130,0.1); border-color: rgba(42,20,130,0.4); color: var(--purple); }
+    .map-chip .chip-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .map-chip-count { font-size: 13px; color: rgba(42,20,130,0.4); margin-left: 4px; font-weight: 400; }
+
+    .map-legend { background: var(--lavender); padding: 12px 32px 20px; }
+    @media (min-width: 1280px) { .map-legend { padding: 12px 56px 20px; } }
+    .map-legend-inner { max-width: 2680px; margin: 0 auto; display: flex; gap: 20px; flex-wrap: wrap; }
+    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--purple); opacity: 0.7; }
+    .legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; border: 1px solid rgba(42,20,130,0.2); }
+
+    /* Separator before CTA */
+    .cta-separator { height: 2px; background: linear-gradient(90deg, transparent 0%, var(--lavender-dark) 20%, var(--lavender-dark) 80%, transparent 100%); margin: 0 56px; }
   </style>
 </head>
 <body class="lang-de">
@@ -472,15 +542,48 @@
 
 <div id="referenzen">
 
-  <!-- 1. HERO -->
-  <section class="ref-hero">
-    <span class="label">Referenzen</span>
-    <h1 class="hl hl1">Stadien. Festivals. Städte. uvm.</h1>
-    <p class="hero-subline">Eingesetzt. Bewährt. Vertraut.</p>
-    <p class="copy">Von der Bundesliga bis zur UEFA EURO, vom Stadtfest bis zur Universität – saferspaces ist überall dort im Einsatz, wo echte Sicherheit zählt.</p>
-    <div class="ref-hero-btns">
-      <a href="https://cal.com/saferspaces/hello?duration=30" target="_blank" class="btn btn-primary">Demo buchen</a>
-      <a href="#cases" class="btn btn-secondary">Alle Cases ansehen</a>
+  <!-- 1. HERO + MAP -->
+  <section class="ref-hero" style="background: var(--purple);">
+    <span class="label" style="color: var(--lavender);">Referenzen</span>
+    <h1 class="hl hl1" style="color: var(--white);">saferspaces im Einsatz.</h1>
+    <p class="copy" style="color: rgba(255,255,255,0.75);">Von der Bundesliga über die UEFA EURO bis zu Clubs und Festivals – hier seht ihr, wo saferspaces bereits für sicherere Räume sorgt.</p>
+  </section>
+
+  <!-- MAP -->
+  <div class="map-container">
+    <div id="map"></div>
+    <button class="map-center-btn" onclick="centerMap()" title="Karte zentrieren">
+      <span class="material-symbols-rounded">my_location</span>
+      Zentrieren
+    </button>
+  </div>
+
+  <!-- MAP FILTERS -->
+  <div class="map-filters">
+    <div class="map-filters-inner">
+      <button class="map-chip active" data-map-filter="all">Alle</button>
+      <button class="map-chip" data-map-filter="stadion"><span class="chip-dot" style="background:rgb(42,20,130)"></span> Stadien</button>
+      <button class="map-chip" data-map-filter="festival"><span class="chip-dot" style="background:rgb(0,133,93)"></span> Festivals &amp; Messen</button>
+      <button class="map-chip" data-map-filter="event"><span class="chip-dot" style="background:rgb(255,255,255);border:1px solid rgba(42,20,130,0.3)"></span> Events</button>
+      <button class="map-chip" data-map-filter="fanzone"><span class="chip-dot" style="background:rgb(210,214,239);border:1px solid rgba(42,20,130,0.2)"></span> Fanzonen</button>
+      <button class="map-chip" data-map-filter="club"><span class="chip-dot" style="background:rgb(130,115,190)"></span> Clubs &amp; Bars</button>
+      <button class="map-chip" data-map-filter="venue"><span class="chip-dot" style="background:rgb(170,165,215)"></span> Venues</button>
+      <button class="map-chip" data-map-filter="institution"><span class="chip-dot" style="background:rgb(90,75,155)"></span> Institutionen</button>
+      <button class="map-chip" data-map-filter="kollektiv"><span class="chip-dot" style="background:rgb(194,198,229);border:1px solid rgba(42,20,130,0.2)"></span> Kollektive</button>
+      <button class="map-chip" data-map-filter="konzert"><span class="chip-dot" style="background:rgb(0,95,66)"></span> Konzerte</button>
+    </div>
+  </div>
+  <section class="map-legend">
+    <div class="map-legend-inner">
+      <div class="legend-item"><span class="legend-dot" style="background:rgb(42,20,130)"></span> Stadien &amp; Arenen</div>
+      <div class="legend-item"><span class="legend-dot" style="background:rgb(0,133,93)"></span> Festivals &amp; Messen</div>
+      <div class="legend-item"><span class="legend-dot" style="background:rgb(255,255,255)"></span> Events</div>
+      <div class="legend-item"><span class="legend-dot" style="background:rgb(210,214,239)"></span> Fanzonen</div>
+      <div class="legend-item"><span class="legend-dot" style="background:rgb(130,115,190)"></span> Clubs &amp; Bars</div>
+      <div class="legend-item"><span class="legend-dot" style="background:rgb(170,165,215)"></span> Venues</div>
+      <div class="legend-item"><span class="legend-dot" style="background:rgb(90,75,155)"></span> Institutionen</div>
+      <div class="legend-item"><span class="legend-dot" style="background:rgb(194,198,229)"></span> Kollektive</div>
+      <div class="legend-item"><span class="legend-dot" style="background:rgb(0,95,66)"></span> Konzerte</div>
     </div>
   </section>
 
@@ -510,9 +613,9 @@
   <section class="uefa-section">
     <div class="uefa-inner">
       <div class="uefa-text">
-        <span class="label">Offizielle Anerkennung</span>
-        <h2 class="hl hl3">Offiziell Teil des UEFA-Safeguarding-Konzepts</h2>
-        <p class="copy">Bei der UEFA EURO 2024 war saferspaces offiziell als Rapid-Response-Mechanismus in allen Spielorten im Einsatz – dokumentiert und verlinkt auf uefa.com als Teil des Human-Rights-Programms.</p>
+        <span class="label">Proof of Concept</span>
+        <h2 class="hl hl3">Teil des UEFA-Safeguarding-Konzepts</h2>
+        <p class="copy">Sowohl bei der UEFA EURO 2024 als auch der UEFA EURO 2025 in der Schweiz war saferspaces als Rapid-Response-Mechanismus in allen Spielorten im Einsatz – dokumentiert und verlinkt auf uefa.com als Teil des Human-Rights-Programms.</p>
         <a href="https://de.uefa.com/uefaeuro/history/news/028e-1b18f84e0244-2a6337fd188c-1000--upholding-and-protecting-human-rights-at-uefa-euro-2024/" target="_blank" class="btn btn-secondary">Zur UEFA-Dokumentation →</a>
       </div>
       <div class="uefa-card">
@@ -545,7 +648,7 @@
       <div class="cases-grid">
 
         <!-- UEFA FEATURED -->
-        <div class="card-wrap featured" data-category="sport">
+        <div class="card-wrap" data-category="sport">
           <div class="case-card">
             <div class="card-image">
               <img src="images/IMG_0450 1.png" alt="UEFA EURO" />
@@ -569,7 +672,7 @@
         <!-- HOLSTEIN KIEL KOMPLETT -->
         <div class="card-wrap" data-category="sport">
           <div class="case-card">
-            <div class="card-image" style="background: var(--lightblue);">
+            <div class="card-image">
               <div class="card-image-fallback">Holstein Kiel</div>
             </div>
             <div class="card-body">
@@ -586,18 +689,37 @@
           </div>
         </div>
 
-        <!-- BUNDESLIGA CLUBS -->
+        <!-- FC ST. PAULI -->
         <div class="card-wrap" data-category="sport">
           <div class="case-card">
-            <div class="card-image" style="background: var(--lavender);">
-              <div class="card-image-fallback">FC St. Pauli · 1. FC Magdeburg · FC Bocholt</div>
+            <div class="card-image">
+              <div class="card-image-fallback">FC St. Pauli</div>
             </div>
             <div class="card-body">
-              <span class="case-tag">Fußball · 1.–3. Liga</span>
-              <h3>FC St. Pauli, 1. FC Magdeburg & FC Bocholt</h3>
-              <p>Niedrigschwellige Meldeoption im Stadion – DFB/DFL-konform. Von Anfang an erprobt mit Bundesliga-Partnern, darunter FC Bayern München.</p>
+              <span class="case-tag">Fußball · Bundesliga</span>
+              <h3>FC St. Pauli</h3>
+              <p>Im Millerntor-Stadion kommt saferspaces als Teil des Awareness-Konzeptes zum Einsatz – niedrigschwellig, anonym und direkt am Spieltag verfügbar.</p>
               <div class="case-stats">
-                <div><span class="case-stat-num">3</span><span class="case-stat-lbl">Clubs aktiv</span></div>
+                <div><span class="case-stat-num">29.546</span><span class="case-stat-lbl">Plätze</span></div>
+                <div><span class="case-stat-num">Hamburg</span><span class="case-stat-lbl">Millerntor</span></div>
+              </div>
+              <a href="https://www.fcstpauli.com" target="_blank" class="case-link">Zum Verein →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- WEITERE CLUBS -->
+        <div class="card-wrap" data-category="sport">
+          <div class="case-card">
+            <div class="card-image">
+              <div class="card-image-fallback">1. FC Magdeburg · FC Bocholt</div>
+            </div>
+            <div class="card-body">
+              <span class="case-tag">Fußball · 2.–3. Liga</span>
+              <h3>1. FC Magdeburg & FC Bocholt</h3>
+              <p>Niedrigschwellige Meldeoption im Stadion – DFB/DFL-konform. Von Anfang an erprobt mit Bundesliga-Partnern.</p>
+              <div class="case-stats">
+                <div><span class="case-stat-num">2</span><span class="case-stat-lbl">Clubs aktiv</span></div>
                 <div><span class="case-stat-num">DFB/DFL</span><span class="case-stat-lbl">Konform</span></div>
               </div>
               <a href="#" class="case-link">Case Study lesen →</a>
@@ -609,7 +731,7 @@
         <div class="card-wrap" data-category="sport">
           <div class="case-card">
             <div class="card-image">
-              <img src="images/Frame (1).png" alt="Barclays Arena Hamburg" />
+              <div class="card-image-fallback">Barclays Arena<br>Hamburg</div>
             </div>
             <div class="card-body">
               <span class="case-tag">Arena · Dauerbetrieb</span>
@@ -628,7 +750,7 @@
         <div class="card-wrap" data-category="kommunen">
           <div class="case-card">
             <div class="card-image">
-              <img src="images/kiwo.png" alt="Kieler Woche" />
+              <div class="card-image-fallback">Kieler Woche</div>
             </div>
             <div class="card-body">
               <span class="case-tag">Kommune · Stadtfest</span>
@@ -705,7 +827,7 @@
         <div class="card-wrap" data-category="events">
           <div class="case-card">
             <div class="card-image">
-              <img src="images/Frame (2).png" alt="OMR Festival" />
+              <div class="card-image-fallback">OMR Festival</div>
             </div>
             <div class="card-body">
               <span class="case-tag">Festival · Messe</span>
@@ -723,13 +845,13 @@
         <!-- TOLLWOOD -->
         <div class="card-wrap" data-category="events">
           <div class="case-card">
-            <div class="card-image" style="background: rgb(20,40,20);">
-              <div class="card-image-fallback" style="color:white;">Tollwood<br>München</div>
+            <div class="card-image">
+              <div class="card-image-fallback">Tollwood<br>München</div>
             </div>
             <div class="card-body">
               <span class="case-tag">Festival · Kultur</span>
               <h3>Tollwood München</h3>
-              <p>Seit 2023 Teil des Awareness-Konzepts des Tollwood Festivals – Münchens größtem Kulturfestival mit klarem Werteprofil. Saferspaces passt zum Spirit: offen, divers, sicher für alle.</p>
+              <p>Seit 2023 Teil des Schutzkonzeptes des Tollwood Festivals – Münchens größtem Kulturfestival mit klarem Werteprofil. Saferspaces passt zum Spirit: offen, divers, sicher für alle.</p>
               <div class="case-stats">
                 <div><span class="case-stat-num">Seit 2023</span><span class="case-stat-lbl">Im Einsatz</span></div>
                 <div><span class="case-stat-num">München</span><span class="case-stat-lbl">Olympiapark</span></div>
@@ -743,7 +865,7 @@
         <div class="card-wrap" data-category="events">
           <div class="case-card">
             <div class="card-image">
-              <img src="images/Frame Kopie.png" alt="gamescom" />
+              <div class="card-image-fallback">gamescom</div>
             </div>
             <div class="card-body">
               <span class="case-tag">Messe · Gaming</span>
@@ -761,8 +883,8 @@
         <!-- REEPERBAHN -->
         <div class="card-wrap" data-category="events">
           <div class="case-card">
-            <div class="card-image" style="background: rgb(25,5,50);">
-              <div class="card-image-fallback" style="color:white;">Reeperbahn<br>Festival</div>
+            <div class="card-image">
+              <div class="card-image-fallback">Reeperbahn<br>Festival</div>
             </div>
             <div class="card-body">
               <span class="case-tag">Musik · Festival</span>
@@ -840,58 +962,58 @@
   <!-- 6. POTENZIAL -->
   <section class="potenzial-section">
     <div class="potenzial-inner">
-      <span class="label">Im Aufbau</span>
-      <h2 class="hl hl3">Wo wir als nächstes hinwollen</h2>
-      <p class="copy">Viele Gespräche laufen bereits – hier sind die Branchen, in denen saferspaces großes Potenzial sieht. Werde Pionier:in in deiner Branche.</p>
+      <span class="label">und als nächstes?</span>
+      <h2 class="hl hl3">und als nächstes?</h2>
+      <p class="copy">Viele Gespräche laufen bereits – hier sind die Branchen, in denen wir die nächsten, wichtigen Schritte gehen möchten. Seid Pioniere und die ersten in einer der folgenden Branchen.</p>
       <div class="potenzial-grid">
-        <div class="potenzial-card">
+        <a href="oepnv.html" class="potenzial-card">
           <span class="potenzial-icon"><span class="material-symbols-rounded">directions_bus</span></span>
           <span class="potenzial-name">Nahverkehr</span>
           <span class="potenzial-desc">Busse, Bahnen, Haltestellen – Sicherheit im öffentlichen Raum, rund um die Uhr.</span>
           <span class="potenzial-badge">Gespräche laufen</span>
-        </div>
-        <div class="potenzial-card">
+        </a>
+        <a href="freizeit.html" class="potenzial-card">
           <span class="potenzial-icon"><span class="material-symbols-rounded">local_hospital</span></span>
           <span class="potenzial-name">Gesundheit</span>
           <span class="potenzial-desc">Kliniken, Pflegeeinrichtungen, Praxen – Schutz für Patient:innen und Personal.</span>
           <span class="potenzial-badge">Potenzial</span>
-        </div>
-        <div class="potenzial-card">
+        </a>
+        <a href="freizeit.html" class="potenzial-card">
           <span class="potenzial-icon"><span class="material-symbols-rounded">shopping_bag</span></span>
           <span class="potenzial-name">Retail</span>
           <span class="potenzial-desc">Einkaufszentren, Märkte, Outlets – Sicherheitsgefühl als Wettbewerbsvorteil.</span>
           <span class="potenzial-badge">Potenzial</span>
-        </div>
-        <div class="potenzial-card">
+        </a>
+        <a href="events.html" class="potenzial-card">
           <span class="potenzial-icon"><span class="material-symbols-rounded">theater_comedy</span></span>
           <span class="potenzial-name">Kultur</span>
           <span class="potenzial-desc">Theater, Museen, Konzerthäuser – sichere Räume für diverse Publika.</span>
           <span class="potenzial-badge">Gespräche laufen</span>
-        </div>
-        <div class="potenzial-card">
+        </a>
+        <a href="oepnv.html" class="potenzial-card">
           <span class="potenzial-icon"><span class="material-symbols-rounded">flight</span></span>
           <span class="potenzial-name">Mobilität</span>
           <span class="potenzial-desc">Flughäfen, Bahnhöfe, Infrastruktur – Sicherheit an Knotenpunkten.</span>
           <span class="potenzial-badge">Potenzial</span>
-        </div>
-        <div class="potenzial-card">
+        </a>
+        <a href="unternehmen.html" class="potenzial-card">
           <span class="potenzial-icon"><span class="material-symbols-rounded">business</span></span>
           <span class="potenzial-name">Unternehmen</span>
-          <span class="potenzial-desc">HR & Compliance – interner Meldeweg für Mitarbeitende, DSGVO-konform.</span>
-          <span class="potenzial-badge">Gespräche laufen</span>
-        </div>
-        <div class="potenzial-card">
+          <span class="potenzial-desc">HR & Compliance – interner Meldeweg für Mitarbeitende, DSGVO-konform. Holstein Kiel nutzt saferspaces bereits in der Geschäftsstelle.</span>
+          <span class="potenzial-badge">Bereits im Einsatz</span>
+        </a>
+        <a href="sport.html" class="potenzial-card">
           <span class="potenzial-icon"><span class="material-symbols-rounded">sports_soccer</span></span>
           <span class="potenzial-name">Mehr Sportvereine</span>
           <span class="potenzial-desc">Breiten- und Amateursport, weitere Proficlubs – DFB/DFL-konforme Lösung.</span>
           <span class="potenzial-badge">Im Aufbau</span>
-        </div>
-        <div class="potenzial-card">
+        </a>
+        <a href="kommunen.html" class="potenzial-card">
           <span class="potenzial-icon"><span class="material-symbols-rounded">location_city</span></span>
           <span class="potenzial-name">Mehr Städte</span>
           <span class="potenzial-desc">Kommunale Awareness-Konzepte nach dem Vorbild Krefeld und Hannover.</span>
           <span class="potenzial-badge">Im Aufbau</span>
-        </div>
+        </a>
       </div>
       <div style="text-align:center;">
         <a href="https://cal.com/saferspaces/hello?duration=30" target="_blank" class="btn btn-secondary">Erste:r in deiner Branche sein? Meld dich.</a>
@@ -899,7 +1021,7 @@
     </div>
   </section>
 
-  <!-- 7. PRESSE -->
+  <!-- 7. PRESSE (ausgeblendet – wird später überarbeitet)
   <section class="presse-section">
     <div class="presse-inner">
       <span class="label">Medien</span>
@@ -928,31 +1050,81 @@
       </div>
     </div>
   </section>
+  -->
 
-  <!-- 8. TESTIMONIALS -->
-  <section class="testimonials-section">
+  <!-- 8. KUNDENSTIMMEN -->
+  <section class="testimonials-section" id="kundenstimmen">
     <div class="testimonials-inner">
-      <h2 class="hl hl3">Was unsere Partner sagen</h2>
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <p class="t-quote">„Saferspaces verändert das Prinzip von Sicherheit – vom Gefühl der Bedrohung hin zum Gefühl, sich wohl und sicher zu fühlen."</p>
+      <h2 class="hl hl3">Kundenstimmen</h2>
+      <div class="testimonials-carousel">
+        <div class="testimonial-card active" data-t-cat="kommunen">
+          <span class="t-cat-tag">Kommunen</span>
+          <p class="t-quote">„Die Kooperation von saferspaces und der Landeshauptstadt Kiel ermöglicht ein sichereres Feiern und den demokratischen Zusammenhalt auf der Kieler Woche."</p>
           <div class="t-author">
-            <span class="t-name">Sven Brux</span>
-            <span class="t-role">Sicherheitsbeauftragter, FC St. Pauli</span>
+            <img class="t-avatar" src="images/quotes/vanessa.png" alt="Vanessa-Zoe Vitulskis" />
+            <div class="t-info">
+              <span class="t-name">Vanessa-Zoe Vitulskis</span>
+              <span class="t-role">Referatsleiterin Stadtordnungsdienst, Kieler Woche</span>
+            </div>
           </div>
         </div>
-        <div class="testimonial-card">
-          <p class="t-quote">„Allein die Sichtbarkeit der QR-Codes hat die Atmosphäre im Venue verändert. Besucher erkennen: hier wird Sicherheit ernst genommen."</p>
+        <div class="testimonial-card" data-t-cat="sport">
+          <span class="t-cat-tag">Sport</span>
+          <p class="t-quote">„Durch die Nutzung werden wir unnötige Zeitverluste bei der Standortbestimmung des Notfalls durch Funkstörungen, nicht verständliche Durchsagen usw. verhindern und somit den Hilfestandard im Stadion erhöhen."</p>
           <div class="t-author">
-            <span class="t-name">Petra Ackmann</span>
-            <span class="t-role">ehem. Vorsitzende, Landesfrauenrat Hamburg e.V.</span>
+            <img class="t-avatar" src="images/quotes/sven.png" alt="Sven Brux" />
+            <div class="t-info">
+              <span class="t-name">Sven Brux</span>
+              <span class="t-role">Leitung Spielorganisation & Fanangelegenheiten, FC St. Pauli</span>
+            </div>
           </div>
         </div>
-        <div class="t-placeholder">Zitat Barclays Arena<br>folgt in Kürze</div>
-        <div class="t-placeholder">Weiteres Kundenzitat<br>folgt in Kürze</div>
+        <div class="testimonial-card" data-t-cat="nachtleben">
+          <span class="t-cat-tag">Nachtleben</span>
+          <p class="t-quote">„Wir haben den Eindruck, dass unser Publikum, durch die Ansprache und Nutzen der App, direkt mehr aufeinander acht gibt."</p>
+          <div class="t-author">
+            <img class="t-avatar" src="images/quotes/fenja.png" alt="Fenja Möller" />
+            <div class="t-info">
+              <span class="t-name">Fenja Möller</span>
+              <span class="t-role">Bookerin, Molotow Musikclub</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card" data-t-cat="events">
+          <span class="t-cat-tag">Festivals & Events</span>
+          <p class="t-quote">„Die Personen, die die Codes nutzen, um Hilfe zu bekommen, waren überrascht, wie schnell und zuverlässig dann auch Hilfe vor Ort war."</p>
+          <div class="t-author">
+            <img class="t-avatar" src="images/quotes/sandra.png" alt="Sandra Lechtenböhmer" />
+            <div class="t-info">
+              <span class="t-name">Sandra Lechtenböhmer</span>
+              <span class="t-role">Leiterin Awareness, Millerntor Gallery</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card" data-t-cat="events">
+          <span class="t-cat-tag">Festivals & Events</span>
+          <p class="t-quote">„Für uns ist die Zusammenarbeit sehr wertvoll. Saferspaces bietet unseren Besucher*innen einen sicheren und niedrigschwelligen Kommunikationsweg von jedem Standort. Zudem ließ sich die Anwendung optimal in eigener CI in unsere Plattform integrieren."</p>
+          <div class="t-author">
+            <img class="t-avatar" src="images/quotes/felicitas.png" alt="Felicitas Niere" />
+            <div class="t-info">
+              <span class="t-name">Felicitas Niere</span>
+              <span class="t-role">Leading Customer Support & Stakeholder Relations, OMR</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="t-dots">
+        <div class="t-dot active" data-slide="0"></div>
+        <div class="t-dot" data-slide="1"></div>
+        <div class="t-dot" data-slide="2"></div>
+        <div class="t-dot" data-slide="3"></div>
+        <div class="t-dot" data-slide="4"></div>
       </div>
     </div>
   </section>
+
+  <!-- SEPARATOR -->
+  <div class="cta-separator"></div>
 
   <!-- 9. CTA -->
   <section class="cta-section">
@@ -966,20 +1138,182 @@
 </div>
 
 <script>
+/* ===== MAP: LOCATIONS DATA ===== */
+var LOCATIONS = [
+  {name:"Stadion Wankdorf",cat:"stadion",context:"BSC Young Boys",city:"Bern",lat:46.9631,lng:7.4658,link:"https://www.stadedesuisse.ch"},
+  {name:"Stadion Letzigrund",cat:"stadion",context:"FC Zürich / GC",city:"Zürich",lat:47.3823,lng:8.5203,link:"https://www.letzigrund.ch"},
+  {name:"Swissporarena",cat:"stadion",context:"FC Luzern",city:"Luzern",lat:47.0355,lng:8.3102,link:"https://www.swissporarena.ch"},
+  {name:"Stockhorn Arena",cat:"stadion",context:"FC Thun",city:"Thun",lat:46.7520,lng:7.6218,link:"https://www.stockhornarena.ch"},
+  {name:"Stade de Tourbillon",cat:"stadion",context:"FC Sion",city:"Sion",lat:46.2319,lng:7.3817,link:"https://www.fc-sion.ch"},
+  {name:"Stade de Genève",cat:"stadion",context:"Servette FC",city:"Genf",lat:46.2327,lng:6.1163,link:"https://www.stadedegeneve.ch"},
+  {name:"St. Jakob-Park",cat:"stadion",context:"FC Basel",city:"Basel",lat:47.5413,lng:7.6200,link:"https://www.st-jakob-park.ch"},
+  {name:"kybunpark",cat:"stadion",context:"FC St. Gallen",city:"St. Gallen",lat:47.4081,lng:9.3095,link:"https://www.kybunpark.ch"},
+  {name:"Signal Iduna Park",cat:"stadion",context:"BVB Dortmund",city:"Dortmund",lat:51.4926,lng:7.4515,link:"https://www.signal-iduna-park.de"},
+  {name:"Allianz Arena",cat:"stadion",context:"FC Bayern München",city:"München",lat:48.2188,lng:11.6247,link:"https://allianz-arena.com"},
+  {name:"Merkur Spiel-Arena",cat:"stadion",context:"Fortuna Düsseldorf",city:"Düsseldorf",lat:51.2614,lng:6.7338,link:"https://www.merkur-spiel-arena.de"},
+  {name:"Volksparkstadion",cat:"stadion",context:"HSV Hamburg",city:"Hamburg",lat:53.5871,lng:9.8987,link:"https://www.volksparkstadion.de"},
+  {name:"Red Bull Arena",cat:"stadion",context:"RB Leipzig",city:"Leipzig",lat:51.3459,lng:12.3485,link:"https://www.redbullarena.com"},
+  {name:"Olympiastadion",cat:"stadion",context:"Hertha BSC",city:"Berlin",lat:52.5146,lng:13.2394,link:"https://www.olympiastadion.berlin"},
+  {name:"MHPArena",cat:"stadion",context:"VfB Stuttgart",city:"Stuttgart",lat:48.7924,lng:9.2320,link:"https://www.mhp-arena.de"},
+  {name:"Veltins-Arena",cat:"stadion",context:"Schalke 04",city:"Gelsenkirchen",lat:51.5546,lng:7.0678,link:"https://www.veltins-arena.de"},
+  {name:"Deutsche Bank Park",cat:"stadion",context:"Eintracht Frankfurt",city:"Frankfurt",lat:50.0686,lng:8.6455,link:"https://www.deutschebank-park.de"},
+  {name:"RheinEnergieSTADION",cat:"stadion",context:"1. FC Köln",city:"Köln",lat:50.9335,lng:6.8754,link:"https://www.rheinenergiestadion.de"},
+  {name:"Holstein-Stadion",cat:"stadion",context:"Holstein Kiel",city:"Kiel",lat:54.3499,lng:10.1224,link:"https://www.holstein-kiel.de"},
+  {name:"Millerntor-Stadion",cat:"stadion",context:"FC St. Pauli",city:"Hamburg",lat:53.5547,lng:9.9675,link:"https://www.fcstpauli.com"},
+  {name:"Barclays Arena",cat:"stadion",context:"Veranstaltungsarena",city:"Hamburg",lat:53.5873,lng:9.9001,link:"https://www.barclays-arena.de"},
+  {name:"Gigaset Arena",cat:"stadion",context:"1. FC Bocholt",city:"Bocholt",lat:51.8390,lng:6.6172,link:"https://www.fcbocholt.de"},
+  {name:"AVNET Arena",cat:"stadion",context:"1. FC Magdeburg",city:"Magdeburg",lat:52.1307,lng:11.6388,link:"https://www.fc-magdeburg.de"},
+  {name:"Tollwood Festival",cat:"festival",context:"Kunde",city:"München",lat:48.1750,lng:11.5514,link:"https://www.tollwood.de"},
+  {name:"Kieler Woche",cat:"festival",context:"Kunde",city:"Kiel",lat:54.3233,lng:10.1349,link:"https://www.kieler-woche.de"},
+  {name:"gamescom",cat:"festival",context:"Kunde",city:"Köln",lat:50.9475,lng:6.9820,link:"https://www.gamescom.de"},
+  {name:"OMR Festival",cat:"festival",context:"Kunde",city:"Hamburg",lat:53.5632,lng:10.0023,link:"https://omr.com"},
+  {name:"Millerntor Gallery",cat:"festival",context:"Kunde",city:"Hamburg",lat:53.5557,lng:9.9665,link:"https://www.millerntorgallery.org"},
+  {name:"Reeperbahn Festival",cat:"festival",context:"2022 + 2023",city:"Hamburg",lat:53.5498,lng:9.9629,link:"https://www.reeperbahnfestival.com"},
+  {name:"Wutzrock",cat:"festival",context:"ehem. genutzt",city:"Fleckeby",lat:54.4900,lng:9.7500,link:"https://www.wutzrock.de"},
+  {name:"R.SH Kindertag",cat:"festival",context:"ehem. genutzt",city:"Neumünster",lat:54.0706,lng:9.9870,link:"https://www.rsh.de"},
+  {name:"COAL (Campus Open Air)",cat:"festival",context:"Festival / Uni",city:"Lübeck",lat:53.8353,lng:10.7010,link:"https://coaluebeck.de"},
+  {name:"Fährmannsfest",cat:"event",context:"Stadtfest",city:"Hannover",lat:52.3672,lng:9.7230,link:"https://www.faehrmannsfest.de"},
+  {name:"Maschseefest",cat:"event",context:"Stadtfest",city:"Hannover",lat:52.3575,lng:9.7383,link:"https://www.maschseefest.de"},
+  {name:"Schützenfest Hannover",cat:"event",context:"Volksfest",city:"Hannover",lat:52.3623,lng:9.7318,link:"https://www.schuetzenfest-hannover.de"},
+  {name:"Fête de la Musique",cat:"event",context:"Musikfest",city:"Hannover",lat:52.3759,lng:9.7320,link:"https://www.fete-hannover.de"},
+  {name:"Japantag",cat:"event",context:"Stadtfest",city:"Düsseldorf",lat:51.2270,lng:6.7696,link:"https://www.japantag-duesseldorf-nrw.de"},
+  {name:"Holstenköste",cat:"event",context:"Stadtfest",city:"Neumünster",lat:54.0754,lng:9.9831,link:"https://www.holstenkoeste.de"},
+  {name:"Kulturfest Essen",cat:"event",context:"Stadtfest",city:"Essen",lat:51.4556,lng:7.0116,link:""},
+  {name:"CSD Hannover",cat:"event",context:"Pride",city:"Hannover",lat:52.3759,lng:9.7413,link:"https://www.csd-hannover.de"},
+  {name:"Blütenball",cat:"event",context:"Event",city:"Mainz",lat:50.0012,lng:8.2714,link:""},
+  {name:"Soli-Party Leipzig",cat:"event",context:"Event",city:"Leipzig",lat:51.3397,lng:12.3750,link:""},
+  {name:"Fanzone Hamburg",cat:"fanzone",context:"UEFA EURO 2024",city:"Hamburg",lat:53.5527,lng:9.9665,link:"https://www.hamburg.de"},
+  {name:"Fanzone Berlin",cat:"fanzone",context:"UEFA EURO 2024",city:"Berlin",lat:52.5145,lng:13.3501,link:"https://www.berlin.de"},
+  {name:"Fanzone Frankfurt",cat:"fanzone",context:"UEFA EURO 2024",city:"Frankfurt",lat:50.1109,lng:8.6821,link:"https://www.frankfurt.de"},
+  {name:"Fanzone München",cat:"fanzone",context:"UEFA EURO 2024",city:"München",lat:48.1760,lng:11.5524,link:"https://www.muenchen.de"},
+  {name:"Molotow",cat:"club",context:"Club",city:"Hamburg",lat:53.5495,lng:9.9609,link:"https://www.molotowclub.com"},
+  {name:"Frappant",cat:"club",context:"Club / Bar",city:"Hamburg",lat:53.5574,lng:9.9384,link:""},
+  {name:"Tanzhaus West",cat:"club",context:"Club",city:"Frankfurt",lat:50.1017,lng:8.6439,link:"https://www.tanzhaus-west.de"},
+  {name:"Tokonoma",cat:"club",context:"Club / Bar",city:"Frankfurt",lat:50.1261,lng:8.6936,link:""},
+  {name:"Geheimclub",cat:"club",context:"Club",city:"Magdeburg",lat:52.1250,lng:11.6379,link:""},
+  {name:"Viertel",cat:"club",context:"Clubs / Stadtviertel",city:"Bremen",lat:53.0711,lng:8.8242,link:""},
+  {name:"Kulturfabrik (KuFa)",cat:"club",context:"Club",city:"Krefeld",lat:51.3329,lng:6.5631,link:"https://www.kulturfabrik-krefeld.de"},
+  {name:"Feinkost Lampe",cat:"club",context:"Bar / Venue",city:"Hannover",lat:52.3710,lng:9.7380,link:"https://www.feinkostlampe.de"},
+  {name:"halle02",cat:"club",context:"Club",city:"Heidelberg",lat:49.4052,lng:8.6720,link:"https://www.halle02.de"},
+  {name:"Amadeus",cat:"club",context:"Club",city:"Oldenburg",lat:53.1434,lng:8.2127,link:"https://www.amadeus-ol.de"},
+  {name:"Frau Gunstmann",cat:"club",context:"Bar",city:"Oldenburg",lat:53.1420,lng:8.2140,link:"https://www.fraugunstmann.de"},
+  {name:"umBAUbar",cat:"club",context:"Club / Bar",city:"Oldenburg",lat:53.1431,lng:8.2172,link:"https://umbaubar.net"},
+  {name:"Gleispark",cat:"club",context:"Venue / Kultur",city:"Oldenburg",lat:53.1450,lng:8.2100,link:"https://gleispark-oldenburg.de"},
+  {name:"Kampnagel",cat:"venue",context:"Kulturzentrum",city:"Hamburg",lat:53.5830,lng:10.0183,link:"https://www.kampnagel.de"},
+  {name:"Haus 73",cat:"venue",context:"Kulturzentrum",city:"Hamburg",lat:53.5626,lng:9.9667,link:"https://www.haus73.de"},
+  {name:"Schlachthof Wiesbaden",cat:"venue",context:"Kulturzentrum",city:"Wiesbaden",lat:50.0753,lng:8.2502,link:"https://www.schlachthof-wiesbaden.de"},
+  {name:"Landtag NRW",cat:"institution",context:"Institution",city:"Düsseldorf",lat:51.2212,lng:6.7704,link:"https://www.landtag.nrw.de"},
+  {name:"Stadt Krefeld",cat:"institution",context:"Kommune",city:"Krefeld",lat:51.3388,lng:6.5853,link:"https://www.krefeld.de"},
+  {name:"Hochschule Niederrhein",cat:"institution",context:"Bildung",city:"Krefeld",lat:51.3329,lng:6.5631,link:"https://www.hs-niederrhein.de"},
+  {name:"AStA Uni Lübeck",cat:"institution",context:"Bildung",city:"Lübeck",lat:53.8353,lng:10.7010,link:"https://www.asta-luebeck.de"},
+  {name:"Hochschule Flensburg",cat:"institution",context:"Bildung",city:"Flensburg",lat:54.7833,lng:9.4366,link:"https://www.hs-flensburg.de"},
+  {name:"Starterkitchen",cat:"institution",context:"Bildung / Startup",city:"Kiel",lat:54.3379,lng:10.1262,link:"https://www.starterkitchen.de"},
+  {name:"ASB Schleswig-Holstein",cat:"institution",context:"Organisation",city:"Kiel",lat:54.3133,lng:10.1349,link:"https://www.asb-sh.de"},
+  {name:"Explorer Konferenz",cat:"institution",context:"Konferenz",city:"Kiel",lat:54.3280,lng:10.1400,link:"https://www.explorerkonferenz.de"},
+  {name:"Rune Sauna",cat:"institution",context:"Freizeit",city:"Kiel",lat:54.3365,lng:10.1586,link:"https://www.runesauna.de"},
+  {name:"Jugendhaus Bargteheide",cat:"institution",context:"Jugendhaus",city:"Bargteheide",lat:53.7270,lng:10.2630,link:""},
+  {name:"Antira",cat:"kollektiv",context:"Kollektiv",city:"Hamburg",lat:53.5511,lng:9.9937,link:""},
+  {name:"Artig Works",cat:"kollektiv",context:"Kollektiv",city:"Osnabrück",lat:52.2799,lng:8.0472,link:""},
+  {name:"The Changency",cat:"kollektiv",context:"Nachhaltigkeitsagentur (Milky Chance)",city:"Kappeln",lat:54.6631,lng:9.9337,link:""},
+  {name:"Milky Chance",cat:"konzert",context:"Konzert · Orangerie Kassel",city:"Kassel",lat:51.3050,lng:9.4478,link:"https://www.milkychance.net"},
+  {name:"Mojo Club",cat:"konzert",context:"Jeremias Club Tour 2025",city:"Hamburg",lat:53.5498,lng:9.9640,link:"https://www.mojo.de"},
+  {name:"Kupfersaal",cat:"konzert",context:"Jeremias Club Tour 2025",city:"Leipzig",lat:51.3397,lng:12.3731,link:"https://www.kupfersaal.de"},
+  {name:"Musikzentrum",cat:"konzert",context:"Jeremias Club Tour 2025",city:"Hannover",lat:52.3838,lng:9.7228,link:"https://www.musikzentrum-hannover.de"},
+  {name:"ZOOM",cat:"konzert",context:"Jeremias Club Tour 2025",city:"Frankfurt",lat:50.1151,lng:8.6827,link:"https://zoomfrankfurt.com"}
+];
+
+var CAT_COLORS = {
+  stadion:"rgb(42,20,130)",festival:"rgb(0,133,93)",event:"rgb(255,255,255)",
+  fanzone:"rgb(210,214,239)",club:"rgb(130,115,190)",venue:"rgb(170,165,215)",
+  institution:"rgb(90,75,155)",kollektiv:"rgb(194,198,229)",konzert:"rgb(0,95,66)"
+};
+
+var euBounds = L.latLngBounds(L.latLng(35.0,-12.0),L.latLng(58.0,20.0));
+var map = L.map('map',{zoomControl:true,scrollWheelZoom:false,dragging:false,maxBounds:euBounds,maxBoundsViscosity:1.0,minZoom:5,maxZoom:14}).setView([49.8,10.2],7);
+/* Enable dragging only on click */
+map.getContainer().addEventListener('click',function(){if(!map.dragging.enabled()){map.dragging.enable();map.scrollWheelZoom.enable();}});
+map.getContainer().addEventListener('mouseleave',function(){map.dragging.disable();map.scrollWheelZoom.disable();});
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png',{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',subdomains:'abcd',maxZoom:14}).addTo(map);
+
+var allMarkers=[];
+function createMarker(loc){
+  var color=CAT_COLORS[loc.cat]||"rgb(134,134,134)";
+  var sz='ss-dot-sm';
+  if(loc.cat==='stadion'||loc.cat==='fanzone')sz='ss-dot-lg';
+  else if(loc.cat==='festival'||loc.cat==='event'||loc.cat==='venue'||loc.cat==='konzert')sz='ss-dot-md';
+  var icon=L.divIcon({className:'',html:'<div class="ss-dot '+sz+'" style="background:'+color+';"></div>',iconSize:[14,14],iconAnchor:[7,7],popupAnchor:[0,-10]});
+  var marker=L.marker([loc.lat,loc.lng],{icon:icon});
+  var linkHtml=loc.link?'<a class="ss-popup-link" href="'+loc.link+'" target="_blank" rel="noopener">Website →</a>':'';
+  var catLabel={stadion:'Stadion',festival:'Festival',event:'Event',fanzone:'Fanzone',club:'Club',venue:'Venue',institution:'Institution',kollektiv:'Kollektiv',konzert:'Konzert'}[loc.cat]||loc.cat;
+  var catIcon={stadion:'stadium',festival:'festival',event:'event',fanzone:'groups',club:'nightlife',venue:'location_city',institution:'account_balance',kollektiv:'group_work',konzert:'music_note'}[loc.cat]||'place';
+  marker.bindPopup('<div class="ss-popup"><div class="ss-popup-header"><span class="material-symbols-rounded ss-popup-icon">'+catIcon+'</span><span class="ss-popup-cat">'+catLabel+'</span></div><div class="ss-popup-name">'+loc.name+'</div><div class="ss-popup-context">'+loc.context+'</div><div class="ss-popup-city">'+loc.city+'</div>'+linkHtml+'</div>',{maxWidth:280});
+  allMarkers.push({marker:marker,cat:loc.cat});
+  marker.addTo(map);
+}
+LOCATIONS.forEach(createMarker);
+
+/* Map filter */
+var mapChips=document.querySelectorAll('.map-chip');
+function filterMapMarkers(cat){
+  var count=0;
+  allMarkers.forEach(function(item){if(cat==='all'||item.cat===cat){item.marker.addTo(map);count++;}else{map.removeLayer(item.marker);}});
+  mapChips.forEach(function(c){c.classList.remove('active');if(c.getAttribute('data-map-filter')===cat)c.classList.add('active');});
+  document.getElementById('mapCountAll').textContent=count;
+}
+mapChips.forEach(function(c){c.addEventListener('click',function(){filterMapMarkers(this.getAttribute('data-map-filter'));});});
+document.getElementById('mapCountAll').textContent=LOCATIONS.length;
+function centerMap(){map.setView([49.8,10.2],7,{animate:true,duration:0.5});}
+</script>
+
+<script>
   const tabs = document.querySelectorAll('.filter-tab');
   const cards = document.querySelectorAll('.card-wrap[data-category]');
+  const grid = document.querySelector('.cases-grid');
+  /* Testimonial carousel */
+  const tSlides = document.querySelectorAll('.testimonial-card[data-t-cat]');
+  const tDots = document.querySelectorAll('.t-dot');
+  let currentSlide = 0;
+  let tInterval;
+  function showSlide(n) {
+    tSlides.forEach(s => s.classList.remove('active'));
+    tDots.forEach(d => d.classList.remove('active'));
+    currentSlide = n % tSlides.length;
+    tSlides[currentSlide].classList.add('active');
+    tDots[currentSlide].classList.add('active');
+  }
+  function startCarousel() { tInterval = setInterval(() => showSlide(currentSlide + 1), 7000); }
+  function resetCarousel() { clearInterval(tInterval); startCarousel(); }
+  tDots.forEach(d => d.addEventListener('click', () => { showSlide(parseInt(d.dataset.slide)); resetCarousel(); }));
+  startCarousel();
+  /* Store original order */
+  const originalOrder = Array.from(cards);
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
       tabs.forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
       const filter = tab.dataset.filter;
-      cards.forEach(card => {
-        if (filter === 'all' || card.dataset.category === filter) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
+      if (filter === 'all') {
+        cards.forEach(card => { card.classList.remove('hidden','dimmed'); card.style.order = ''; });
+        originalOrder.forEach(c => grid.appendChild(c));
+        showSlide(0); resetCarousel();
+      } else {
+        let idx = 0;
+        originalOrder.forEach(card => {
+          card.classList.remove('hidden','dimmed');
+          if (card.dataset.category === filter) {
+            card.style.order = idx++;
+            grid.insertBefore(card, grid.firstChild);
+          } else {
+            card.classList.add('dimmed');
+            card.style.order = String(50 + idx++);
+          }
+        });
+        /* Jump to matching testimonial */
+        const matchIdx = Array.from(tSlides).findIndex(s => s.dataset.tCat === filter);
+        if (matchIdx >= 0) { showSlide(matchIdx); resetCarousel(); }
+      }
+      /* Scroll back to start */
+      grid.scrollTo({ left: 0, behavior: 'smooth' });
     });
   });
 </script>
