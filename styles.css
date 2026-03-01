@@ -164,7 +164,7 @@ em { font-weight: 700; font-style: normal; }
 }
 
 /* ===== HERO ===== */
-.hero-wrapper { padding: 100px 32px 0; }
+.hero-wrapper { padding: 148px 32px 0; }
 .hero-section {
   border-radius: var(--rounded-large); overflow: hidden;
   background: var(--lavender-main); position: relative;
@@ -174,7 +174,7 @@ em { font-weight: 700; font-style: normal; }
 .hero-section.has-image { background: var(--purple-main); }
 .hero-section .hero-content { position: relative; z-index: 2; max-width: 720px; }
 @media (min-width: 1280px) {
-  .hero-wrapper { padding: 100px 32px 0; }
+  .hero-wrapper { padding: 148px 32px 0; }
   .hero-section {
     border-radius: var(--rounded-large); min-height: 468px;
     padding: 80px 80px;
