@@ -21,7 +21,7 @@
 
 <nav class="nav" id="nav">
   <div class="nav-inner">
-    <div class="nav-logo"><a href="index.html"><img src="images/logo.svg" alt="saferspaces" style="height:40px; width:auto;"></a></div>
+    <div class="nav-logo"><a href="index.html"><img src="images/logo-folded.svg" alt="saferspaces" class="logo-folded" style="height:40px; width:auto;"><img src="images/logo-unfolded.svg" alt="saferspaces" class="logo-unfolded" style="height:40px; width:auto;"></a></div>
     <div class="nav-menu">
       <div class="nav-item" onclick="window.location.href='index.html'">
         <a href="index.html" style="text-decoration:none; color:inherit;"><span data-lang-de>Lösung</span><span data-lang-en>Solution</span></a>
@@ -77,36 +77,30 @@
 <!-- MOBILE MENU -->
 <div id="mobileMenu" class="mobile-menu">
   <div class="mobile-menu-section">
-    <div class="mobile-menu-section-title"><span data-lang-de>Lösung</span><span data-lang-en>Solution</span></div>
-    <a href="index.html"><span data-lang-de>Übersicht</span><span data-lang-en>Overview</span></a>
-    <a href="melden.html"><span data-lang-de>Melden</span><span data-lang-en>Report</span></a>
-    <a href="reagieren.html"><span data-lang-de>Reagieren</span><span data-lang-en>Respond</span></a>
-    <a href="verstehen.html"><span data-lang-de>Verstehen</span><span data-lang-en>Understand</span></a>
-    <a href="reporting.html">Rapid Report</a>
+    <div class="mobile-menu-section-title"><a href="index.html" style="color:inherit; text-decoration:none; flex:1;"><span data-lang-de>Lösung</span><span data-lang-en>Solution</span></a><span class="mobile-menu-toggle" onclick="event.stopPropagation(); this.closest('.mobile-menu-section').classList.toggle('open')"></span></div>
+    <div class="mobile-menu-links">
+      <a href="melden.html"><span data-lang-de>Melden</span><span data-lang-en>Report</span></a>
+      <a href="reagieren.html"><span data-lang-de>Reagieren</span><span data-lang-en>Respond</span></a>
+      <a href="verstehen.html"><span data-lang-de>Verstehen</span><span data-lang-en>Understand</span></a>
+      <a href="reporting.html">Rapid Report</a>
+    </div>
   </div>
   <div class="mobile-menu-section">
-    <div class="mobile-menu-section-title"><span data-lang-de>Branchen</span><span data-lang-en>Industries</span></div>
-    <a href="sport.html"><span data-lang-de>Sport &amp; Stadien</span><span data-lang-en>Sports &amp; Stadiums</span></a>
-    <a href="events.html"><span data-lang-de>Festivals &amp; Events</span><span data-lang-en>Festivals &amp; Events</span></a>
-    <a href="kommunen.html"><span data-lang-de>Kommunen</span><span data-lang-en>Municipalities</span></a>
-    <a href="bildung.html"><span data-lang-de>Bildung</span><span data-lang-en>Education</span></a>
-    <a href="oepnv.html"><span data-lang-de>ÖPNV &amp; Mobilität</span><span data-lang-en>Transit &amp; Mobility</span></a>
-    <a href="freizeit.html"><span data-lang-de>Freizeit &amp; Kultur</span><span data-lang-en>Leisure &amp; Culture</span></a>
-    <a href="unternehmen.html"><span data-lang-de>Unternehmen</span><span data-lang-en>Businesses</span></a>
-    <a href="voraussetzungen.html"><span data-lang-de>Voraussetzungen</span><span data-lang-en>Requirements</span></a>
+    <div class="mobile-menu-section-title"><a href="branchen.html" style="color:inherit; text-decoration:none; flex:1;"><span data-lang-de>Branchen</span><span data-lang-en>Industries</span></a><span class="mobile-menu-toggle" onclick="event.stopPropagation(); this.closest('.mobile-menu-section').classList.toggle('open')"></span></div>
+    <div class="mobile-menu-links">
+      <a href="sport.html"><span data-lang-de>Sport &amp; Stadien</span><span data-lang-en>Sports &amp; Stadiums</span></a>
+      <a href="events.html"><span data-lang-de>Festivals &amp; Events</span><span data-lang-en>Festivals &amp; Events</span></a>
+      <a href="kommunen.html"><span data-lang-de>Kommunen</span><span data-lang-en>Municipalities</span></a>
+      <a href="bildung.html"><span data-lang-de>Bildung</span><span data-lang-en>Education</span></a>
+    </div>
   </div>
   <div class="mobile-menu-section">
-    <div class="mobile-menu-section-title"><span data-lang-de>Referenzen</span><span data-lang-en>References</span></div>
-    <a href="referenzen_v4.html"><span data-lang-de>Alle Referenzen</span><span data-lang-en>All References</span></a>
-    <a href="case-studies.html">Case Studies</a>
-    <div class="mobile-menu-section-title"><span data-lang-de>Mehr</span><span data-lang-en>More</span></div>
-    <a href="#">Team</a>
-    <a href="#">Journey</a>
-    <a href="mission.html">Mission</a>
-    <a href="#">Impact</a>
-    <a href="#"><span data-lang-de>Netzwerk</span><span data-lang-en>Network</span></a>
-    <a href="preise.html"><span data-lang-de>Preise</span><span data-lang-en>Pricing</span></a>
+    <div class="mobile-menu-section-title"><a href="referenzen_v4.html" style="color:inherit; text-decoration:none; flex:1;"><span data-lang-de>Referenzen</span><span data-lang-en>References</span></a><span class="mobile-menu-toggle" onclick="event.stopPropagation(); this.closest('.mobile-menu-section').classList.toggle('open')"></span></div>
+    <div class="mobile-menu-links">
+      <a href="case-studies.html">Case Studies</a>
+    </div>
   </div>
+  <a href="preise.html" style="display:block; font-family:'GT Alpina Condensed', Georgia, serif; font-size:32px; font-weight:700; color:var(--purple-main); padding:16px 0; text-decoration:none; border-bottom:1px solid var(--grey-125);"><span data-lang-de>Preise</span><span data-lang-en>Pricing</span></a>
   <div class="mobile-menu-cta">
     <a href="demo.html" class="btn btn-primary btn-lg" style="width:100%; text-align:center;"><span data-lang-de>Demo buchen</span><span data-lang-en>Book Demo</span></a>
     <div class="mobile-menu-lang">
@@ -116,8 +110,7 @@
   </div>
 </div>
 
-
-  <div class="hero-wrapper"><div class="hero-section" style="background: linear-gradient(135deg, rgba(0,40,80,0.85) 0%, rgba(30,60,120,0.75) 100%), url('https://www.saferspaces.io/_next/image?url=%2Fassets%2Fimages%2Fdigital-awareness-approach%2Fslideshow-3.jpg&w=750&q=75') center/cover;">
+<div class="hero-wrapper"><div class="hero-section" style="background: linear-gradient(135deg, rgba(0,40,80,0.85) 0%, rgba(30,60,120,0.75) 100%), url('https://www.saferspaces.io/_next/image?url=%2Fassets%2Fimages%2Fdigital-awareness-approach%2Fslideshow-3.jpg&w=750&q=75') center/cover;">
     <div class="hero-content">
       <p class="label-text" style="margin-bottom:16px; color:var(--lavender-main);"><span data-lang-de>Branche · Events</span><span data-lang-en>Industry · Events</span></p>
       <h1 class="headline2 headline-white" style="margin-bottom:20px;"><span data-lang-de>Saferspaces für safer Festivals</span><span data-lang-en>Saferspaces for safer festivals</span></h1>

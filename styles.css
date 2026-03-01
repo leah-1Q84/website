@@ -164,9 +164,9 @@ em { font-weight: 700; font-style: normal; }
 }
 
 /* ===== HERO ===== */
-.hero-wrapper { padding: 148px 32px 0; }
+.hero-wrapper { padding: 100px 0 0; }
 .hero-section {
-  border-radius: var(--rounded-medium); overflow: hidden;
+  border-radius: 0; overflow: hidden;
   background: var(--lavender-main); position: relative;
   display: flex; flex-direction: column; justify-content: center;
   min-height: 442px; padding: 56px 32px;
@@ -174,9 +174,9 @@ em { font-weight: 700; font-style: normal; }
 .hero-section.has-image { background: var(--purple-main); }
 .hero-section .hero-content { position: relative; z-index: 2; max-width: 720px; }
 @media (min-width: 1280px) {
-  .hero-wrapper { padding: 148px 56px 0; }
+  .hero-wrapper { padding: 100px 0 0; }
   .hero-section {
-    border-radius: var(--rounded-large); min-height: 468px;
+    border-radius: 0; min-height: 468px;
     padding: 80px 80px;
   }
 }
@@ -232,12 +232,12 @@ em { font-weight: 700; font-style: normal; }
 /* ===== NAVIGATION ===== */
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(255,255,255,1); backdrop-filter: blur(40px) saturate(150%);
-  -webkit-backdrop-filter: blur(40px) saturate(150%);
+  background: rgba(255,255,255,0.85); backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
   padding: 24px 32px; transition: all 0.3s ease;
-  border-radius: 0 0 16px 16px;
+  border-radius: 0;
 }
-.nav.scrolled { padding: 16px 32px; background: var(--lavender-main); }
+.nav.scrolled { padding: 16px 32px; background: rgba(255,255,255,0.92); }
 @media (min-width: 1280px) {
   .nav { padding: 32px 48px; }
   .nav.scrolled { padding: 16px 48px; }
@@ -251,7 +251,11 @@ em { font-weight: 700; font-style: normal; }
   font-size: 22px; color: var(--purple-main); cursor: pointer;
   letter-spacing: -0.02em;
 }
-.nav-logo a { text-decoration: none; }
+.nav-logo a { text-decoration: none; position: relative; display: block; }
+.nav-logo .logo-folded { transition: opacity 0.4s ease; opacity: 1; }
+.nav-logo .logo-unfolded { position: absolute; left: 0; top: 0; transition: opacity 0.4s ease; opacity: 0; }
+.nav.scrolled .nav-logo .logo-folded { opacity: 0; }
+.nav.scrolled .nav-logo .logo-unfolded { opacity: 1; }
 .nav-menu { display: none; align-items: center; gap: 8px; margin-left: auto; }
 @media (min-width: 1280px) { .nav-menu { display: flex; } }
 .nav-item {
@@ -978,26 +982,44 @@ a.nav-item-link.active { border-bottom: 2px solid var(--purple-main); }
   display: block;
   transform: translateX(0);
 }
-/* Prevent double-display rendering glitch */
 .mobile-menu.animating { display: block; }
-.mobile-menu-section { margin-bottom: 24px; }
+.mobile-menu-section { margin-bottom: 0; }
 .mobile-menu-section-title {
-  font-size: 13px; font-weight: 700; color: var(--grey-mid);
-  text-transform: uppercase; letter-spacing: 0.08em;
-  padding: 8px 0; margin-bottom: 4px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-family: 'GT Alpina Condensed', Georgia, serif;
+  font-size: 32px; font-weight: 700; color: var(--purple-main);
+  padding: 16px 0; cursor: pointer; border-bottom: 1px solid var(--grey-125);
+  user-select: none;
+}
+.mobile-menu-section-title::after { display: none; }
+.mobile-menu-toggle {
+  display: flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; cursor: pointer; flex-shrink: 0;
+}
+.mobile-menu-toggle::before {
+  content: '+'; font-family: 'Mabry Pro', sans-serif; font-size: 24px;
+  font-weight: 400; color: var(--grey-mid);
+}
+.mobile-menu-section.open .mobile-menu-toggle::before {
+  content: '−';
+}
+.mobile-menu-section .mobile-menu-links {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.mobile-menu-section.open .mobile-menu-links {
+  max-height: 500px;
 }
 .mobile-menu a {
-  display: block; padding: 14px 0; font-size: 18px; font-weight: 700;
-  color: var(--black); text-decoration: none;
-  border-bottom: 1px solid var(--grey-125);
+  display: block; padding: 10px 0 10px 16px; font-size: 16px; font-weight: 400;
+  color: var(--grey-mid); text-decoration: none;
 }
 .mobile-menu a:hover, .mobile-menu a:active { color: var(--purple-main); }
 .mobile-menu-cta {
   margin-top: 32px; padding-top: 24px;
-  border-top: 2px solid var(--purple-main);
 }
 .mobile-menu-lang {
-  display: flex; gap: 8px; margin-top: 16px;
+  display: flex; gap: 8px; margin-top: 16px; justify-content: center;
 }
 /* Hamburger → X morph */
 .mobile-toggle.active span:nth-child(1) {
