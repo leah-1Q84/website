@@ -164,9 +164,9 @@ em { font-weight: 700; font-style: normal; }
 }
 
 /* ===== HERO ===== */
-.hero-wrapper { padding: 100px 0 0; }
+.hero-wrapper { padding: 100px 32px 0; }
 .hero-section {
-  border-radius: 0; overflow: hidden;
+  border-radius: var(--rounded-large); overflow: hidden;
   background: var(--lavender-main); position: relative;
   display: flex; flex-direction: column; justify-content: center;
   min-height: 442px; padding: 56px 32px;
@@ -174,9 +174,9 @@ em { font-weight: 700; font-style: normal; }
 .hero-section.has-image { background: var(--purple-main); }
 .hero-section .hero-content { position: relative; z-index: 2; max-width: 720px; }
 @media (min-width: 1280px) {
-  .hero-wrapper { padding: 100px 0 0; }
+  .hero-wrapper { padding: 100px 32px 0; }
   .hero-section {
-    border-radius: 0; min-height: 468px;
+    border-radius: var(--rounded-large); min-height: 468px;
     padding: 80px 80px;
   }
 }
