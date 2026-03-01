@@ -247,15 +247,17 @@ em { font-weight: 700; font-style: normal; }
   max-width: 2680px; margin: 0 auto;
 }
 .nav-logo {
-  font-family: 'GT Alpina Condensed', Georgia, serif; font-weight: 700;
-  font-size: 22px; color: var(--purple-main); cursor: pointer;
-  letter-spacing: -0.02em;
+  cursor: pointer;
 }
 .nav-logo a { text-decoration: none; position: relative; display: block; }
-.nav-logo .logo-folded { transition: opacity 0.4s ease; opacity: 1; }
-.nav-logo .logo-unfolded { position: absolute; left: 0; top: 0; transition: opacity 0.4s ease; opacity: 0; }
+.nav-logo .logo-folded { height: 50px; width: auto; transition: opacity 0.3s ease; opacity: 1; }
+.nav-logo .logo-unfolded { position: absolute; left: 0; top: 50%; transform: translateY(-50%); height: 14px; width: auto; transition: opacity 0.3s ease; opacity: 0; }
 .nav.scrolled .nav-logo .logo-folded { opacity: 0; }
 .nav.scrolled .nav-logo .logo-unfolded { opacity: 1; }
+@media (min-width: 1280px) {
+  .nav-logo .logo-folded { height: 70px; }
+  .nav-logo .logo-unfolded { height: 16px; }
+}
 .nav-menu { display: none; align-items: center; gap: 8px; margin-left: auto; }
 @media (min-width: 1280px) { .nav-menu { display: flex; } }
 .nav-item {
@@ -389,13 +391,13 @@ a.nav-item-link.active { border-bottom: 2px solid var(--purple-main); }
 
 /* ===== STATS BAR (purple) ===== */
 .stats-bar {
-  background: var(--purple-main); border-radius: var(--rounded-medium);
+  background: var(--purple-main); border-radius: 0;
   padding: 48px 32px;
 }
 .stats-bar .stat-number { color: var(--white); }
 .stats-bar .stat-label { color: var(--lavender-main); }
 @media (min-width: 1280px) {
-  .stats-bar { border-radius: var(--rounded-large); padding: 56px 48px; }
+  .stats-bar { border-radius: 0; padding: 56px 48px; }
 }
 
 /* ===== FEATURE SECTIONS ===== */
@@ -626,6 +628,7 @@ a.nav-item-link.active { border-bottom: 2px solid var(--purple-main); }
 }
 .footer-logo {
   filter: brightness(0) invert(1);
+  height: 60px; width: auto;
 }
 .footer-legal a {
   color: var(--lavender-main);
